@@ -1,30 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { 
-  Bars3Icon, 
-  XMarkIcon,
-  ChevronDownIcon 
-} from '@heroicons/react/24/outline';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { 
-    name: 'Services', 
-    href: '/services',
-    submenu: [
-      { name: 'Website Development', href: '/services/website-development' },
-      { name: 'Mobile App Development', href: '/services/mobile-app-development' },
-      { name: 'Digital Marketing & SEO', href: '/services/digital-marketing-seo' },
-      { name: 'DevOps & Cloud Solutions', href: '/services/devops-cloud-solutions' },
-      { name: 'CRM & ERP Systems', href: '/services/crm-erp-systems' },
-      { name: 'View All Services', href: '/services' },
-    ]
-  },
+  { name: 'Services', href: '/services' }, // Submenu removed
   { name: 'About', href: '/about' },
   { name: 'Contact', href: '/contact' },
   { name: 'Careers', href: '/careers' },
@@ -32,7 +17,6 @@ const navigation = [
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
 
   return (
     <header 
@@ -49,48 +33,18 @@ export default function Header() {
             className="h-10 w-auto"
             priority
           />
-         
         </Link>
 
         {/* Desktop Navigation */}
         <div className="hidden lg:flex lg:gap-x-8">
           {navigation.map((item) => (
-            <div key={item.name} className="relative group">
-              <Link
-                href={item.href}
-                className="flex items-center text-sm font-medium text-gray-300 hover:text-white transition-colors"
-                onMouseEnter={() => item.submenu && setActiveSubmenu(item.name)}
-              >
-                {item.name}
-                {item.submenu && (
-                  <ChevronDownIcon className="ml-1 h-4 w-4" />
-                )}
-              </Link>
-
-              {item.submenu && (
-                <AnimatePresence>
-                  {activeSubmenu === item.name && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 10 }}
-                      className="absolute left-0 top-full mt-2 w-64 rounded-lg bg-white shadow-lg border border-gray-200 py-2"
-                      onMouseLeave={() => setActiveSubmenu(null)}
-                    >
-                      {item.submenu.map((subItem) => (
-                        <Link
-                          key={subItem.name}
-                          href={subItem.href}
-                          className="block px-4 py-2 text-sm text-gray-800 hover:text-brand-blue hover:bg-gray-100 transition-colors"
-                        >
-                          {subItem.name}
-                        </Link>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              )}
-            </div>
+            <Link
+              key={item.name}
+              href={item.href}
+              className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
+            >
+              {item.name}
+            </Link>
           ))}
         </div>
 
@@ -129,29 +83,14 @@ export default function Header() {
           >
             <div className="space-y-1 px-4 py-4">
               {navigation.map((item) => (
-                <div key={item.name}>
-                  <Link
-                    href={item.href}
-                    className="block py-2 text-gray-300 hover:text-white font-medium"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                  {item.submenu && (
-                    <div className="ml-4 space-y-1">
-                      {item.submenu.slice(0, -1).map((subItem) => (
-                        <Link
-                          key={subItem.name}
-                          href={subItem.href}
-                          className="block py-1 text-sm text-gray-400 hover:text-white"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          {subItem.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="block py-2 text-gray-300 hover:text-white font-medium"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.name}
+                </Link>
               ))}
               <div className="pt-4">
                 <Button 
