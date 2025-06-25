@@ -1,23 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  trailingSlash: true,
+  output: 'export',                   // 🔥 Static build
+  trailingSlash: true,               // Optional: adds trailing slashes to URLs
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: true,        // ✅ Prevent build errors due to ESLint
   },
   typescript: {
-    // !! WARN !!
-    // Dangerously allow production builds to successfully complete even if
-    // your project has type errors.
-    // !! WARN !!
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: true,         // ✅ Allow build with type errors (be cautious)
   },
-  images: { 
-    unoptimized: true,
+  images: {
+    unoptimized: true,               // ✅ Required for export
     loader: 'custom',
-    loaderFile: './app/image-loader.js'
+    loaderFile: './app/image-loader.js', // ✅ Your custom loader
   },
-  devIndicators: false,
+  devIndicators: false,              // ✅ Hide dev indicators like "next dev"
   allowedDevOrigins: [
     "*.macaly.dev",
     "*.macaly.app",

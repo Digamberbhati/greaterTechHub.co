@@ -13,8 +13,9 @@ export default function Home() {
     <>
       <HeroSection />
       <Ads />
-      <ServicesSection />
       <AboutPreview />
+      <ServicesSection />
+      
       <Client />
       <Reviews />
       <ContactCTA />
