@@ -3,7 +3,6 @@
 import Marquee from 'react-fast-marquee';
 import Image from 'next/image';
 
-// Client logos data (replace src with actual logo URLs)
 const clientLogos = [
   { src: 'https://cdn.worldvectorlogo.com/logos/adobe.svg', alt: 'Adobe', width: 120, height: 60 },
   { src: 'https://cdn.worldvectorlogo.com/logos/microsoft-6.svg', alt: 'Microsoft', width: 120, height: 60 },

@@ -1,22 +1,48 @@
-import type { Metadata } from 'next'
-import { Card, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import Link from 'next/link'
-import { 
-  CheckCircleIcon, 
-  RocketLaunchIcon, 
+import type { Metadata } from 'next';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
+import {
+  CheckCircleIcon,
+  RocketLaunchIcon,
   DevicePhoneMobileIcon,
   MagnifyingGlassIcon,
-  ShieldCheckIcon 
-} from '@heroicons/react/24/outline'
+  ShieldCheckIcon,
+  ClipboardDocumentListIcon,
+  PaintBrushIcon,
+  CodeBracketIcon,
+  BugAntIcon,
+} from '@heroicons/react/24/outline';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Website Development Services - GreaterTechHub | Modern Web Solutions',
   description: 'Professional website development services. Custom, responsive, and SEO-optimized websites built with cutting-edge technologies. Get your dream website today.',
+};
+
+interface Feature {
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  description: string;
 }
 
-const features = [
+interface WebsiteType {
+  title: string;
+  description: string;
+}
+
+interface DevelopmentStep {
+  icon: React.ComponentType<{ className?: string }>;
+  title: string;
+  description: string;
+}
+
+interface Technology {
+  name: string;
+  logo: string; // Path to logo in public/assets/tech-logos/
+}
+
+const features: Feature[] = [
   {
     icon: DevicePhoneMobileIcon,
     title: 'Responsive Design',
@@ -37,100 +63,120 @@ const features = [
     title: 'Secure & Reliable',
     description: 'Enterprise-grade security and 99.9% uptime guarantee.',
   },
-]
+];
 
-const technologies = [
-  'React', 'Next.js', 'Vue.js', 'Angular', 'TypeScript', 'Node.js', 
-  'Python', 'PHP', 'WordPress', 'Shopify', 'Webflow', 'Tailwind CSS'
-]
+const technologies: Technology[] = [
+  { name: 'React', logo: '/assets/tech-logos/react.svg' },
+  { name: 'Next.js', logo: '/assets/tech-logos/nextjs.svg' },
+  { name: 'Vue.js', logo: '/assets/tech-logos/vuejs.svg' },
+  { name: 'Angular', logo: '/assets/tech-logos/angular.svg' },
+  { name: 'TypeScript', logo: '/assets/tech-logos/typescript.svg' },
+  { name: 'Node.js', logo: '/assets/tech-logos/nodejs.svg' },
+  { name: 'Python', logo: '/assets/tech-logos/python.svg' },
+  { name: 'PHP', logo: '/assets/tech-logos/php.svg' },
+  { name: 'WordPress', logo: '/assets/tech-logos/wordpress.svg' },
+  { name: 'Shopify', logo: '/assets/tech-logos/shopify.svg' },
+  { name: 'Webflow', logo: '/assets/tech-logos/webflow.svg' },
+  { name: 'Tailwind CSS', logo: '/assets/tech-logos/tailwindcss.svg' },
+];
 
-const packages = [
+const websiteTypes: WebsiteType[] = [
   {
-    name: 'Starter Website',
-    price: '$2,999',
-    features: [
-      'Up to 5 pages',
-      'Responsive design',
-      'Basic SEO setup',
-      'Contact form',
-      '3 months support',
-      'Mobile optimization',
-    ],
-    recommended: false,
+    title: 'E-commerce Websites',
+    description: 'Build robust online stores with secure payment gateways, product catalogs, and user-friendly shopping experiences.',
   },
   {
-    name: 'Business Website',
-    price: '$5,999',
-    features: [
-      'Up to 15 pages',
-      'Custom design',
-      'Advanced SEO',
-      'Content management',
-      '6 months support',
-      'Analytics integration',
-      'Social media integration',
-      'Blog functionality',
-    ],
-    recommended: true,
+    title: 'Portfolio Websites',
+    description: 'Showcase your creative work or services with visually appealing, responsive designs tailored to your brand.',
   },
   {
-    name: 'Enterprise Website',
-    price: '$12,999',
-    features: [
-      'Unlimited pages',
-      'Custom functionality',
-      'E-commerce ready',
-      'Advanced integrations',
-      '12 months support',
-      'Performance optimization',
-      'Security features',
-      'Multi-language support',
-    ],
-    recommended: false,
+    title: 'Corporate Websites',
+    description: 'Establish a professional online presence with custom websites for businesses, highlighting your mission and services.',
   },
-]
+  {
+    title: 'Blog Websites',
+    description: 'Create engaging platforms for content creators with easy-to-manage content systems and SEO optimization.',
+  },
+  {
+    title: 'Educational Websites',
+    description: 'Develop e-learning platforms or institutional portals with interactive features and scalable architecture.',
+  },
+  {
+    title: 'Nonprofit Websites',
+    description: 'Craft impactful websites for charities and organizations, with donation systems and community engagement tools.',
+  },
+];
+
+const developmentSteps: DevelopmentStep[] = [
+  {
+    icon: ClipboardDocumentListIcon,
+    title: 'Discovery & Planning',
+    description: 'We analyze your requirements, define goals, and create a detailed project roadmap.',
+  },
+  {
+    icon: PaintBrushIcon,
+    title: 'Design & Prototyping',
+    description: 'Our team crafts responsive, user-friendly designs and interactive prototypes.',
+  },
+  {
+    icon: CodeBracketIcon,
+    title: 'Development',
+    description: 'We build your website using modern technologies, ensuring performance and scalability.',
+  },
+  {
+    icon: BugAntIcon,
+    title: 'Testing & Quality Assurance',
+    description: 'Rigorous testing ensures your website is bug-free, secure, and optimized.',
+  },
+  {
+    icon: RocketLaunchIcon,
+    title: 'Launch & Support',
+    description: 'We deploy your website and provide ongoing maintenance and support.',
+  },
+];
 
 export default function WebsiteDevelopment() {
   console.log('Website Development service page rendered');
 
   return (
-    <div className="pt-24 min-h-screen">
-      <div className="mx-auto max-w-7xl container-padding section-padding">
+    <div className="pt-24 min-h-screen bg-white">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-brand-navy mb-6">
-            Professional <span className="gradient-text">Website Development</span>
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-black">
+            Professional{' '}
+            <span className="bg-gradient-to-r from-[#FFD700] via-[#8B4513] to-black bg-clip-text text-transparent">
+              Website Development
+            </span>
           </h1>
-          <p className="text-xl text-brand-gray max-w-3xl mx-auto mb-8">
-            Transform your online presence with modern, responsive websites that 
-            drive results. From concept to launch, we create digital experiences 
-            that engage your audience and grow your business.
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            Transform your online presence with modern, responsive websites that drive results. From concept to launch, we create digital experiences that engage and grow your business.
           </p>
-          <Button 
+          <Button
             asChild
             size="lg"
-            className="bg-gradient-blue hover:opacity-90 text-white px-8 py-4 text-lg font-semibold"
+            className="bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:opacity-90 text-white px-8 py-4 text-lg font-semibold rounded-full"
           >
             <Link href="/contact">Get Free Quote</Link>
           </Button>
         </div>
 
         {/* Features */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-brand-navy text-center mb-12">
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-black text-center mb-8">
             Why Choose Our Website Development Services
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
-              <Card key={index} className="border-0 shadow-lg text-center">
-                <CardContent className="p-6">
-                  <div className="inline-flex p-3 mb-4 bg-gradient-blue rounded-xl">
+              <Card key={index} className="border-0 shadow-md bg-white">
+                <CardContent className="p-6 text-center">
+                  <div className="inline-flex p-3 mb-4 bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 rounded-xl">
                     <feature.icon className="h-6 w-6 text-white" />
                   </div>
-                  <h3 className="text-lg font-semibold text-brand-navy mb-2">
+                  <h3 className="text-lg font-semibold text-black mb-2">
                     {feature.title}
                   </h3>
-                  <p className="text-brand-gray text-sm">
+                  <p className="text-gray-600 text-sm">
                     {feature.description}
                   </p>
                 </CardContent>
@@ -140,61 +186,69 @@ export default function WebsiteDevelopment() {
         </div>
 
         {/* Technologies */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-brand-navy text-center mb-8">
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-black text-center mb-8">
             Technologies We Use
           </h2>
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 justify-center">
             {technologies.map((tech, index) => (
-              <Badge key={index} variant="outline" className="px-4 py-2 text-brand-blue border-brand-blue">
-                {tech}
-              </Badge>
+              <div key={index} className="flex flex-col items-center">
+                <div className="p-3 bg-gray-100 rounded-xl mb-2">
+                  <Image
+                    src={tech.logo}
+                    alt={`${tech.name} logo`}
+                    width={32}
+                    height={32}
+                    className="object-contain"
+                  />
+                </div>
+                <span className="text-sm text-black font-medium">{tech.name}</span>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* Packages */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-brand-navy text-center mb-12">
-            Website Development Packages
+        {/* Development Process */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-black text-center mb-8">
+            Our Website Development Process
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {packages.map((pkg, index) => (
-              <Card key={index} className={`border-0 shadow-lg relative ${pkg.recommended ? 'ring-2 ring-brand-blue' : ''}`}>
-                {pkg.recommended && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                    <Badge className="bg-gradient-blue text-white px-4 py-1">
-                      Most Popular
-                    </Badge>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {developmentSteps.map((step, index) => (
+              <Card key={index} className="border-0 shadow-md bg-white">
+                <CardContent className="p-6 flex items-start space-x-4">
+                  <div className="p-3 bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 rounded-xl">
+                    <step.icon className="h-6 w-6 text-white" />
                   </div>
-                )}
-                <CardContent className="p-8">
-                  <div className="text-center mb-6">
-                    <h3 className="text-xl font-bold text-brand-navy mb-2">
-                      {pkg.name}
+                  <div>
+                    <h3 className="text-lg font-semibold text-black mb-2">
+                      {index + 1}. {step.title}
                     </h3>
-                    <div className="text-3xl font-bold text-brand-blue mb-2">
-                      {pkg.price}
-                    </div>
-                    <p className="text-sm text-brand-gray">One-time payment</p>
+                    <p className="text-gray-600 text-sm">
+                      {step.description}
+                    </p>
                   </div>
-                  
-                  <ul className="space-y-3 mb-8">
-                    {pkg.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center">
-                        <CheckCircleIcon className="h-5 w-5 text-brand-green mr-3" />
-                        <span className="text-brand-gray">{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <Button 
-                    asChild
-                    className={`w-full ${pkg.recommended ? 'bg-gradient-blue hover:opacity-90 text-white' : 'border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white'}`}
-                    variant={pkg.recommended ? 'default' : 'outline'}
-                  >
-                    <Link href="/contact">Choose This Package</Link>
-                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Types of Websites */}
+        <div className="mb-12">
+          <h2 className="text-3xl font-bold text-black text-center mb-8">
+            Types of Websites We Build
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {websiteTypes.map((type, index) => (
+              <Card key={index} className="border-0 shadow-md bg-white">
+                <CardContent className="p-6">
+                  <h3 className="text-lg font-semibold text-black mb-2">
+                    {type.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm">
+                    {type.description}
+                  </p>
                 </CardContent>
               </Card>
             ))}
@@ -202,27 +256,25 @@ export default function WebsiteDevelopment() {
         </div>
 
         {/* CTA Section */}
-        <div className="text-center bg-gradient-tech text-white p-12 rounded-3xl">
-          <h2 className="text-3xl font-bold mb-4">
+        <div className="text-center bg-gray-50 p-10 rounded-2xl">
+          <h2 className="text-3xl font-bold text-black mb-4">
             Ready to Build Your Dream Website?
           </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Let's discuss your project requirements and create a website that 
-            perfectly represents your brand and drives business growth.
+          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            Let’s discuss your project and create a website that represents your brand and drives growth.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
+            <Button
               asChild
               size="lg"
-              className="bg-white text-brand-navy hover:bg-gray-100 px-8 py-4 text-lg font-semibold"
+              className="bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:opacity-90 text-white px-8 py-4 text-lg font-semibold rounded-full"
             >
               <Link href="/contact">Start Your Project</Link>
             </Button>
-            <Button 
+            <Button
               asChild
-              variant="outline"
               size="lg"
-              className="border-white text-white hover:bg-white hover:text-brand-navy px-8 py-4 text-lg font-semibold"
+              className="bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:opacity-90 text-white px-8 py-4 text-lg font-semibold rounded-full"
             >
               <Link href="/services">View All Services</Link>
             </Button>
