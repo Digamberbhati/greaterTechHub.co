@@ -290,7 +290,7 @@ export default function CRMERPSystems() {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-brand-white text-brand-white hover:bg-brand-white hover:text-brand-black"
+              className="border-brand-white text-brand-black hover:bg-brand-white hover:text-brand-black"
             >
               <Link href="/services">Explore More Services</Link>
             </Button>

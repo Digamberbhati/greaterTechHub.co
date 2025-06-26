@@ -9,6 +9,15 @@ import {
   CloudIcon,
   CogIcon,
   ServerIcon,
+  FilmIcon,
+  PaintBrushIcon,
+  BugAntIcon,
+  CommandLineIcon,
+  ChartBarIcon,
+  UserGroupIcon,
+  BriefcaseIcon,
+  CubeIcon,
+  DocumentTextIcon,
 } from '@heroicons/react/24/outline'
 
 export const metadata: Metadata = {
@@ -68,7 +77,7 @@ const services = [
   {
     title: '2D/3D Animation',
     description: 'Professional animation services for marketing, education, and entertainment content.',
-    icon: GlobeAltIcon,
+    icon: FilmIcon,
     href: '/services/2d-3d-animation',
     color: 'gradient-gold',
     features: ['2D Animation', '3D Modeling', 'Motion Graphics', 'Video Production']
@@ -76,7 +85,7 @@ const services = [
   {
     title: 'Custom Software Solutions',
     description: 'Bespoke software development tailored to your unique business requirements and workflows.',
-    icon: CogIcon,
+    icon: CommandLineIcon,
     href: '/services/custom-software-solutions',
     color: 'gradient-brown',
     features: ['Web Applications', 'Enterprise Software', 'API Development', 'Database Design']
@@ -84,10 +93,58 @@ const services = [
   {
     title: 'QA & Software Testing',
     description: 'Comprehensive testing services to ensure software quality, performance, and reliability.',
-    icon: ServerIcon,
+    icon: BugAntIcon,
     href: '/services/qa-software-testing',
     color: 'gradient-gold',
     features: ['Automated Testing', 'Performance Testing', 'Security Testing', 'User Acceptance Testing']
+  },
+  {
+    title: 'Branding, Advertising & Market Research',
+    description: 'Complete brand identity, advertising campaigns, and market insights to elevate your brand.',
+    icon: PaintBrushIcon,
+    href: '/services/branding-advertising-market-research',
+    color: 'gradient-brown',
+    features: ['Brand Identity Design', 'Advertising Campaigns', 'Market Analysis', 'Consumer Insights']
+  },
+  {
+    title: 'Business Strategy',
+    description: 'Strategic consulting to drive business growth, innovation, and competitive advantage.',
+    icon: ChartBarIcon,
+    href: '/services/business-strategy',
+    color: 'gradient-gold',
+    features: ['Growth Planning', 'Market Expansion', 'Innovation Strategy', 'Competitive Analysis']
+  },
+  {
+    title: 'Recruitment Services',
+    description: 'End-to-end recruitment solutions to acquire top tech talent for your organization.',
+    icon: UserGroupIcon,
+    href: '/services/recruitment-services',
+    color: 'gradient-brown',
+    features: ['Talent Sourcing', 'Candidate Screening', 'Tech Recruitment', 'Onboarding Support']
+  },
+  {
+    title: 'BPO Services',
+    description: 'Efficient outsourcing solutions for customer support, operations, and back-office tasks.',
+    icon: BriefcaseIcon,
+    href: '/services/bpo-services',
+    color: 'gradient-gold',
+    features: ['Customer Support', 'Data Entry', 'Process Outsourcing', 'Call Center Services']
+  },
+  {
+    title: 'System Design & Architecture',
+    description: 'Scalable and robust system designs for efficient and future-proof solutions.',
+    icon: CubeIcon,
+    href: '/services/system-design-architecture',
+    color: 'gradient-brown',
+    features: ['Microservices Architecture', 'System Scalability', 'Database Design', 'Cloud Integration']
+  },
+  {
+    title: 'IT Asset Management',
+    description: 'Efficient tracking and management of IT assets to optimize resources and reduce costs.',
+    icon: DocumentTextIcon,
+    href: '/services/it-asset-management',
+    color: 'gradient-gold',
+    features: ['Asset Tracking', 'Inventory Management', 'Cost Optimization', 'Compliance Audits']
   }
 ]
 

@@ -65,8 +65,12 @@ const results = [
 
 const industries = [
   'E-commerce', 'Healthcare', 'Technology', 'Real Estate', 
-  'Education', 'Finance', 'Manufacturing', 'Hospitality'
-]
+  'Education', 'Finance', 'Manufacturing', 'Hospitality',
+  'Automotive', 'Travel and Tourism', 'Food and Beverage', 
+  'Fashion and Apparel', 'Beauty and Cosmetics', 'Fitness and Wellness',
+  'Entertainment and Media', 'Gaming', 'Non-Profit and Charity',
+  'Legal Services', 'Home Improvement and Decor', 'B2B Services'
+];
 
 export default function DigitalMarketingSEO() {
   console.log('Digital Marketing & SEO page rendered');
@@ -246,7 +250,7 @@ export default function DigitalMarketingSEO() {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-brand-white text-brand-white hover:bg-brand-white hover:text-brand-black"
+              className="border-brand-white text-brand-black hover:bg-brand-white hover:text-brand-black"
             >
               <Link href="/services">Explore All Services</Link>
             </Button>

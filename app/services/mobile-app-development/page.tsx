@@ -52,6 +52,21 @@ const features = [
     icon: SparklesIcon,
     title: 'UI/UX Excellence',
     description: 'Intuitive designs following platform guidelines for exceptional user experiences.'
+  },
+  {
+    icon: DevicePhoneMobileIcon,
+    title: 'iOS App Development',
+    description: 'Custom native iOS apps built with Swift, optimized for performance, and designed to meet Apple’s Human Interface Guidelines.'
+  },
+  {
+    icon: CogIcon,
+    title: 'Android App Development',
+    description: 'High-performance Android apps developed using Kotlin, tailored to Google’s Material Design standards for seamless user experiences.'
+  },
+  {
+    icon: SparklesIcon,
+    title: 'Game Development for iOS & Android',
+    description: 'Engaging mobile games built with Unity or native tools for iOS and Android, delivering immersive experiences and high performance.'
   }
 ]
 
@@ -116,7 +131,7 @@ export default function MobileAppDevelopment() {
               <Badge 
                 key={tech} 
                 variant="outline" 
-                className="px-4 py-2 text-brand-brown border-brand-brown/30 hover:bg-gradient-brown text-white transition-all"
+                className="px-4 py-2 text-brown border-brand-brown/30 hover:bg-gradient-brown text-black transition-all"
               >
                 {tech}
               </Badge>
@@ -211,7 +226,7 @@ export default function MobileAppDevelopment() {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-brand-white text-brand-white hover:bg-brand-white hover:text-brand-black"
+              className="border-brand-white text-brand-black hover:bg-brand-white hover:text-brand-black"
             >
               <Link href="/services">View All Services</Link>
             </Button>

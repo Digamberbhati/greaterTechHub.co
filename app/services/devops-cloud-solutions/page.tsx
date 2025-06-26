@@ -252,7 +252,7 @@ export default function DevOpsCloudSolutions() {
                   </p>
                   <Button 
                     variant="outline" 
-                    className="border-white text-white hover:bg-white hover:text-brand-black"
+                    className="border-white text-black hover:bg-white hover:text-brand-black"
                   >
                     Read Full Case Study
                   </Button>

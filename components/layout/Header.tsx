@@ -9,8 +9,9 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 const navigation = [
   { name: 'Home', href: '/' },
-  { name: 'Services', href: '/services' }, // Submenu removed
   { name: 'About', href: '/about' },
+  { name: 'Services', href: '/services' }, // Submenu removed
+  
   { name: 'Contact', href: '/contact' },
   { name: 'Careers', href: '/careers' },
 ];
@@ -54,7 +55,7 @@ export default function Header() {
             asChild
             className="bg-gradient-blue hover:opacity-90 text-white font-medium"
           >
-            <Link href="/contact">Get Quote</Link>
+            <Link href="/contact">Book Appointment</Link>
           </Button>
         </div>
 
