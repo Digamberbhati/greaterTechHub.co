@@ -2,37 +2,19 @@
 
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { 
-  RocketLaunchIcon, 
-  CpuChipIcon, 
-  CloudIcon,
-  SparklesIcon,
-} from '@heroicons/react/24/outline';
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-// Floating icons configuration (still used for static positioning)
-const floatingIcons = [
-  { Icon: RocketLaunchIcon, delay: 0, x: 100, y: 50, size: 24 },
-  { Icon: CpuChipIcon, delay: 0.5, x: -80, y: 80, size: 20 },
-  { Icon: CloudIcon, delay: 1, x: 120, y: -40, size: 28 },
-  { Icon: SparklesIcon, delay: 1.5, x: -100, y: -20, size: 16 },
-];
-
-// Rotating taglines with GreaterTechHub integration
 const taglines = [
-  "Innovate with GreaterTechHub",
-  "Empower Your Future with GreaterTechHub",
-  "Build Tomorrow with GreaterTechHub",
-  "Unleash Possibilities with GreaterTechHub",
+  'Innovate with GreaterTechHub',
+  'Empower Your Future with GreaterTechHub',
+  'Build Tomorrow with GreaterTechHub',
+  'Unleash Possibilities with GreaterTechHub',
 ];
 
 export default function HeroSection() {
-  console.log('HeroSection component rendered');
-
-  // State for rotating taglines
   const [currentTagline, setCurrentTagline] = useState(0);
 
-  // Rotate taglines every 3 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentTagline((prev) => (prev + 1) % taglines.length);
@@ -41,75 +23,137 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Original Background Gradient without Parallax */}
-      <div className="absolute inset-0 hero-gradient" />
+    <main
+      className="relative min-h-screen flex items-center px-4 sm:px-12 lg:px-24 py-32 sm:py-24 overflow-hidden"
+      style={{
+        background: 'linear-gradient(135deg, #000000 0%, #1C1917 30%, #D4AF37 100%)',
+      }}
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-black/90 to-black/70 z-[1]" />
 
-      {/* Floating Background Elements (Static) */}
-      <div className="absolute inset-0">
-        {floatingIcons.map((item, index) => (
-          <div
-            key={index}
-            className="absolute opacity-20"
-            style={{
-              left: `${50 + item.x}px`,
-              top: `${50 + item.y}%`,
-              filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.3))',
-            }}
+      <div className="relative z-10 max-w-[650px] text-center sm:text-left">
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={currentTagline}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }}
+            className="text-white text-lg sm:text-xl md:text-2xl font-semibold tracking-wide block mb-4"
           >
-            <item.Icon className={`h-${item.size} w-${item.size} text-white`} />
+            {taglines[currentTagline]}
+          </motion.span>
+        </AnimatePresence>
+
+        <motion.h1
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl sm:text-5xl md:text-6xl lg:text-[5rem] font-bold leading-tight mb-6 bg-gradient-to-r from-white to-[#D4AF37] bg-clip-text text-transparent"
+        >
+          Transform Your
+          <br />
+          Financial Future
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-base sm:text-lg md:text-xl text-[#94a3b8] mb-10 max-w-[580px] mx-auto sm:mx-0"
+        >
+          Unlock the power of next-generation payment solutions. Experience seamless transactions,
+          advanced analytics, and enterprise-grade security.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center sm:justify-start mb-16"
+        >
+          <Button
+            asChild
+            className="bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-black font-semibold text-base sm:text-lg py-4 px-6 sm:px-10 rounded-xl hover:from-[#FFD700] hover:to-[#D4AF37] hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300"
+          >
+            <Link href="/trial">Book Appoments</Link>
+          </Button>
+          <Button
+            asChild
+            variant="outline"
+            className="bg-transparent border border-[#D4AF37] text-[#D4AF37] font-semibold text-base sm:text-lg py-4 px-6 sm:px-10 rounded-xl hover:bg-[white]hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300"
+          >
+            <Link href="/demo">Contact</Link>
+          </Button>
+        </motion.div>
+
+        {/* Stats Container */}
+        <div className="flex flex-col sm:flex-row gap-8 sm:gap-16 justify-center sm:justify-start mt-8">
+          <div className="flex flex-col items-center sm:items-start gap-2">
+            <span className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-white to-[#D4AF37] bg-clip-text text-transparent">100%</span>
+            <span className="text-base text-[#94a3b8] font-medium">Project Delivery</span>
           </div>
-        ))}
-      </div>
-
-      {/* Inline CSS for gold-white-grey-black gradient */}
-      <style jsx>{`
-        .gold-white-grey-black-gradient {
-          background: linear-gradient(90deg, #FFD700, #FFFFFF, #808080, #000000);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          text-fill-color: transparent;
-        }
-      `}</style>
-
-      {/* Content */}
-      <div className="relative z-10 mx-auto max-w-7xl container-padding px-4 sm:px-6 lg:px-8 py-20">
-        <div className="text-center">
-          {/* Tagline Rotator */}
-          <div className="mb-4">
-            <span className="text-white text-xl md:text-2xl font-bold tracking-wide">
-              {taglines[currentTagline]}
-            </span>
+          <div className="flex flex-col items-center sm:items-start gap-2">
+            <span className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-white to-[#D4AF37] bg-clip-text text-transparent">150</span>
+            <span className="text-base text-[#94a3b8] font-medium">Active Projects – July</span>
           </div>
-
-          {/* Main Headline */}
-          <div>
-            <h1 className="text-5xl md:text-7xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight">
-              Smart Tech, Bright Futures
-              <span className="block gold-white-grey-black-gradient text-4xl md:text-6xl lg:text-5xl">
-                GreaterTechHub
-              </span>
-            </h1>
+          <div className="flex flex-col items-center sm:items-start gap-2">
+            <span className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-white to-[#D4AF37] bg-clip-text text-transparent">99.9%</span>
+            <span className="text-base text-[#94a3b8] font-medium">Uptime</span>
           </div>
-
-          {/* Subheadline */}
-          <p className="mt-6 text-xl md:text-2xl text-black max-w-3xl mx-auto leading-relaxed font-medium">
-            Discover cutting-edge tech solutions with GreaterTechHub, designed to propel your success into the future. Let’s innovate together!
-          </p>
-
-          {/* Call-to-Action Button */}
-          <div className="mt-10 flex justify-center">
-            <Button 
-              asChild
-              size="lg"
-              className="bg-gradient-blue hover:opacity-90 text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg transform hover:scale-105 transition-transform"
-            >
-              <Link href="/contact">Join GreaterTechHub Today</Link>
-            </Button>
-          </div>
+          
         </div>
       </div>
-    </section>
+
+      {/* Hero Graphics */}
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-full sm:w-1/2 h-full z-[1] hidden sm:block">
+        <div
+          className="absolute w-[800px] h-[800px] right-[-200px] top-1/2 -translate-y-1/2 rounded-full"
+          style={{
+            background:
+              'radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.1) 25%, rgba(212, 175, 55, 0) 70%)',
+            filter: 'blur(40px)',
+          }}
+        />
+        <div className="relative w-full h-full">
+          <motion.div
+            className="absolute w-[300px] h-[200px] top-[20%] right-[20%] bg-[rgba(255,255,255,0.1)] backdrop-blur-md rounded-2xl border border-[rgba(255,255,255,0.2)] shadow-2xl overflow-hidden"
+            style={{ transform: 'rotate(-15deg)' }}
+            animate={{ y: [-20, 0, -20] }}
+            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <img
+              src="/hero/2.jpg"
+              alt="Financial solution card 1"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+          <motion.div
+            className="absolute w-[250px] h-[150px] top-[40%] right-[40%] bg-[rgba(255,255,255,0.1)] backdrop-blur-md rounded-2xl border border-[rgba(255,255,255,0.2)] shadow-2xl overflow-hidden"
+            style={{ transform: 'rotate(10deg)' }}
+            animate={{ y: [-20, 0, -20] }}
+            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <img
+              src="/hero/1.jpg"
+              alt="Financial solution card 2"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+          <motion.div
+            className="absolute w-[200px] h-[120px] top-[60%] right-[30%] bg-[rgba(255,255,255,0.1)] backdrop-blur-md rounded-2xl border border-[rgba(255,255,255,0.2)] shadow-2xl overflow-hidden"
+            style={{ transform: 'rotate(-5deg)' }}
+            animate={{ y: [-20, 0, -20] }}
+            transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+          >
+            <img
+              src="/hero/3.jpg"
+              alt="Financial solution card 3"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        </div>
+      </div>
+    </main>
   );
 }
