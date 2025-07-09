@@ -1,5 +1,5 @@
 import HeroSection from '@/components/sections/HeroSection'
-// import Client from '@/components/sections/Client'
+import Client from '@/components/sections/Client'
 import ServicesSection from '@/components/sections/ServicesSection'
 import AboutPreview from '@/components/sections/AboutPreview'
 import ContactCTA from '@/components/sections/ContactCTA'
@@ -15,7 +15,7 @@ export default function Home() {
       <Ads />
       <AboutPreview />
       <ServicesSection />
-      {/* <Client /> */}
+      <Client />
       <Reviews />
       <ContactCTA />
     </>

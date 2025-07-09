@@ -125,7 +125,7 @@ export default function ServicesSection() {
   console.log('ServicesSection component rendered');
 
   return (
-    <section className="py-12 bg-white">
+    <section className="py-12 bg-gradient-elegant">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Inline CSS for gradients */}
         <style jsx>{`
