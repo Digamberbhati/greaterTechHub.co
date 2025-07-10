@@ -28,7 +28,7 @@ const footerSections = [
     links: [
       { name: 'Privacy Policy', href: '/privacy-policy' },
       { name: 'Terms & Conditions', href: '/terms-conditions' },
-      { name: 'Support', href: '/support' },
+      // { name: 'Support', href: '/support' },
       { name: 'Partnership', href: '/partnership' },
       { name: 'Refer and Earn', href: '/refer-and-earn' },
     ],

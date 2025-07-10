@@ -55,7 +55,7 @@ export default function Header() {
             asChild
             className="bg-gradient-blue hover:opacity-90 text-white font-medium"
           >
-            <Link href="/contact">Book Appointment</Link>
+            <Link href="/book">Book Appointment</Link>
           </Button>
         </div>
 
@@ -98,8 +98,8 @@ export default function Header() {
                   asChild
                   className="w-full bg-gradient-blue hover:opacity-90 text-white"
                 >
-                  <Link href="/contact" onClick={() => setMobileMenuOpen(false)}>
-                    Get Quote
+                  <Link href="/book" onClick={() => setMobileMenuOpen(false)}>
+                    Book Appointment
                   </Link>
                 </Button>
               </div>
