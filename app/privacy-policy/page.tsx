@@ -54,13 +54,20 @@ export default function PrivacyPolicy() {
             </section>
 
             <section>
+              <h2 className="text-2xl font-bold text-brand-navy mb-4">Payment Terms</h2>
+              <p>
+                For any services requiring payment, we require a 50% advance payment before project commencement. This is a mandatory requirement. The remaining balance is due within 30 days of the invoice date unless otherwise specified in individual service agreements.
+              </p>
+            </section>
+
+            <section>
               <h2 className="text-2xl font-bold text-brand-navy mb-4">Contact Us</h2>
               <p>
                 If you have questions about this Privacy Policy, please contact us at:
               </p>
               <div className="mt-4">
-                <p>Email: info@greatertechhub.com</p>
-                <p>Phone: +1 (234) 567-8900</p>
+                <p><strong>Email:</strong> info@greatertechhub.com</p>
+                <p><strong>Phone:</strong> +91 9588160069</p>
               </div>
             </section>
           </div>
