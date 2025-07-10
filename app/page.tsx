@@ -1,6 +1,5 @@
 import HeroSection from '@/components/sections/HeroSection'
-import Client from '@/components/sections/client';
-
+import Client from '@/components/sections/Client'
 import ServicesSection from '@/components/sections/ServicesSection'
 import AboutPreview from '@/components/sections/AboutPreview'
 import ContactCTA from '@/components/sections/ContactCTA'
