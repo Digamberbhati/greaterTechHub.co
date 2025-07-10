@@ -74,14 +74,14 @@ export default function HeroSection() {
         >
           <Button
             asChild
-            className="bg-gradient-to-r from-[#D4AF37] to-[#FFD700] text-black font-semibold text-base sm:text-lg py-4 px-6 sm:px-10 rounded-xl hover:from-[#FFD700] hover:to-[#D4AF37] hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300"
+            className="bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:from-yellow-800 hover:via-yellow-700 hover:to-yellow-600 text-white font-semibold text-base sm:text-lg px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <Link href="/trial">Book Appoments</Link>
           </Button>
           <Button
             asChild
             variant="outline"
-            className="bg-transparent border border-[#D4AF37] text-[#D4AF37] font-semibold text-base sm:text-lg py-4 px-6 sm:px-10 rounded-xl hover:bg-[white]hover:-translate-y-0.5 hover:shadow-xl transition-all duration-300"
+            className="bg-transparent border border-yellow-600 text-white font-semibold text-base sm:text-lg px-8 py-3 rounded-full hover:bg-gradient-to-r hover:from-yellow-800 hover:via-yellow-700 hover:to-yellow-600 hover:text-white shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <Link href="/demo">Contact</Link>
           </Button>
@@ -101,7 +101,6 @@ export default function HeroSection() {
             <span className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-white to-[#D4AF37] bg-clip-text text-transparent">99.9%</span>
             <span className="text-base text-[#94a3b8] font-medium">Uptime</span>
           </div>
-          
         </div>
       </div>
 

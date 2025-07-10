@@ -19,8 +19,11 @@ import {
   BriefcaseIcon,
   CubeIcon,
   DocumentTextIcon,
+  ArrowRightIcon,
 } from '@heroicons/react/24/outline';
+import { motion } from 'framer-motion';
 
+// The Service interface remains the same
 interface Service {
   title: string;
   description: string;
@@ -28,8 +31,9 @@ interface Service {
   href: string;
 }
 
+// The services array remains the same
 const services: Service[] = [
-  {
+    {
     title: 'Website Development',
     description: 'Modern, responsive websites built with cutting-edge technologies.',
     icon: GlobeAltIcon,
@@ -72,7 +76,7 @@ const services: Service[] = [
     href: '/services/2d-3d-animation',
   },
   {
-    title: 'Branding, Advertising & Market Research',
+    title: 'Branding & Advertising',
     description: 'Complete brand identity, advertising campaigns, and market insights.',
     icon: PaintBrushIcon,
     href: '/services/branding-advertising-market-research',
@@ -121,81 +125,78 @@ const services: Service[] = [
   },
 ];
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: i * 0.07, duration: 0.5, ease: 'easeOut' },
+  }),
+};
+
 export default function ServicesSection() {
-  console.log('ServicesSection component rendered');
-
   return (
-    <section className="py-12 bg-gradient-elegant">
+    <section className="bg-slate-50 py-20 sm:py-24">
+      <style jsx>{`
+        .gold-gradient {
+          background: linear-gradient(90deg, #F59E0B, #D97706, #B45309);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-fill-color: transparent;
+        }
+      `}</style>
+      
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Inline CSS for gradients */}
-        <style jsx>{`
-          .gold-black-brown-gradient {
-            background: linear-gradient(90deg, #FFD700, #8B4513, #000000);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-          }
-          .yellow-gradient {
-            background: linear-gradient(90deg, #B45309, #D97706, #F59E0B);
-          }
-          .yellow-gradient-text {
-            background: linear-gradient(90deg, #B45309, #D97706, #F59E0B);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-fill-color: transparent;
-          }
-          .yellow-gradient:hover {
-            opacity: 0.9;
-          }
-        `}</style>
-
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-black">
-            Our <span className="gold-black-brown-gradient">Technology Services</span>
-          </h2>
-          <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4">
-            IT solutions to drive your business forward.
+        <div className="text-center">
+          <h2 className="text-base font-semibold leading-7 text-amber-700">Our Services</h2>
+          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+            <span className="gold-gradient">Innovative IT Solutions</span> to Empower Your Business
+          </p>
+          <p className="mt-6 text-lg leading-8 text-gray-600">
+            From strategy to execution, we deliver tailored technology services that drive results.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service) => (
-            <Card
+        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map((service, index) => (
+            <motion.div
               key={service.title}
-              className="h-full border-0 shadow-md bg-white hover:shadow-lg transition-shadow"
+              custom={index}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={cardVariants}
+              className="h-full"
             >
-              <CardContent className="p-6 flex flex-col h-full">
-                <div className="mb-4">
-                  <div className="inline-flex p-3 rounded-xl yellow-gradient">
-                    <service.icon className="h-6 w-6 text-white" />
+              <Card className="flex h-full flex-col rounded-2xl bg-white shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-slate-200/80">
+                <CardContent className="p-8 flex flex-col h-full">
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-amber-100">
+                    <service.icon className="h-7 w-7 text-amber-700" aria-hidden="true" />
                   </div>
-                </div>
-                <h3 className="text-lg font-semibold yellow-gradient-text mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 mb-6 flex-grow">
-                  {service.description}
-                </p>
-                <Button
-                  asChild
-                  className="w-full yellow-gradient text-white text-base font-semibold"
-                >
-                  <Link href={service.href}>Learn More</Link>
-                </Button>
-              </CardContent>
-            </Card>
+                  <h3 className="text-xl font-semibold text-slate-800">{service.title}</h3>
+                  <p className="mt-3 text-base text-slate-600 flex-grow">{service.description}</p>
+                  <Button
+                    asChild
+                    className="mt-8 w-full group bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:from-yellow-800 hover:via-yellow-700 hover:to-yellow-600 text-white py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                  >
+                    <Link href={service.href}>
+                      Learn More
+                      <ArrowRightIcon className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
         </div>
 
-        <div className="text-center mt-12">
+        <div className="mt-16 text-center">
           <Button
             asChild
-            size="lg"
-            className="yellow-gradient text-white px-6 py-3 text-base font-semibold"
+            className="bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:from-yellow-800 hover:via-yellow-700 hover:to-yellow-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
           >
-            <Link href="/services">View All Services</Link>
+            <Link href="/services">Explore All Our Services</Link>
           </Button>
         </div>
       </div>

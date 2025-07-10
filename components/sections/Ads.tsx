@@ -69,7 +69,7 @@ export default function WeeklyOffer() {
             <Button
               asChild
               size="lg"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-full shadow-md transform hover:scale-105 transition-transform duration-300"
+              className="bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:from-yellow-800 hover:via-yellow-700 hover:to-yellow-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <Link href={weeklyOffer.ctaLink}>{weeklyOffer.ctaText}</Link>
             </Button>
