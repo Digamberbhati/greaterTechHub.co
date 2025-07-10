@@ -36,16 +36,15 @@ export default function Client() {
         </h2>
         <div className="overflow-hidden">
           <div
-            className="flex animate-marquee gap-4"
+            className="flex animate-marquee gap-6" // Increased gap for better spacing
             style={{
-              // Adjust animation duration based on number of logos
-              animationDuration: `${5 + clientLogos.length * 0.2}s`,
+              animationDuration: `${10 + clientLogos.length * 0.3}s`, // Slower animation for smoother effect
             }}
           >
             {duplicatedLogos.map((logo, index) => (
               <div
                 key={`${logo.alt}-${index}`}
-                className="flex items-center justify-center h-[140px] w-[240px] rounded-lg bg-white shadow-md hover:shadow-xl transition-all duration-300 flex-shrink-0"
+                className="flex items-center justify-center h-[160px] w-[260px] rounded-lg bg-white shadow-md hover:shadow-xl transition-all duration-300 flex-shrink-0"
                 role="button"
                 aria-label={`View ${logo.alt} logo`}
               >
@@ -54,8 +53,8 @@ export default function Client() {
                   alt={logo.alt}
                   width={logo.width}
                   height={logo.height}
-                  className="object-contain opacity-90 hover:opacity-100 hover:scale-125 transition-all duration-300 max-w-[140px] max-h-[70px]"
-                  priority={index < 4} // Prioritize first 4 logos
+                  className="object-contain transform scale-110 hover:scale-125 transition-all duration-300 max-w-[160px] max-h-[80px]" // Default scale of 1.1 (110%) for slight zoom
+                  priority={index < 4} // Prioritize first 4 logos for faster loading
                   quality={85}
                   onError={(e) => {
                     e.currentTarget.src = '/clients/fallback.png';
@@ -71,6 +70,7 @@ export default function Client() {
         .animate-marquee {
           display: flex;
           animation: marquee linear infinite;
+          will-change: transform; /* Optimize animation performance */
         }
 
         @keyframes marquee {
@@ -85,6 +85,21 @@ export default function Client() {
         /* Pause animation on hover */
         .animate-marquee:hover {
           animation-play-state: paused;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+          .animate-marquee {
+            gap: 4px;
+          }
+          .animate-marquee > div {
+            height: 120px;
+            width: 180px;
+          }
+          .animate-marquee img {
+            max-width: 120px;
+            max-height: 60px;
+          }
         }
       `}</style>
     </section>
