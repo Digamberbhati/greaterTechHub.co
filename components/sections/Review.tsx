@@ -11,54 +11,42 @@ interface ClientReview {
   image?: string; // Optional image for reviewer (if needed)
 }
 
-// Updated client reviews data
+// Updated client reviews data with only the new reviews
 const clientReviews: ClientReview[] = [
   {
-    name: 'Amit Sharma',
-    role: 'Founder, EduTech Startup (India)',
-    review: 'GreaterTechHub built our e-learning website with seamless functionality and a modern design. Their team delivered on time and exceeded our expectations!',
-    rating: 5,
-  },
-  {
-    name: 'Priya Malhotra',
-    role: 'Marketing Head, Retail Chain (India)',
-    review: 'Their social media branding strategy boosted our online presence significantly. GreaterTechHub’s creativity and analytics-driven approach are unmatched.',
+    name: 'Rahul Rajput',
+    role: 'CDT, Vr2020 Dental Designing Solutions & Digital Laboratory Pvt. Ltd',
+    review: 'The digital marketing team has done a great job with our social media presence. The content is engaging and reflects our brand well.',
     rating: 4,
   },
   {
-    name: 'Rahul Desai',
-    role: 'CTO, FinTech Company (India)',
-    review: 'GreaterTechHub’s DevOps services streamlined our deployment process. Their expertise in CI/CD pipelines saved us time and resources.',
+    name: 'John Ray',
+    role: 'Freelancer',
+    review: 'While the IT services are generally good, there have been instances where the response time could have been faster.',
+    rating: 3,
+  },
+  {
+    name: 'Vishal',
+    role: 'Owner, Refast Company',
+    review: 'The IT services team has been instrumental in implementing new technologies that have improved our productivity.',
     rating: 5,
   },
   {
-    name: 'Neha Gupta',
-    role: 'Operations Manager, BPO Firm (India)',
-    review: 'Their BPO services helped us scale customer support efficiently. GreaterTechHub’s team is professional and responsive, making our operations smoother.',
+    name: 'Ravi Kumar',
+    role: 'Owner, B2B Business',
+    review: 'I appreciate the proactive approach of the IT services team. They often identify and address issues before they become major problems.',
+    rating: 5,
+  },
+  {
+    name: 'Anil Bhati',
+    role: 'Business Manager, Bhati Organisation',
+    review: 'GreaterTechHub’s services have been reliable, and their team’s dedication to our projects has significantly improved our operational efficiency.',
     rating: 4,
   },
   {
-    name: 'Vikram Singh',
-    role: 'CEO, Content Agency (India)',
-    review: 'As a third-party content provider, we rely on GreaterTechHub for tech support. Their platform integration and priority support are game-changers.',
-    rating: 5,
-  },
-  {
-    name: 'Emma Wilson',
-    role: 'Product Lead, HealthTech Startup (USA)',
-    review: 'GreaterTechHub developed our mobile app with a user-friendly interface and robust features. Their attention to detail made our launch a success!',
-    rating: 5,
-  },
-  {
-    name: 'Liam Carter',
-    role: 'Marketing Director, E-commerce Brand (UK)',
-    review: 'Their digital marketing campaigns drove impressive ROI for our brand. GreaterTechHub’s global expertise helped us reach new audiences effectively.',
-    rating: 4,
-  },
-  {
-    name: 'Sophie Dubois',
-    role: 'IT Manager, Logistics Firm (France)',
-    review: 'GreaterTechHub’s BPO and IT support services optimized our operations. Their team’s professionalism and quick response times are highly commendable.',
+    name: 'Lokesh Singh Rajput',
+    role: 'Mr. World',
+    review: 'GreaterTechHub’s innovative solutions and exceptional support have elevated our business to new heights.',
     rating: 5,
   },
 ];
