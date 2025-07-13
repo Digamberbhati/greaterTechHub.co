@@ -1,16 +1,17 @@
-import type { Metadata } from 'next'
+// app/refer-and-earn/page.tsx
+"use client";
+
 import Link from 'next/link'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { GiftIcon } from '@heroicons/react/24/outline'
-
-export const metadata: Metadata = {
-  title: 'Refer and Earn - GreaterTechHub | Earn Rewards',
-  description: 'Join GreaterTechHub’s Refer and Earn program. Refer client projects or deals and earn rewards. Submit your referral to start collaborating.',
-}
+import { useState } from 'react'
 
 export default function ReferAndEarn() {
   console.log('Refer and Earn page rendered')
+
+  // State for form submission feedback
+  const [submitStatus, setSubmitStatus] = useState<string | null>(null)
 
   // List of services for the dropdown, based on the Services page
   const services = [
@@ -30,6 +31,37 @@ export default function ReferAndEarn() {
     'System Design & Architecture',
     'IT Asset Management',
   ]
+
+  // Handle form submission
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setSubmitStatus(null) // Reset status
+
+    const form = e.currentTarget
+    const formData = new FormData(form)
+
+    // Add the Web3Forms access key to the form data
+    formData.append('access_key', '8739b33b-939a-4751-ad7b-f09ad3a1c955')
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData,
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        setSubmitStatus('Thank you! Your referral has been submitted successfully.')
+        form.reset() // Reset the form after successful submission
+      } else {
+        setSubmitStatus('Submission failed. Please try again.')
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitStatus('An error occurred. Please try again later.')
+    }
+  }
 
   return (
     <div className="pt-24 min-h-screen bg-gradient-elegant">
@@ -176,7 +208,7 @@ export default function ReferAndEarn() {
 
           <Card className="border-brand-gold/20 shadow-lg bg-brand-white rounded-xl overflow-hidden">
             <CardContent className="p-8">
-              <form className="space-y-6">
+              <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-brand-black mb-1">
@@ -262,6 +294,11 @@ export default function ReferAndEarn() {
                     placeholder="Describe the client project or deal you are referring..."
                   ></textarea>
                 </div>
+                {submitStatus && (
+                  <div className={`text-center text-sm ${submitStatus.includes('successfully') ? 'text-green-600' : 'text-red-600'}`}>
+                    {submitStatus}
+                  </div>
+                )}
                 <div className="text-center">
                   <Button
                     type="submit"

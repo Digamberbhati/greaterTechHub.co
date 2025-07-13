@@ -21,7 +21,6 @@ import {
   DocumentTextIcon,
   ArrowRightIcon,
 } from '@heroicons/react/24/outline';
-import { motion } from 'framer-motion';
 
 // The Service interface remains the same
 interface Service {
@@ -33,7 +32,7 @@ interface Service {
 
 // The services array remains the same
 const services: Service[] = [
-    {
+  {
     title: 'Website Development',
     description: 'Modern, responsive websites built with cutting-edge technologies.',
     icon: GlobeAltIcon,
@@ -125,15 +124,6 @@ const services: Service[] = [
   },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.07, duration: 0.5, ease: 'easeOut' },
-  }),
-};
-
 export default function ServicesSection() {
   return (
     <section className="bg-slate-50 py-20 sm:py-24">
@@ -159,16 +149,8 @@ export default function ServicesSection() {
         </div>
 
         <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              custom={index}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={cardVariants}
-              className="h-full"
-            >
+          {services.map((service) => (
+            <div key={service.title} className="h-full">
               <Card className="flex h-full flex-col rounded-2xl bg-white shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-slate-200/80">
                 <CardContent className="p-8 flex flex-col h-full">
                   <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-amber-100">
@@ -187,7 +169,7 @@ export default function ServicesSection() {
                   </Button>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           ))}
         </div>
 

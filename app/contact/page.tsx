@@ -15,7 +15,7 @@ const contactInfo = [
     icon: EnvelopeIcon,
     title: 'Direct Contact',
     details: '+91 9588160069',
-    description: 'Send us an email and we\'ll respond within 24 hours',
+    description: 'Send us an email and we\'ll respond within 1 Min',
     socialMedia: [
       { platform: 'LinkedIn', link: 'https://linkedin.com/company/greatertechhub', icon: FaLinkedin },
       { platform: 'Facebook', link: 'https://facebook.com/greatertechhub', icon: FaFacebook },
@@ -52,19 +52,36 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      console.log('Form submitted:', formData);
-      toast({
-        title: 'Message Sent!',
-        description: 'Thank you for contacting us. We\'ll get back to you within 24 hours.',
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '8739b33b-939a-4751-ad7b-f09ad3a1c955', // Web3Forms API key
+          ...formData, // Spread the form data
+        }),
       });
-      setFormData({
-        name: '',
-        email: '',
-        company: '',
-        service: '',
-        message: '',
-      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        console.log('Form submitted successfully:', formData);
+        toast({
+          title: 'Message Sent!',
+          description: 'Thank you for contacting us. We\'ll get back to you within 1 min.',
+        });
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          service: '',
+          message: '',
+        });
+      } else {
+        throw new Error(result.message || 'Form submission failed');
+      }
     } catch (error) {
       console.error('Form submission error:', error);
       toast({

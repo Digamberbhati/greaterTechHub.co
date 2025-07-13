@@ -11,9 +11,10 @@ const navigation = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'Services', href: '/services' }, // Submenu removed
-  
+    { name: 'Careers', href: '/careers' },
+    { name: 'Blog', href: '/blog' },
   { name: 'Contact', href: '/contact' },
-  { name: 'Careers', href: '/careers' },
+  
 ];
 
 export default function Header() {
