@@ -51,7 +51,7 @@ const blogPosts = [
       <p>A <strong>headless CMS</strong> decouples content management from presentation, offering unmatched flexibility. GreaterTechHub leverages platforms like Sanity to deliver scalable, content-driven websites tailored to your needs.</p>
       <p>Contact us to explore how our <strong>website development services</strong> can transform your online presence in 2025.</p>
     `,
-    image: 'https://picsum.photos/600/400?random=1',
+    image: '/blog/website.jpg',
     date: 'June 15, 2025',
     keywords: ['website development services', 'AI-driven web design', 'progressive web apps', 'headless CMS', 'web development trends 2025'],
   },
@@ -70,7 +70,7 @@ const blogPosts = [
       <p>Using frameworks like React Native, GreaterTechHub delivers apps that perform flawlessly on iOS and Android, maximizing reach and usability.</p>
       <p>Partner with GreaterTechHub for <strong>mobile app development</strong> that drives results.</p>
     `,
-    image: 'https://picsum.photos/600/400?random=2',
+    image: '/blog/app.jpg',
     date: 'June 10, 2025',
     keywords: ['mobile app development', 'customer engagement', 'business operations', 'cross-platform apps', 'mobile app trends 2025'],
   },
@@ -89,7 +89,7 @@ const blogPosts = [
       <p>Engaging, keyword-rich content drives traffic and conversions. We craft blogs, videos, and more to position your brand as an industry leader.</p>
       <p>Boost your online presence with GreaterTechHub’s <strong>SEO strategies</strong> today.</p>
     `,
-    image: 'https://picsum.photos/600/400?random=3',
+    image: '/blog/digital.jpg',
     date: 'June 5, 2025',
     keywords: ['SEO strategies', 'digital marketing services', 'keyword optimization', 'technical SEO', 'content marketing 2025'],
   },
@@ -108,7 +108,7 @@ const blogPosts = [
       <p>Our solutions prioritize data security, ensuring your business remains protected in the cloud environment.</p>
       <p>Transform your operations with GreaterTechHub’s <strong>cloud computing solutions</strong>.</p>
     `,
-    image: 'https://picsum.photos/600/400?random=4',
+    image: '/blog/web.jpg',
     date: 'May 30, 2025',
     keywords: ['cloud solutions', 'DevOps services', 'cloud scalability', 'AWS Azure', 'business automation'],
   },
@@ -127,7 +127,7 @@ const blogPosts = [
       <p>Our systems integrate seamlessly with existing tools, ensuring scalability as your business grows.</p>
       <p>Partner with GreaterTechHub for <strong>CRM and ERP solutions</strong> that transform your business.</p>
     `,
-    image: 'https://picsum.photos/600/400?random=5',
+    image: '/blog/crm.jpg',
     date: 'May 25, 2025',
     keywords: ['CRM systems', 'ERP systems', 'business growth', 'customer management', 'enterprise solutions'],
   },
@@ -146,7 +146,7 @@ const blogPosts = [
       <p>Our animations tell your brand’s story, creating emotional connections with your audience.</p>
       <p>Elevate your brand with GreaterTechHub’s <strong>animation services</strong>.</p>
     `,
-    image: 'https://picsum.photos/600/400?random=6',
+    image: '/blog/2d.jpg',
     date: 'May 20, 2025',
     keywords: ['2D animation services', '3D animation', 'brand storytelling', 'visual marketing', 'animation trends'],
   },
@@ -165,9 +165,28 @@ const blogPosts = [
       <p>Using agile methodologies, GreaterTechHub ensures rapid delivery of high-quality software.</p>
       <p>Transform your business with GreaterTechHub’s <strong>custom software solutions</strong>.</p>
     `,
-    image: 'https://picsum.photos/600/400?random=7',
+    image: '/blog/custom.jpg',
     date: 'May 15, 2025',
     keywords: ['custom software development', 'business solutions', 'scalable software', 'agile development', 'software innovation'],
+  },
+  {
+    id: 8,
+    title: 'Empowering Your Business with AI Agents, Chatbots, and IT Infrastructure',
+    slug: 'ai-agents-chatbots-it-infrastructure',
+    excerpt: 'Discover how GreaterTechHub’s AI agents, chatbots, and IT infrastructure solutions drive efficiency and customer connection for businesses.',
+    content: `
+      <p>At <strong>GreaterTechHub</strong>, we know running a business can feel like juggling a thousand tasks at once. That’s why our <strong>AI agents</strong>, <strong>chatbots</strong>, and <strong>IT infrastructure</strong> solutions are designed to simplify operations and keep your customers happy, like having a trusted partner by your side.</p>
+      <h2>AI Agents for Smarter Workflows</h2>
+      <p>Our <strong>AI agents</strong> automate repetitive tasks, analyze data, and provide insights to help you make smarter decisions. GreaterTechHub builds AI solutions that let you focus on growing your business while we handle the heavy lifting.</p>
+      <h2>Chatbots for Seamless Customer Engagement</h2>
+      <p>Our <strong>chatbots</strong> offer 24/7 support with a human touch, answering questions and guiding customers through your services. GreaterTechHub designs chatbots that feel like a friendly conversation, boosting satisfaction and loyalty.</p>
+      <h2>Robust IT Infrastructure for Reliability</h2>
+      <p>A solid <strong>IT infrastructure</strong> keeps your business running smoothly. From cloud solutions to cybersecurity, GreaterTechHub creates scalable, secure systems tailored to your needs, ensuring uptime and efficiency.</p>
+      <p>Partner with GreaterTechHub to harness <strong>AI agents, chatbots, and IT infrastructure</strong> that empower your business to thrive.</p>
+    `,
+    image: '/blog/aiagent.jpg',
+    date: 'July 10, 2025',
+    keywords: ['AI agents', 'chatbots', 'IT infrastructure', 'business automation', 'customer engagement', 'scalable IT solutions'],
   },
 ]
 
