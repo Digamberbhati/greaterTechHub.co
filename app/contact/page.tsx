@@ -52,6 +52,18 @@ export default function Contact() {
     setIsSubmitting(true);
 
     try {
+      const apiKey = process.env.NEXT_PUBLIC_WEB3FORMS_API_KEY;
+      if (!apiKey) {
+        console.error('Web3Forms API key is missing');
+        toast({
+          title: 'Error',
+          description: 'Configuration error. Please contact support.',
+          variant: 'destructive',
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
@@ -59,8 +71,8 @@ export default function Contact() {
           'Accept': 'application/json',
         },
         body: JSON.stringify({
-          access_key: '8739b33b-939a-4751-ad7b-f09ad3a1c955', // Web3Forms API key
-          ...formData, // Spread the form data
+          access_key: apiKey,
+          ...formData,
         }),
       });
 
