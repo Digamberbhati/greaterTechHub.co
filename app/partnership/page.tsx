@@ -1,67 +1,74 @@
 // app/partnership/page.tsx
 "use client";
 
-import Link from 'next/link'
-import { Card, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { UsersIcon } from '@heroicons/react/24/outline'
-import { useState } from 'react'
+import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { UsersIcon } from "@heroicons/react/24/outline";
+import { useState } from "react";
 
 export default function Partnership() {
-  console.log('Partnership page rendered')
+  console.log("Partnership page rendered");
 
   // State for form submission feedback
-  const [submitStatus, setSubmitStatus] = useState<string | null>(null)
+  const [submitStatus, setSubmitStatus] = useState<string | null>(null);
 
-  // List of services for the dropdown, based on the Services page
+  // List of services for the dropdown
   const services = [
-    'Website Development',
-    'Mobile App Development',
-    'Digital Marketing & SEO',
-    'DevOps & Cloud Solutions',
-    'CRM & ERP Systems',
-    'IT Infrastructure & Networking',
-    '2D/3D Animation',
-    'Custom Software Solutions',
-    'QA & Software Testing',
-    'Branding, Advertising & Market Research',
-    'Business Strategy',
-    'Recruitment Services',
-    'BPO Services',
-    'System Design & Architecture',
-    'IT Asset Management',
-  ]
+    "Website Development",
+    "Mobile App Development",
+    "Digital Marketing & SEO",
+    "DevOps & Cloud Solutions",
+    "CRM & ERP Systems",
+    "IT Infrastructure & Networking",
+    "2D/3D Animation",
+    "Custom Software Solutions",
+    "QA & Software Testing",
+    "Branding, Advertising & Market Research",
+    "Business Strategy",
+    "Recruitment Services",
+    "BPO Services",
+    "System Design & Architecture",
+    "IT Asset Management",
+  ];
 
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setSubmitStatus(null) // Reset status
+    e.preventDefault();
+    setSubmitStatus(null); // Reset status
 
-    const form = e.currentTarget
-    const formData = new FormData(form)
+    // Check for API key
+    const apiKey = process.env.NEXT_PUBLIC_WEB3FORMS_API_KEY;
+    if (!apiKey) {
+      setSubmitStatus("Configuration error: API key is missing. Please contact support.");
+      return;
+    }
 
-    // Add the Web3Forms access key to the form data
-    formData.append('access_key', '8739b33b-939a-4751-ad7b-f09ad3a1c955')
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    // Add the Web3Forms access key from environment variable
+    formData.append("access_key", apiKey);
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
         body: formData,
-      })
+      });
 
-      const result = await response.json()
+      const result = await response.json();
 
       if (result.success) {
-        setSubmitStatus('Thank you! Your proposal has been submitted successfully.')
-        form.reset() // Reset the form after successful submission
+        setSubmitStatus("Thank you! Your proposal has been submitted successfully.");
+        form.reset(); // Reset the form after successful submission
       } else {
-        setSubmitStatus('Submission failed. Please try again.')
+        setSubmitStatus("Submission failed. Please try again.");
       }
     } catch (error) {
-      console.error('Error submitting form:', error)
-      setSubmitStatus('An error occurred. Please try again later.')
+      console.error("Error submitting form:", error);
+      setSubmitStatus("An error occurred. Please try again later.");
     }
-  }
+  };
 
   return (
     <div className="pt-24 min-h-screen bg-gradient-elegant">
@@ -73,7 +80,8 @@ export default function Partnership() {
               Build <span className="gold-black-brown-gradient">Partnerships</span> for Success
             </h1>
             <p className="text-xl text-brand-cream max-w-3xl mx-auto">
-              Collaborate with GreaterTechHub on client projects or strategic deals to deliver cutting-edge IT solutions and achieve mutual growth.
+              Collaborate with GreaterTechHub on client projects or strategic deals to deliver
+              cutting-edge IT solutions and achieve mutual growth.
             </p>
           </div>
         </div>
@@ -87,7 +95,8 @@ export default function Partnership() {
               Why <span className="gold-black-brown-gradient">Partner with Us?</span>
             </h2>
             <p className="text-lg text-brand-gray max-w-2xl mx-auto mt-4">
-              Partner with us to work on client projects or deals, leveraging our expertise for shared success.
+              Partner with us to work on client projects or deals, leveraging our expertise for shared
+              success.
             </p>
           </div>
 
@@ -104,7 +113,8 @@ export default function Partnership() {
                   Innovation-Driven
                 </h3>
                 <p className="text-brand-gray mb-4 flex-grow">
-                  Collaborate on client projects using advanced technologies to deliver innovative solutions.
+                  Collaborate on client projects using advanced technologies to deliver innovative
+                  solutions.
                 </p>
                 <div className="mb-6">
                   <ul className="text-sm text-brand-gray space-y-1">
@@ -137,7 +147,8 @@ export default function Partnership() {
                   Scalable Solutions
                 </h3>
                 <p className="text-brand-gray mb-4 flex-grow">
-                  Deliver scalable IT solutions for client projects and deals, tailored to evolving needs.
+                  Deliver scalable IT solutions for client projects and deals, tailored to evolving
+                  needs.
                 </p>
                 <div className="mb-6">
                   <ul className="text-sm text-brand-gray space-y-1">
@@ -202,7 +213,8 @@ export default function Partnership() {
               Propose a <span className="gold-black-brown-gradient">Partnership</span>
             </h2>
             <p className="text-xl text-brand-cream max-w-2xl mx-auto mt-4">
-              Submit your proposal for client projects or strategic deals. A meeting will be scheduled to discuss partnership terms based on the project or deal.
+              Submit your proposal for client projects or strategic deals. A meeting will be scheduled
+              to discuss partnership terms based on the project or deal.
             </p>
           </div>
 
@@ -211,7 +223,10 @@ export default function Partnership() {
               <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-brand-black mb-1">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-brand-black mb-1"
+                    >
                       Full Name <span className="text-brand-gold">*</span>
                     </label>
                     <input
@@ -224,7 +239,10 @@ export default function Partnership() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="contact" className="block text-sm font-medium text-brand-black mb-1">
+                    <label
+                      htmlFor="contact"
+                      className="block text-sm font-medium text-brand-black mb-1"
+                    >
                       Contact Information <span className="text-brand-gold">*</span>
                     </label>
                     <input
@@ -238,7 +256,10 @@ export default function Partnership() {
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="date" className="block text-sm font-medium text-brand-black mb-1">
+                  <label
+                    htmlFor="date"
+                    className="block text-sm font-medium text-brand-black mb-1"
+                  >
                     Preferred Date for Discussion <span className="text-brand-gold">*</span>
                   </label>
                   <input
@@ -250,7 +271,10 @@ export default function Partnership() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="project" className="block text-sm font-medium text-brand-black mb-1">
+                  <label
+                    htmlFor="project"
+                    className="block text-sm font-medium text-brand-black mb-1"
+                  >
                     Project Name <span className="text-brand-gold">*</span>
                   </label>
                   <input
@@ -263,7 +287,10 @@ export default function Partnership() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-brand-black mb-1">
+                  <label
+                    htmlFor="service"
+                    className="block text-sm font-medium text-brand-black mb-1"
+                  >
                     Service for Partnership <span className="text-brand-gold">*</span>
                   </label>
                   <select
@@ -283,7 +310,10 @@ export default function Partnership() {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-brand-black mb-1">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-brand-black mb-1"
+                  >
                     Project or Deal Details
                   </label>
                   <textarea
@@ -292,10 +322,14 @@ export default function Partnership() {
                     rows={5}
                     className="block w-full rounded-lg border-brand-gray/30 shadow-sm focus:border-brand-gold focus:ring-brand-gold sm:text-sm py-3 px-4 bg-brand-white/5 transition-all duration-300"
                     placeholder="Describe your client project or deal proposal..."
-                  ></textarea>
+                  />
                 </div>
                 {submitStatus && (
-                  <div className={`text-center text-sm ${submitStatus.includes('successfully') ? 'text-green-600' : 'text-red-600'}`}>
+                  <div
+                    className={`text-center text-sm ${
+                      submitStatus.includes("successfully") ? "text-green-600" : "text-red-600"
+                    }`}
+                  >
                     {submitStatus}
                   </div>
                 )}
@@ -320,7 +354,8 @@ export default function Partnership() {
             Ready to <span className="gold-black-brown-gradient">Collaborate?</span>
           </h2>
           <p className="text-xl text-brand-cream mb-8 max-w-2xl mx-auto">
-            Let’s work together on client projects or strategic deals to create innovative solutions and drive success.
+            Let’s work together on client projects or strategic deals to create innovative solutions
+            and drive success.
           </p>
           <Button
             asChild
@@ -332,5 +367,5 @@ export default function Partnership() {
         </div>
       </section>
     </div>
-  )
+  );
 }

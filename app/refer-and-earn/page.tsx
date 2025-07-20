@@ -40,8 +40,8 @@ export default function ReferAndEarn() {
     const form = e.currentTarget
     const formData = new FormData(form)
 
-    // Add the Web3Forms access key to the form data
-    formData.append('access_key', '8739b33b-939a-4751-ad7b-f09ad3a1c955')
+    // Add the Web3Forms access key from environment variable
+    formData.append('access_key', process.env.WEB3FORMS_ACCESS_KEY || '')
 
     try {
       const response = await fetch('https://api.web3forms.com/submit', {

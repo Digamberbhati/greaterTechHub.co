@@ -1,11 +1,9 @@
-// app/careers/CareersClient.tsx
 'use client';
 
 import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import Link from 'next/link';
 import { X, Mail } from 'lucide-react';
 
 const openPositions = [
@@ -98,7 +96,7 @@ export default function CareersClient() {
 
     // Prepare form data for Web3Forms
     const formDataToSend = new FormData();
-    formDataToSend.append('access_key', '801d207e-97cf-4b31-8871-e5ffe85a0f06');
+    formDataToSend.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '');
     formDataToSend.append('name', formData.name);
     formDataToSend.append('email', formData.email);
     formDataToSend.append('phone', formData.phone);
@@ -269,7 +267,11 @@ export default function CareersClient() {
               </div>
             )}
             <form onSubmit={handleSubmit} className="space-y-4">
-              <input type="hidden" name="access_key" value="801d207e-97cf-4b31-8871-e5ffe85a0f06" />
+              <input
+                type="hidden"
+                name="access_key"
+                value={process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || ''}
+              />
               <input type="hidden" name="subject" value="New Career Application" />
               <input type="hidden" name="from_name" value="GreaterTechHub Careers" />
               <div>
