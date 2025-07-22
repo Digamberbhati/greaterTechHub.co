@@ -54,7 +54,7 @@ const LogoItem: FC<{ logo: Logo; index: number }> = ({ logo, index }) => (
 );
 
 // Main Client Logos component
-const ClientLogos: FC = () => {
+const Client: FC = () => {
   const marqueeRef = useRef<HTMLDivElement | null>(null);
   const [isPaused, setIsPaused] = useState(false);
   const duplicatedLogos = [...LOGOS, ...LOGOS];
@@ -111,4 +111,4 @@ const ClientLogos: FC = () => {
   );
 };
 
-export default ClientLogos;
+export default Client;
