@@ -8,56 +8,56 @@ import { X, Mail } from 'lucide-react';
 
 const openPositions = [
   {
-    title: 'Senior Full Stack Developer',
+    title: 'Software Development Intern',
     department: 'Engineering',
     location: 'Remote',
-    type: 'Full-time',
-    experience: '3-5 years',
-    skills: ['React', 'Node.js', 'TypeScript', 'AWS', 'MongoDB'],
+    type: 'Internship',
+    experience: '0-1 year',
+    skills: ['JavaScript', 'React', 'Node.js', 'Git'],
     description:
-      'Join our engineering team to build scalable, high-performance web applications and APIs for global clients using modern tech stacks.',
+      'Work alongside our engineering team to develop and maintain web applications, gaining hands-on experience with modern JavaScript frameworks and version control.',
   },
   {
-    title: 'Frontend Developer',
+    title: 'Frontend Development Intern',
     department: 'Engineering',
     location: 'Remote',
-    type: 'Full-time',
-    experience: '2-4 years',
-    skills: ['React', 'Next.js', 'Tailwind CSS', 'TypeScript'],
+    type: 'Internship',
+    experience: '0-1 year',
+    skills: ['HTML', 'CSS', 'React', 'Tailwind CSS'],
     description:
-      'Craft visually stunning and responsive user interfaces for web applications, focusing on performance and user experience.',
+      'Assist in building responsive and user-friendly interfaces for web applications, learning best practices in frontend development.',
   },
   {
-    title: 'Digital Marketing Specialist',
+    title: 'Digital Marketing Intern',
     department: 'Marketing',
     location: 'Remote',
-    type: 'Full-time',
-    experience: '2-3 years',
-    skills: ['SEO', 'Google Ads', 'Social Media', 'Analytics', 'Content Marketing'],
+    type: 'Internship',
+    experience: '0-1 year',
+    skills: ['SEO', 'Social Media', 'Content Creation', 'Google Analytics'],
     description:
-      'Lead digital marketing campaigns, optimize SEO, and drive engagement across platforms to grow our brand and client reach.',
+      'Support our marketing team in executing digital campaigns, analyzing performance metrics, and creating engaging content for social media platforms.',
   },
   {
-    title: 'DevOps Engineer',
+    title: 'DevOps Intern',
     department: 'Infrastructure',
     location: 'Remote',
-    type: 'Full-time',
-    experience: '2-4 years',
-    skills: ['Docker', 'Kubernetes', 'AWS', 'Terraform', 'CI/CD'],
+    type: 'Internship',
+    experience: '0-1 year',
+    skills: ['Docker', 'AWS', 'Linux', 'CI/CD'],
     description:
-      'Design and manage scalable cloud infrastructure, automate deployments, and ensure seamless operations for our solutions.',
+      'Learn to manage cloud infrastructure and automate deployment pipelines while working with cutting-edge DevOps tools and technologies.',
   },
 ];
 
 const benefits = [
-  'Competitive Salary & Benefits',
+  'Hands-On Learning Experience',
   'Remote Work Flexibility',
-  'Professional Development Budget',
-  'Health & Wellness Programs',
-  'Flexible Time Off',
-  'Latest Technology & Tools',
+  'Mentorship from Industry Experts',
+  'Access to Latest Tools & Technologies',
+  'Networking Opportunities',
+  'Potential for Full-Time Offer',
   'Collaborative Team Environment',
-  'Career Growth Opportunities',
+  'Certificate of Completion',
 ];
 
 export default function CareersClient() {
@@ -71,12 +71,17 @@ export default function CareersClient() {
     phone: '',
     message: '',
   });
-  const [formStatus, setFormStatus] = useState<{ message: string; type: 'success' | 'error' | null }>({
+  const [formStatus, setFormStatus] = useState<{
+    message: string;
+    type: 'success' | 'error' | null;
+  }>({
     message: '',
     type: null,
   });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -96,12 +101,15 @@ export default function CareersClient() {
 
     // Prepare form data for Web3Forms
     const formDataToSend = new FormData();
-    formDataToSend.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '');
+    formDataToSend.append(
+      'access_key',
+      process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '',
+    );
     formDataToSend.append('name', formData.name);
     formDataToSend.append('email', formData.email);
     formDataToSend.append('phone', formData.phone);
     formDataToSend.append('message', formData.message);
-    formDataToSend.append('subject', 'New Career Application');
+    formDataToSend.append('subject', 'New Internship Application');
     formDataToSend.append('from_name', 'GreaterTechHub Careers');
 
     try {
@@ -129,14 +137,14 @@ export default function CareersClient() {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            Join Our{' '}
+            Kickstart Your Career with Our{' '}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-300 to-amber-600">
-              Amazing Team
+              Internship Program
             </span>
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
-            Be part of a dynamic team that's shaping the future of technology. We're looking for
-            passionate individuals who want to make a difference.
+            Join our dynamic team as an intern and gain hands-on experience while working on
+            real-world projects with cutting-edge technologies.
           </p>
           <Card className="border-2 border-amber-600 bg-amber-50 max-w-md mx-auto p-4">
             <div className="flex justify-center items-center gap-3">
@@ -151,10 +159,10 @@ export default function CareersClient() {
           </Card>
         </div>
 
-        {/* Why Work With Us */}
+        {/* Why Intern With Us */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-            Why Work With Us
+            Why Intern With Us
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((benefit, index) => (
@@ -170,9 +178,11 @@ export default function CareersClient() {
           </div>
         </div>
 
-        {/* Open Positions */}
+        {/* Open Internship Positions */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Open Positions</h2>
+          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+            Open Internship Positions
+          </h2>
           <div className="space-y-6">
             {openPositions.map((position, index) => (
               <Card key={index} className="border-0 shadow-lg">
@@ -221,11 +231,11 @@ export default function CareersClient() {
         {/* No Position Found */}
         <div className="text-center bg-amber-50 p-12 rounded-3xl">
           <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Don't See Your Perfect Role?
+            Don’t See Your Ideal Internship?
           </h2>
           <p className="text-gray-600 mb-4 max-w-2xl mx-auto">
-            We're always looking for talented individuals to join our team. Send us your details and
-            let us know how you can contribute to our mission.
+            We’re always eager to connect with passionate individuals. Send us your details and
+            tell us how you can contribute to our team.
           </p>
           <div className="flex justify-center items-center gap-3 mb-6">
             <Mail className="w-5 h-5 text-amber-600" />
@@ -256,11 +266,13 @@ export default function CareersClient() {
             >
               <X className="w-6 h-6" />
             </button>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Apply Now</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Apply for Internship</h2>
             {formStatus.message && (
               <div
                 className={`mb-4 p-3 rounded-md ${
-                  formStatus.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
+                  formStatus.type === 'success'
+                    ? 'bg-green-100 text-green-800'
+                    : 'bg-red-100 text-red-800'
                 }`}
               >
                 {formStatus.message}
@@ -272,7 +284,7 @@ export default function CareersClient() {
                 name="access_key"
                 value={process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || ''}
               />
-              <input type="hidden" name="subject" value="New Career Application" />
+              <input type="hidden" name="subject" value="New Internship Application" />
               <input type="hidden" name="from_name" value="GreaterTechHub Careers" />
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700">
@@ -286,6 +298,7 @@ export default function CareersClient() {
                   onChange={handleInputChange}
                   required
                   className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-amber-600 focus:border-amber-600"
+                  aria-label="Full Name"
                 />
               </div>
               <div>
@@ -300,6 +313,7 @@ export default function CareersClient() {
                   onChange={handleInputChange}
                   required
                   className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-amber-600 focus:border-amber-600"
+                  aria-label="Email Address"
                 />
               </div>
               <div>
@@ -313,6 +327,7 @@ export default function CareersClient() {
                   value={formData.phone}
                   onChange={handleInputChange}
                   className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-amber-600 focus:border-amber-600"
+                  aria-label="Phone Number"
                 />
               </div>
               <div>
@@ -326,6 +341,7 @@ export default function CareersClient() {
                   onChange={handleInputChange}
                   rows={4}
                   className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-amber-600 focus:border-amber-600"
+                  aria-label="Message"
                 />
               </div>
               <div className="text-center">
