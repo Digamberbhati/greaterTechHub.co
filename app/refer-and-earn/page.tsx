@@ -1,75 +1,138 @@
-// app/refer-and-earn/page.tsx
 "use client";
 
-import Link from 'next/link';
-import { Card, CardContent } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
-import { GiftIcon } from '@heroicons/react/24/outline';
-import { useState } from 'react';
+import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { GiftIcon } from "@heroicons/react/24/outline";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion"; // For animations
+
+// Reusable Notification Component
+const Notification = ({ message, type }: { message: string; type: "success" | "error" }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 10 }}
+      animate={{ opacity: 1, x: 0 }}
+      exit={{ opacity: 0, x: 10 }}
+      transition={{ duration: 0.3 }}
+      className={`text-sm font-medium px-4 py-2 rounded-lg inline-flex items-center ${
+        type === "success"
+          ? "bg-gradient-to-r from-green-100 to-green-200 text-green-800 border border-green-300"
+          : "bg-gradient-to-r from-red-100 to-red-200 text-red-800 border border-red-300"
+      }`}
+    >
+      {message}
+    </motion.div>
+  );
+};
 
 export default function ReferAndEarn() {
-  console.log('Refer and Earn page rendered');
+  console.log("Refer and Earn page rendered");
 
-  // State for form submission feedback and loading
-  const [submitStatus, setSubmitStatus] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+  // State for form data, submission feedback, and loading
+  const [formData, setFormData] = useState({
+    name: "",
+    contact: "",
+    date: "",
+    project: "",
+    service: "",
+    message: "",
+  });
+  const [submitStatus, setSubmitStatus] = useState<{
+    message: string;
+    type: "success" | "error";
+  } | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // List of services for the dropdown
   const services = [
-    'Website Development',
-    'Mobile App Development',
-    'Digital Marketing & SEO',
-    'DevOps & Cloud Solutions',
-    'CRM & ERP Systems',
-    'IT Infrastructure & Networking',
-    '2D/3D Animation',
-    'Custom Software Solutions',
-    'QA & Software Testing',
-    'Branding, Advertising & Market Research',
-    'Business Strategy',
-    'Recruitment Services',
-    'BPO-Services',
-    'System Design & Architecture',
-    'IT Asset Management',
+    "Website Development",
+    "Mobile App Development",
+    "Digital Marketing & SEO",
+    "DevOps & Cloud Solutions",
+    "CRM & ERP Systems",
+    "IT Infrastructure & Networking",
+    "2D/3D Animation",
+    "Custom Software Solutions",
+    "QA & Software Testing",
+    "Branding, Advertising & Market Research",
+    "Business Strategy",
+    "Recruitment Services",
+    "BPO-Services",
+    "System Design & Architecture",
+    "IT Asset Management",
   ];
+
+  // Handle form input changes
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
 
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setIsSubmitting(true);
     setSubmitStatus(null);
-    setIsLoading(true);
-
-    // Validate environment variable
-    if (!process.env.WEB3FORMS_ACCESS_KEY) {
-      setSubmitStatus('Configuration error. Please contact support.');
-      setIsLoading(false);
-      console.error('WEB3FORMS_ACCESS_KEY is not defined in .env.local');
-      return;
-    }
-
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    formData.append('access_key', process.env.WEB3FORMS_ACCESS_KEY);
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: formData,
+      const apiKey = process.env.NEXT_PUBLIC_WEB3FORMS_API_KEY;
+      if (!apiKey) {
+        console.error("Web3Forms API key is missing");
+        setSubmitStatus({
+          message: "Configuration error. Please contact support.",
+          type: "error",
+        });
+        setIsSubmitting(false);
+        return;
+      }
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: apiKey,
+          ...formData,
+        }),
       });
 
       const result = await response.json();
+      console.log("Web3Forms API response:", result);
 
       if (result.success) {
-        setSubmitStatus('Thank you! Your referral has been submitted successfully.');
-        form.reset();
+        console.log("Form submitted successfully:", formData);
+        setFormData({
+          name: "",
+          contact: "",
+          date: "",
+          project: "",
+          service: "",
+          message: "",
+        });
+        setSubmitStatus({
+          message: "Referral submitted successfully!",
+          type: "success",
+        });
       } else {
-        setSubmitStatus('Submission failed. Please try again.');
+        throw new Error(result.message || "Form submission failed");
       }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setSubmitStatus('An error occurred. Please try again later.');
+    } catch (error: any) {
+      console.error("Form submission error:", error.message, error.stack);
+      setSubmitStatus({
+        message: "Failed to submit referral. Please try again.",
+        type: "error",
+      });
     } finally {
-      setIsLoading(false);
+      setIsSubmitting(false);
     }
   };
 
@@ -80,10 +143,12 @@ export default function ReferAndEarn() {
         <div className="mx-auto max-w-7xl container-padding">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-brand-white mb-6 text-shadow-gold">
-              <span className="gold-black-brown-gradient">Refer and Earn</span> Rewards
+              <span className="gold-black-brown-gradient">Refer and Earn</span>{" "}
+              Rewards
             </h1>
             <p className="text-xl text-brand-cream max-w-3xl mx-auto">
-              Refer client projects or deals to GreaterTechHub and earn exciting rewards. Let’s grow together through your referrals.
+              Refer client projects or deals to GreaterTechHub and earn exciting
+              rewards. Let’s grow together through your referrals.
             </p>
           </div>
         </div>
@@ -97,7 +162,8 @@ export default function ReferAndEarn() {
               Why <span className="gold-black-brown-gradient">Refer Us?</span>
             </h2>
             <p className="text-lg text-brand-gray max-w-2xl mx-auto mt-4">
-              Refer projects or deals to unlock rewards and contribute to innovative IT solutions.
+              Refer projects or deals to unlock rewards and contribute to
+              innovative IT solutions.
             </p>
           </div>
 
@@ -114,7 +180,8 @@ export default function ReferAndEarn() {
                   Earn Exciting Rewards
                 </h3>
                 <p className="text-brand-gray mb-4 flex-grow">
-                  Receive tailored rewards based on the projects or deals you refer.
+                  Receive tailored rewards based on the projects or deals you
+                  refer.
                 </p>
                 <div className="mb-6">
                   <ul className="text-sm text-brand-gray space-y-1">
@@ -147,7 +214,8 @@ export default function ReferAndEarn() {
                   Build Connections
                 </h3>
                 <p className="text-brand-gray mb-4 flex-grow">
-                  Strengthen your network by connecting clients with our expert services.
+                  Strengthen your network by connecting clients with our expert
+                  services.
                 </p>
                 <div className="mb-6">
                   <ul className="text-sm text-brand-gray space-y-1">
@@ -180,7 +248,8 @@ export default function ReferAndEarn() {
                   Support Innovation
                 </h3>
                 <p className="text-brand-gray mb-4 flex-grow">
-                  Help clients achieve their goals by referring them to our innovative solutions.
+                  Help clients achieve their goals by referring them to our innovative
+                  solutions.
                 </p>
                 <div className="mb-6">
                   <ul className="text-sm text-brand-gray space-y-1">
@@ -209,10 +278,13 @@ export default function ReferAndEarn() {
         <div className="mx-auto max-w-4xl container-padding">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-brand-white">
-              Submit Your <span className="gold-black-brown-gradient">Referral</span>
+              Submit Your{" "}
+              <span className="gold-black-brown-gradient">Referral</span>
             </h2>
             <p className="text-xl text-brand-cream max-w-2xl mx-auto mt-4">
-              Refer a client project or deal and earn rewards. A meeting will be scheduled to discuss the number of gifts based on the project or deal.
+              Refer a client project or deal and earn rewards. A meeting will be
+              scheduled to discuss the number of gifts based on the project or
+              deal.
             </p>
           </div>
 
@@ -221,26 +293,37 @@ export default function ReferAndEarn() {
               <form className="space-y-6" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-brand-black mb-1">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-brand-black mb-1"
+                    >
                       Full Name <span className="text-brand-gold">*</span>
                     </label>
                     <input
                       type="text"
                       id="name"
                       name="name"
+                      value={formData.name}
+                      onChange={handleChange}
                       required
                       className="block w-full rounded-lg border-brand-gray/30 shadow-sm focus:border-brand-gold focus:ring-brand-gold sm:text-sm py-3 px-4 bg-brand-white/5 transition-all duration-300"
                       placeholder="Your Full Name"
                     />
                   </div>
                   <div>
-                    <label htmlFor="contact" className="block text-sm font-medium text-brand-black mb-1">
-                      Contact Information <span className="text-brand-gold">*</span>
+                    <label
+                      htmlFor="contact"
+                      className="block text-sm font-medium text-brand-black mb-1"
+                    >
+                      Contact Information{" "}
+                      <span className="text-brand-gold">*</span>
                     </label>
                     <input
                       type="text"
                       id="contact"
                       name="contact"
+                      value={formData.contact}
+                      onChange={handleChange}
                       required
                       className="block w-full rounded-lg border-brand-gray/30 shadow-sm focus:border-brand-gold focus:ring-brand-gold sm:text-sm py-3 px-4 bg-brand-white/5 transition-all duration-300"
                       placeholder="Email or Phone Number"
@@ -248,41 +331,58 @@ export default function ReferAndEarn() {
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="date" className="block text-sm font-medium text-brand-black mb-1">
-                    Preferred Date for Discussion <span className="text-brand-gold">*</span>
+                  <label
+                    htmlFor="date"
+                    className="block text-sm font-medium text-brand-black mb-1"
+                  >
+                    Preferred Date for Discussion{" "}
+                    <span className="text-brand-gold">*</span>
                   </label>
                   <input
                     type="date"
                     id="date"
                     name="date"
+                    value={formData.date}
+                    onChange={handleChange}
                     required
                     className="block w-full rounded-lg border-brand-gray/30 shadow-sm focus:border-brand-gold focus:ring-brand-gold sm:text-sm py-3 px-4 bg-brand-white/5 transition-all duration-300"
                   />
                 </div>
                 <div>
-                  <label htmlFor="project" className="block text-sm font-medium text-brand-black mb-1">
+                  <label
+                    htmlFor="project"
+                    className="block text-sm font-medium text-brand-black mb-1"
+                  >
                     Project Name <span className="text-brand-gold">*</span>
                   </label>
                   <input
                     type="text"
                     id="project"
                     name="project"
+                    value={formData.project}
+                    onChange={handleChange}
                     required
                     className="block w-full rounded-lg border-brand-gray/30 shadow-sm focus:border-brand-gold focus:ring-brand-gold sm:text-sm py-3 px-4 bg-brand-white/5 transition-all duration-300"
                     placeholder="Name of the Project or Deal"
                   />
                 </div>
                 <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-brand-black mb-1">
-                    Service for Referral <span className="text-brand-gold">*</span>
+                  <label
+                    htmlFor="service"
+                    className="block text-sm font-medium text-brand-black mb-1"
+                  >
+                    Service for Referral{" "}
+                    <span className="text-brand-gold">*</span>
                   </label>
                   <select
                     id="service"
                     name="service"
+                    value={formData.service}
+                    onChange={handleChange}
                     required
                     className="block w-full rounded-lg border-brand-gray/30 shadow-sm focus:border-brand-gold focus:ring-brand-gold sm:text-sm py-3 px-4 bg-brand-white/5 transition-all duration-300"
                   >
-                    <option value="" disabled selected>
+                    <option value="" disabled>
                       Select a Service
                     </option>
                     {services.map((service) => (
@@ -293,30 +393,40 @@ export default function ReferAndEarn() {
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-brand-black mb-1">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-brand-black mb-1"
+                  >
                     Project or Deal Details
                   </label>
                   <textarea
                     id="message"
                     name="message"
+                    value={formData.message}
+                    onChange={handleChange}
                     rows={5}
                     className="block w-full rounded-lg border-brand-gray/30 shadow-sm focus:border-brand-gold focus:ring-brand-gold sm:text-sm py-3 px-4 bg-brand-white/5 transition-all duration-300"
                     placeholder="Describe the client project or deal you are referring..."
                   ></textarea>
                 </div>
-                {submitStatus && (
-                  <div className={`text-center text-sm ${submitStatus.includes('successfully') ? 'text-green-600' : 'text-red-600'}`}>
-                    {submitStatus}
-                  </div>
-                )}
-                <div className="text-center">
+                <div className="flex items-center justify-center space-x-4">
                   <Button
                     type="submit"
-                    disabled={isLoading}
-                    className={`bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:opacity-90 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    disabled={isSubmitting}
+                    className={`bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:opacity-90 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ${
+                      isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
                   >
-                    {isLoading ? 'Submitting...' : 'Submit Referral'}
+                    {isSubmitting ? "Submitting..." : "Submit Referral"}
                   </Button>
+                  <AnimatePresence>
+                    {submitStatus && (
+                      <Notification
+                        message={submitStatus.message}
+                        type={submitStatus.type}
+                      />
+                    )}
+                  </AnimatePresence>
                 </div>
               </form>
             </CardContent>
@@ -331,7 +441,8 @@ export default function ReferAndEarn() {
             Ready to <span className="gold-black-brown-gradient">Earn Rewards?</span>
           </h2>
           <p className="text-xl text-brand-cream mb-8 max-w-2xl mx-auto">
-            Refer clients to GreaterTechHub and unlock exciting rewards for successful projects or deals.
+            Refer clients to GreaterTechHub and unlock exciting rewards for
+            successful projects or deals.
           </p>
           <Button
             asChild
