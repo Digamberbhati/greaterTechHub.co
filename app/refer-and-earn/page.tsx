@@ -27,7 +27,7 @@ export default function ReferAndEarn() {
     'Branding, Advertising & Market Research',
     'Business Strategy',
     'Recruitment Services',
-    'BPO Services',
+    'BPO-Services',
     'System Design & Architecture',
     'IT Asset Management',
   ]
