@@ -1,19 +1,20 @@
 // app/refer-and-earn/page.tsx
 "use client";
 
-import Link from 'next/link'
-import { Card, CardContent } from '@/components/ui/card'
-import { Button } from '@/components/ui/button'
-import { GiftIcon } from '@heroicons/react/24/outline'
-import { useState } from 'react'
+import Link from 'next/link';
+import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { GiftIcon } from '@heroicons/react/24/outline';
+import { useState } from 'react';
 
 export default function ReferAndEarn() {
-  console.log('Refer and Earn page rendered')
+  console.log('Refer and Earn page rendered');
 
-  // State for form submission feedback
-  const [submitStatus, setSubmitStatus] = useState<string | null>(null)
+  // State for form submission feedback and loading
+  const [submitStatus, setSubmitStatus] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // List of services for the dropdown, based on the Services page
+  // List of services for the dropdown
   const services = [
     'Website Development',
     'Mobile App Development',
@@ -30,38 +31,47 @@ export default function ReferAndEarn() {
     'BPO-Services',
     'System Design & Architecture',
     'IT Asset Management',
-  ]
+  ];
 
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setSubmitStatus(null) // Reset status
+    e.preventDefault();
+    setSubmitStatus(null);
+    setIsLoading(true);
 
-    const form = e.currentTarget
-    const formData = new FormData(form)
+    // Validate environment variable
+    if (!process.env.WEB3FORMS_ACCESS_KEY) {
+      setSubmitStatus('Configuration error. Please contact support.');
+      setIsLoading(false);
+      console.error('WEB3FORMS_ACCESS_KEY is not defined in .env.local');
+      return;
+    }
 
-    // Add the Web3Forms access key from environment variable
-    formData.append('access_key', process.env.WEB3FORMS_ACCESS_KEY || '')
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    formData.append('access_key', process.env.WEB3FORMS_ACCESS_KEY);
 
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         body: formData,
-      })
+      });
 
-      const result = await response.json()
+      const result = await response.json();
 
       if (result.success) {
-        setSubmitStatus('Thank you! Your referral has been submitted successfully.')
-        form.reset() // Reset the form after successful submission
+        setSubmitStatus('Thank you! Your referral has been submitted successfully.');
+        form.reset();
       } else {
-        setSubmitStatus('Submission failed. Please try again.')
+        setSubmitStatus('Submission failed. Please try again.');
       }
     } catch (error) {
-      console.error('Error submitting form:', error)
-      setSubmitStatus('An error occurred. Please try again later.')
+      console.error('Error submitting form:', error);
+      setSubmitStatus('An error occurred. Please try again later.');
+    } finally {
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <div className="pt-24 min-h-screen bg-gradient-elegant">
@@ -302,9 +312,10 @@ export default function ReferAndEarn() {
                 <div className="text-center">
                   <Button
                     type="submit"
-                    className="bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:opacity-90 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+                    disabled={isLoading}
+                    className={`bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:opacity-90 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
                   >
-                    Submit Referral
+                    {isLoading ? 'Submitting...' : 'Submit Referral'}
                   </Button>
                 </div>
               </form>
@@ -332,5 +343,5 @@ export default function ReferAndEarn() {
         </div>
       </section>
     </div>
-  )
+  );
 }
