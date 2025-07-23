@@ -76,14 +76,14 @@ export default function HeroSection() {
             asChild
             className="bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:from-yellow-800 hover:via-yellow-700 hover:to-yellow-600 text-white font-semibold text-base sm:text-lg px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
           >
-            <Link href="/trial">Book Appoments</Link>
+            <Link href="/book">Book Appointment</Link>
           </Button>
           <Button
             asChild
             variant="outline"
             className="bg-transparent border border-yellow-600 text-white font-semibold text-base sm:text-lg px-8 py-3 rounded-full hover:bg-gradient-to-r hover:from-yellow-800 hover:via-yellow-700 hover:to-yellow-600 hover:text-white shadow-lg hover:shadow-xl transition-all duration-300"
           >
-            <Link href="/demo">Contact</Link>
+            <Link href="/contact">Contact</Link>
           </Button>
         </motion.div>
 

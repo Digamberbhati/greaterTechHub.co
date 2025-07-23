@@ -1,17 +1,18 @@
+// components/sections/ClientLogos.tsx
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
+import { FC, useEffect, useRef, useState } from 'react';
 
-// Define logo type for TypeScript
-interface CompanyLogo {
+// Define types for logo data
+interface Logo {
   src: string;
   alt: string;
   width: number;
   height: number;
 }
 
-// Company logos data
-const companyLogos: CompanyLogo[] = [
+const LOGOS: Logo[] = [
   { src: '/clients/bhati-organisation.png', alt: 'Bhati Organisation', width: 220, height: 110 },
   { src: '/clients/jagat-fertilizer.png', alt: 'Jagat Fertilizer', width: 220, height: 110 },
   { src: '/clients/krgroups.png', alt: 'KR Groups', width: 220, height: 110 },
@@ -30,23 +31,53 @@ const companyLogos: CompanyLogo[] = [
   { src: '/clients/kfs.png', alt: 'KFS Services', width: 220, height: 110 },
 ];
 
-export default function Client() {
+// Component to render individual logo
+const LogoItem: FC<{ logo: Logo; index: number }> = ({ logo, index }) => {
+  const [hasError, setHasError] = useState(false);
+
+  return (
+    <div
+      className="flex items-center justify-center h-[140px] w-[240px] rounded-lg bg-white shadow-sm hover:shadow-md transition-all duration-200 flex-shrink-0"
+      aria-label={`Client logo: ${logo.alt}`}
+    >
+      <Image
+        src={hasError ? '/clients/fallback.png' : logo.src}
+        alt={logo.alt}
+        width={logo.width}
+        height={logo.height}
+        className="object-contain max-w-[160px] max-h-[80px]"
+        priority={index < 4}
+        loading={index >= 4 ? 'lazy' : undefined}
+        quality={75}
+        onError={(e) => {
+          if (!hasError) {
+            console.log(`Failed to load image: ${logo.src}`); // Debug missing images
+            setHasError(true);
+          }
+        }}
+      />
+    </div>
+  );
+};
+
+// Main Client Logos component
+const ClientLogos: FC = () => {
   const marqueeRef = useRef<HTMLDivElement | null>(null);
   const [isPaused, setIsPaused] = useState(false);
+  const duplicatedLogos = [...LOGOS, ...LOGOS];
 
-  // Marquee animation logic
   useEffect(() => {
     const marquee = marqueeRef.current;
-    if (!marquee) return; // Early return if ref is null
+    if (!marquee) return;
 
-    const scrollWidth = marquee.scrollWidth / 2; // Half for duplicated content
+    const scrollWidth = marquee.scrollWidth / 2;
     let animationFrame: number;
 
     const animate = () => {
       if (!isPaused) {
-        marquee.scrollLeft += 0.5; // Slower speed for smooth scrolling
+        marquee.scrollLeft += 0.5;
         if (marquee.scrollLeft >= scrollWidth) {
-          marquee.scrollLeft = 0; // Reset for seamless loop
+          marquee.scrollLeft = 0;
         }
       }
       animationFrame = requestAnimationFrame(animate);
@@ -54,54 +85,35 @@ export default function Client() {
 
     animationFrame = requestAnimationFrame(animate);
 
-    // Cleanup on unmount
     return () => cancelAnimationFrame(animationFrame);
   }, [isPaused]);
 
   return (
-    <section className="py-12 bg-white w-full">
-      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-8">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-            Our Clients
-          </h2>
-          <p className="mt-3 text-base sm:text-lg text-gray-600">
-            Trusted by leading companies
-          </p>
-        </div>
-
-        {/* Marquee Container */}
+    <section className="py-16 bg-gray-100" aria-label="Trusted Partners">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
+          Our Trusted Partners
+        </h2>
         <div
           className="overflow-hidden"
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
-          onTouchStart={() => setIsPaused(true)} // Pause on touch for mobile
-          onTouchEnd={() => setIsPaused(false)} // Resume on touch release
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
         >
           <div
             ref={marqueeRef}
-            className="flex space-x-4 sm:space-x-6 py-6 overflow-x-auto no-scrollbar"
+            className="flex gap-4 sm:gap-6 py-6 overflow-x-auto no-scrollbar"
             style={{ scrollBehavior: 'smooth' }}
           >
-            {/* Duplicate logos for seamless scrolling */}
-            {[...companyLogos, ...companyLogos].map((logo, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 w-56 sm:w-64 bg-gray-50 rounded-lg shadow-md p-4 sm:p-5 flex items-center justify-center"
-              >
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={logo.width}
-                  height={logo.height}
-                  className="w-auto h-auto object-contain"
-                />
-              </div>
+            {duplicatedLogos.map((logo, index) => (
+              <LogoItem key={`${logo.alt}-${index}`} logo={logo} index={index} />
             ))}
           </div>
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default ClientLogos;
