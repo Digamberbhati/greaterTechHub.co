@@ -1,12 +1,10 @@
-import HeroSection from '@/components/sections/HeroSection'
-
-import ServicesSection from '@/components/sections/ServicesSection'
-import AboutPreview from '@/components/sections/AboutPreview'
-import ContactCTA from '@/components/sections/ContactCTA'
-import Ads from '@/components/sections/Ads'
-// import ClientLogos from '@/components/sections/ClientLogos'
+import HeroSection from '@/components/sections/HeroSection';
+import ServicesSection from '@/components/sections/ServicesSection';
+import AboutPreview from '@/components/sections/AboutPreview';
+import ContactCTA from '@/components/sections/ContactCTA';
+import Ads from '@/components/sections/Ads';
 import Reviews from '@/components/sections/Review';
-import Client from '@/components/sections/Client';
+// import Client from '@/components/sections/Client';
 
 export default function Home() {
   console.log('Home page rendered');
@@ -17,8 +15,7 @@ export default function Home() {
       <Ads />
       <AboutPreview />
       <ServicesSection />
-      <Client />
-      {/* <ClientLogos /> */}
+      {/* <Client /> */}
       <Reviews />
       <ContactCTA />
     </>

@@ -8,10 +8,16 @@ interface ClientReview {
   role: string;
   review: string;
   rating: number;
-  image?: string; // Optional image for reviewer (if needed)
+  image?: string; // Optional image for reviewer
 }
 
-// Updated client reviews data with only the new reviews
+// Define logo type for TypeScript
+interface ClientLogo {
+  name: string;
+  logo: string;
+}
+
+// Client reviews data (unchanged, 6 reviews)
 const clientReviews: ClientReview[] = [
   {
     name: 'Rahul Rajput',
@@ -51,6 +57,25 @@ const clientReviews: ClientReview[] = [
   },
 ];
 
+// Client logos data (15 logos)
+const clientLogos: ClientLogo[] = [
+  { name: 'Vr2020 Dental', logo: '/logos/vr2020.png' },
+  { name: 'Freelancer', logo: '/logos/freelancer.png' },
+  { name: 'Refast Company', logo: '/logos/refast.png' },
+  { name: 'B2B Business', logo: '/logos/b2b.png' },
+  { name: 'Bhati Organisation', logo: '/logos/bhati.png' },
+  { name: 'Mr. World', logo: '/logos/mrworld.png' },
+  { name: 'Company 7', logo: '/logos/company7.png' },
+  { name: 'Company 8', logo: '/logos/company8.png' },
+  { name: 'Company 9', logo: '/logos/company9.png' },
+  { name: 'Company 10', logo: '/logos/company10.png' },
+  { name: 'Company 11', logo: '/logos/company11.png' },
+  { name: 'Company 12', logo: '/logos/company12.png' },
+  { name: 'Company 13', logo: '/logos/company13.png' },
+  { name: 'Company 14', logo: '/logos/company14.png' },
+  { name: 'Company 15', logo: '/logos/company15.png' },
+];
+
 export default function Reviews() {
   const marqueeRef = useRef<HTMLDivElement | null>(null);
   const [isPaused, setIsPaused] = useState(false);
@@ -82,7 +107,32 @@ export default function Reviews() {
   return (
     <section className="py-12 bg-white w-full">
       <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
+        {/* Client Logos Section */}
+        <div className="mb-12">
+          <h3 className="text-center text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
+            Our Trusted Clients
+          </h3>
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+            {clientLogos.map((client, index) => (
+              <div
+                key={index}
+                className="flex items-center justify-center bg-gray-100 rounded-lg p-4 h-24 sm:h-32"
+              >
+                {client.logo ? (
+                  <img
+                    src={client.logo}
+                    alt={`${client.name} logo`}
+                    className="max-h-16 sm:max-h-20 object-contain"
+                  />
+                ) : (
+                  <span className="text-gray-500 text-sm">No Logo</span>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Reviews Section */}
         <div className="text-center mb-8">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
             What Our Clients Say
@@ -92,7 +142,7 @@ export default function Reviews() {
           </p>
         </div>
 
-        {/* Marquee Container */}
+        {/* Marquee Container for Reviews */}
         <div
           className="overflow-hidden"
           onMouseEnter={() => setIsPaused(true)}
