@@ -1,107 +1,89 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
+import React from "react";
 
-// Define logo type for TypeScript
-interface CompanyLogo {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
-}
-
-// Company logos data
-const companyLogos: CompanyLogo[] = [
-  { src: '/clients/bhati-organisation.png', alt: 'Bhati Organisation', width: 220, height: 110 },
-  { src: '/clients/jagat-fertilizer.png', alt: 'Jagat Fertilizer', width: 220, height: 110 },
-  { src: '/clients/krgroups.png', alt: 'KR Groups', width: 220, height: 110 },
-  { src: '/clients/krishi.png', alt: 'Krishi', width: 220, height: 110 },
-  { src: '/clients/glamvibe.png', alt: 'Glamvibe', width: 220, height: 110 },
-  { src: '/clients/lokesh.png', alt: 'Lokesh Enterprises', width: 220, height: 110 },
-  { src: '/clients/auto.png', alt: 'Auto Solutions', width: 220, height: 110 },
-  { src: '/clients/certificate.png', alt: 'Certificate Academy', width: 220, height: 110 },
-  { src: '/clients/ingo.png', alt: 'Ingo Technologies', width: 220, height: 110 },
-  { src: '/clients/goprimelink.png', alt: 'Go Prime Link', width: 220, height: 110 },
-  { src: '/clients/mamta.png', alt: 'Mamta Industries', width: 220, height: 110 },
-  { src: '/clients/phonebaazar.png', alt: 'Phone Baazar', width: 220, height: 110 },
-  { src: '/clients/sfci.png', alt: 'SFCI Corporation', width: 220, height: 110 },
-  { src: '/clients/sofsecure.png', alt: 'Sofsecure Systems', width: 220, height: 110 },
-  { src: '/clients/vrdental.png', alt: 'VR Dental Clinic', width: 220, height: 110 },
-  { src: '/clients/kfs.png', alt: 'KFS Services', width: 220, height: 110 },
-];
-
-export default function Client() {
-  const marqueeRef = useRef<HTMLDivElement | null>(null);
-  const [isPaused, setIsPaused] = useState(false);
-
-  // Marquee animation logic
-  useEffect(() => {
-    const marquee = marqueeRef.current;
-    if (!marquee) return; // Early return if ref is null
-
-    const scrollWidth = marquee.scrollWidth / 2; // Half for duplicated content
-    let animationFrame: number;
-
-    const animate = () => {
-      if (!isPaused) {
-        marquee.scrollLeft += 0.5; // Slower speed for smooth scrolling
-        if (marquee.scrollLeft >= scrollWidth) {
-          marquee.scrollLeft = 0; // Reset for seamless loop
-        }
-      }
-      animationFrame = requestAnimationFrame(animate);
-    };
-
-    animationFrame = requestAnimationFrame(animate);
-
-    // Cleanup on unmount
-    return () => cancelAnimationFrame(animationFrame);
-  }, [isPaused]);
+const Client = () => {
+  // Array of image objects for easier mapping
+  const images = Array(8).fill({
+    src: "https://upload.wikimedia.org/wikipedia/commons/9/9a/CodePen_logo.png",
+    alt: "CodePen Logo",
+  });
 
   return (
-    <section className="py-12 bg-white w-full">
-      <div className="w-full mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className="text-center mb-8">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-            Our Clients
-          </h2>
-          <p className="mt-3 text-base sm:text-lg text-gray-600">
-            Trusted by leading companies
-          </p>
+    <div>
+      <h1 className="text-center py-8 text-3xl font-bold text-gray-800">
+        Dual Direction Image Marquee
+      </h1>
+
+      <div className="marquee-container flex flex-col gap-10 overflow-hidden w-full py-10">
+        {/* Cards Moving Left */}
+        <div className="marquee-track marquee-left flex w-fit">
+          {images.map((image, index) => (
+            <div
+              key={`left-${index}`}
+              className="scroll-card bg-white rounded-lg p-5 mr-8 min-w-[200px] text-center cursor-pointer transition-transform transition-shadow hover:scale-110 hover:shadow-xl"
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full rounded-md"
+              />
+            </div>
+          ))}
         </div>
 
-        {/* Marquee Container */}
-        <div
-          className="overflow-hidden"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          onTouchStart={() => setIsPaused(true)} // Pause on touch for mobile
-          onTouchEnd={() => setIsPaused(false)} // Resume on touch release
-        >
-          <div
-            ref={marqueeRef}
-            className="flex space-x-4 sm:space-x-6 py-6 overflow-x-auto no-scrollbar"
-            style={{ scrollBehavior: 'smooth' }}
-          >
-            {/* Duplicate logos for seamless scrolling */}
-            {[...companyLogos, ...companyLogos].map((logo, index) => (
-              <div
-                key={index}
-                className="flex-shrink-0 w-56 sm:w-64 bg-gray-50 rounded-lg shadow-md p-4 sm:p-5 flex items-center justify-center"
-              >
-                <img
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={logo.width}
-                  height={logo.height}
-                  className="w-auto h-auto object-contain"
-                />
-              </div>
-            ))}
-          </div>
+        {/* Cards Moving Right */}
+        <div className="marquee-track marquee-right flex w-fit">
+          {images.map((image, index) => (
+            <div
+              key={`right-${index}`}
+              className="scroll-card bg-white rounded-lg p-5 mr-8 min-w-[200px] text-center cursor-pointer transition-transform transition-shadow hover:scale-110 hover:shadow-xl"
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full rounded-md"
+              />
+            </div>
+          ))}
         </div>
       </div>
-    </section>
+
+      {/* Custom CSS for animations */}
+      <style jsx>{`
+        @keyframes marquee-left {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        @keyframes marquee-right {
+          0% {
+            transform: translateX(-50%);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+
+        .marquee-left {
+          animation: marquee-left 20s linear infinite;
+        }
+
+        .marquee-right {
+          animation: marquee-right 20s linear infinite;
+        }
+
+        .marquee-container:hover .marquee-left,
+        .marquee-container:hover .marquee-right {
+          animation-play-state: paused;
+        }
+      `}</style>
+    </div>
   );
-}
+};
+
+export default Client;
