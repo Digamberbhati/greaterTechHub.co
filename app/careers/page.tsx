@@ -61,9 +61,6 @@ const benefits = [
 ];
 
 export default function CareersClient() {
-  console.log('Careers page rendered');
-
-  // State for popup form
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -74,22 +71,15 @@ export default function CareersClient() {
   const [formStatus, setFormStatus] = useState<{
     message: string;
     type: 'success' | 'error' | null;
-  }>({
-    message: '',
-    type: null,
-  });
+  }>({ message: '', type: null });
 
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
-    // Basic validation
     if (!formData.name.trim()) {
       setFormStatus({ message: 'Please enter your name', type: 'error' });
       return;
@@ -99,12 +89,8 @@ export default function CareersClient() {
       return;
     }
 
-    // Prepare form data for Web3Forms
     const formDataToSend = new FormData();
-    formDataToSend.append(
-      'access_key',
-      process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '',
-    );
+    formDataToSend.append('access_key', process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || '');
     formDataToSend.append('name', formData.name);
     formDataToSend.append('email', formData.email);
     formDataToSend.append('phone', formData.phone);
@@ -117,7 +103,6 @@ export default function CareersClient() {
         method: 'POST',
         body: formDataToSend,
       });
-
       const result = await response.json();
       if (result.success) {
         setFormStatus({ message: 'Application submitted successfully!', type: 'success' });
@@ -134,64 +119,52 @@ export default function CareersClient() {
   return (
     <div className="pt-24 min-h-screen bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-        {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-black mb-6">
             Kickstart Your Career with Our{' '}
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-300 to-amber-600">
-              Internship Program
-            </span>
+            <span className="text-[#4A78D3]">Internship Program</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
+          <p className="text-xl text-black max-w-3xl mx-auto mb-6">
             Join our dynamic team as an intern and gain hands-on experience while working on
             real-world projects with cutting-edge technologies.
           </p>
-          <Card className="border-2 border-amber-600 bg-amber-50 max-w-md mx-auto p-4">
+          <Card className="border-2 border-[#4A78D3] bg-[#eaf4ff] max-w-md mx-auto p-4">
             <div className="flex justify-center items-center gap-3">
-              <Mail className="w-6 h-6 text-amber-600" />
-              <a
-                href="mailto:hr@greatertechhub.com"
-                className="text-amber-600 hover:text-amber-800 font-semibold text-lg"
-              >
+              <Mail className="w-6 h-6 text-[#4A78D3]" />
+              <a href="mailto:hr@greatertechhub.com" className="text-[#4A78D3] hover:text-black font-semibold text-lg">
                 hr@greatertechhub.com
               </a>
             </div>
           </Card>
         </div>
 
-        {/* Why Intern With Us */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-            Why Intern With Us
-          </h2>
+          <h2 className="text-3xl font-bold text-black text-center mb-12">Why Intern With Us</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((benefit, index) => (
               <Card key={index} className="border-0 shadow-md">
-                <CardContent className="p-6 text-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <CardContent className="p-6 text-center text-black">
+                  <div className="w-12 h-12 bg-[#4A78D3] rounded-full flex items-center justify-center mx-auto mb-4">
                     <span className="text-white font-bold text-lg">{index + 1}</span>
                   </div>
-                  <h3 className="font-semibold text-gray-900">{benefit}</h3>
+                  <h3 className="font-semibold">{benefit}</h3>
                 </CardContent>
               </Card>
             ))}
           </div>
         </div>
 
-        {/* Open Internship Positions */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-            Open Internship Positions
-          </h2>
+          <h2 className="text-3xl font-bold text-black text-center mb-12">Open Internship Positions</h2>
           <div className="space-y-6">
             {openPositions.map((position, index) => (
               <Card key={index} className="border-0 shadow-lg">
-                <CardContent className="p-8">
+                <CardContent className="p-8 text-black">
                   <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
                     <div className="flex-1">
                       <div className="flex flex-wrap items-center gap-2 mb-4">
-                        <h3 className="text-xl font-bold text-gray-900">{position.title}</h3>
-                        <Badge variant="outline" className="text-amber-600 border-amber-600">
+                        <h3 className="text-xl font-bold">{position.title}</h3>
+                        <Badge variant="outline" className="text-[#4A78D3] border-[#4A78D3]">
                           {position.type}
                         </Badge>
                       </div>
@@ -203,11 +176,7 @@ export default function CareersClient() {
                       <p className="text-gray-600 mb-4">{position.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {position.skills.map((skill, skillIndex) => (
-                          <Badge
-                            key={skillIndex}
-                            variant="secondary"
-                            className="bg-amber-100 text-amber-800"
-                          >
+                          <Badge key={skillIndex} variant="secondary" className="bg-[#eaf4ff] text-[#4A78D3]">
                             {skill}
                           </Badge>
                         ))}
@@ -215,7 +184,7 @@ export default function CareersClient() {
                     </div>
                     <div className="mt-6 lg:mt-0 lg:ml-8">
                       <Button
-                        className="bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:from-yellow-800 hover:via-yellow-700 hover:to-yellow-600 text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                        className="bg-[#4A78D3] hover:bg-black text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                         onClick={() => setIsModalOpen(true)}
                       >
                         Apply Now
@@ -228,27 +197,21 @@ export default function CareersClient() {
           </div>
         </div>
 
-        {/* No Position Found */}
-        <div className="text-center bg-amber-50 p-12 rounded-3xl">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">
-            Don’t See Your Ideal Internship?
-          </h2>
-          <p className="text-gray-600 mb-4 max-w-2xl mx-auto">
+        <div className="text-center bg-[#eaf4ff] p-12 rounded-3xl">
+          <h2 className="text-2xl font-bold text-black mb-4">Don’t See Your Ideal Internship?</h2>
+          <p className="text-black mb-4 max-w-2xl mx-auto">
             We’re always eager to connect with passionate individuals. Send us your details and
             tell us how you can contribute to our team.
           </p>
           <div className="flex justify-center items-center gap-3 mb-6">
-            <Mail className="w-5 h-5 text-amber-600" />
-            <a
-              href="mailto:hr@greatertechhub.com"
-              className="text-amber-600 hover:text-amber-800 font-semibold"
-            >
+            <Mail className="w-5 h-5 text-[#4A78D3]" />
+            <a href="mailto:hr@greatertechhub.com" className="text-[#4A78D3] hover:text-black font-semibold">
               hr@greatertechhub.com
             </a>
           </div>
           <Button
             size="lg"
-            className="bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:from-yellow-800 hover:via-yellow-700 hover:to-yellow-600 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            className="bg-[#4A78D3] hover:bg-black text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
             onClick={() => setIsModalOpen(true)}
           >
             Send Your Details
@@ -256,38 +219,31 @@ export default function CareersClient() {
         </div>
       </div>
 
-      {/* Popup Form Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl p-8 max-w-lg w-full mx-4 relative">
+          <div className="bg-white rounded-2xl p-8 max-w-lg w-full mx-4 relative text-black">
             <button
-              className="absolute top-4 right-4 text-gray-600 hover:text-gray-900"
+              className="absolute top-4 right-4 text-gray-600 hover:text-black"
               onClick={() => setIsModalOpen(false)}
             >
               <X className="w-6 h-6" />
             </button>
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Apply for Internship</h2>
+            <h2 className="text-2xl font-bold mb-6">Apply for Internship</h2>
             {formStatus.message && (
               <div
                 className={`mb-4 p-3 rounded-md ${
-                  formStatus.type === 'success'
-                    ? 'bg-green-100 text-green-800'
-                    : 'bg-red-100 text-red-800'
+                  formStatus.type === 'success' ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
                 }`}
               >
                 {formStatus.message}
               </div>
             )}
             <form onSubmit={handleSubmit} className="space-y-4">
-              <input
-                type="hidden"
-                name="access_key"
-                value={process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || ''}
-              />
+              <input type="hidden" name="access_key" value={process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY || ''} />
               <input type="hidden" name="subject" value="New Internship Application" />
               <input type="hidden" name="from_name" value="GreaterTechHub Careers" />
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="name" className="block text-sm font-medium">
                   Full Name
                 </label>
                 <input
@@ -297,12 +253,11 @@ export default function CareersClient() {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-amber-600 focus:border-amber-600"
-                  aria-label="Full Name"
+                  className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#4A78D3] focus:border-[#4A78D3]"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="email" className="block text-sm font-medium">
                   Email
                 </label>
                 <input
@@ -312,12 +267,11 @@ export default function CareersClient() {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-amber-600 focus:border-amber-600"
-                  aria-label="Email Address"
+                  className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#4A78D3] focus:border-[#4A78D3]"
                 />
               </div>
               <div>
-                <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="phone" className="block text-sm font-medium">
                   Phone Number
                 </label>
                 <input
@@ -326,12 +280,11 @@ export default function CareersClient() {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-amber-600 focus:border-amber-600"
-                  aria-label="Phone Number"
+                  className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#4A78D3] focus:border-[#4A78D3]"
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+                <label htmlFor="message" className="block text-sm font-medium">
                   Message
                 </label>
                 <textarea
@@ -340,14 +293,13 @@ export default function CareersClient() {
                   value={formData.message}
                   onChange={handleInputChange}
                   rows={4}
-                  className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-amber-600 focus:border-amber-600"
-                  aria-label="Message"
+                  className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-[#4A78D3] focus:border-[#4A78D3]"
                 />
               </div>
               <div className="text-center">
                 <Button
                   type="submit"
-                  className="bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:from-yellow-800 hover:via-yellow-700 hover:to-yellow-600 text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                  className="bg-[#4A78D3] hover:bg-black text-white px-6 py-2 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   Submit Application
                 </Button>

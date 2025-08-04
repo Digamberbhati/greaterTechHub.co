@@ -35,22 +35,16 @@ export default function BookAppointment() {
         },
         body: JSON.stringify({
           access_key: '801d207e-97cf-4b31-8871-e5ffe85a0f06',
-          firstName: formData.firstName,
-          email: formData.email,
-          date: formData.date,
-          time: formData.time,
-          inquiryType: formData.inquiryType,
-          message: formData.message,
+          ...formData,
         }),
       });
 
       const result = await response.json();
 
       if (result.success) {
-        console.log('Form submitted:', formData);
         toast({
           title: 'Appointment Booked!',
-          description: 'Thank you for your request. We\'ll confirm your appointment within 24 hours.',
+          description: "Thank you for your request. We'll confirm your appointment within 24 hours.",
         });
         setFormData({
           firstName: '',
@@ -85,28 +79,20 @@ export default function BookAppointment() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col text-black">
       {/* Header */}
       <header className="bg-brand-navy text-white py-4 sm:py-6">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <div className="text-xl sm:text-2xl font-bold">
-            <Link href="/" className="hover:text-brand-gray">
+            <Link href="/" className="hover:text-[rgb(37,150,190)]">
               GreaterTechHub
             </Link>
           </div>
           <nav className="flex space-x-4 sm:space-x-6">
-            <Link href="/" className="text-sm sm:text-base hover:text-brand-gray">
-              Home
-            </Link>
-            <Link href="/services" className="text-sm sm:text-base hover:text-brand-gray">
-              Services
-            </Link>
-            <Link href="/about" className="text-sm sm:text-base hover:text-brand-gray">
-              About
-            </Link>
-            <Link href="/book" className="text-sm sm:text-base hover:text-brand-gray">
-              Book Appointment
-            </Link>
+            <Link href="/" className="text-sm sm:text-base hover:text-[rgb(37,150,190)]">Home</Link>
+            <Link href="/services" className="text-sm sm:text-base hover:text-[rgb(37,150,190)]">Services</Link>
+            <Link href="/about" className="text-sm sm:text-base hover:text-[rgb(37,150,190)]">About</Link>
+            <Link href="/book" className="text-sm sm:text-base hover:text-[rgb(37,150,190)]">Book Appointment</Link>
           </nav>
         </div>
       </header>
@@ -115,32 +101,33 @@ export default function BookAppointment() {
       <main className="flex-grow flex items-center justify-center bg-gray-100">
         <style jsx>{`
           select.text-sm option {
-            font-size: 0.875rem; /* 14px for desktop */
+            font-size: 0.875rem;
             padding: 0.5rem;
           }
           @media (max-width: 640px) {
             select.text-sm {
-              font-size: 0.75rem; /* 12px for mobile */
+              font-size: 0.75rem;
               padding: 0.5rem;
             }
             select.text-sm option {
-              font-size: 0.75rem; /* Match mobile font size */
+              font-size: 0.75rem;
             }
           }
         `}</style>
+
         <div className="w-full max-w-2xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           <div className="text-center mb-8 sm:mb-12">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-navy mb-4 sm:mb-6">
-              Book an <span className="gradient-text">Appointment</span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4 sm:mb-6">
+              Book an <span className="text-[#4A78D3]">Appointment</span>
             </h1>
-            <p className="text-base sm:text-lg md:text-xl text-brand-gray max-w-3xl mx-auto">
-              Schedule a consultation with our experts to discuss your business needs.
+            <p className="text-base sm:text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
+              Schedule a consultation with our <span className="text-[rgb(37,150,190)] font-medium">experts</span> to discuss your business needs.
             </p>
           </div>
 
           <Card className="shadow-lg border-0">
             <CardContent className="p-4 sm:p-6 md:p-8">
-              <h2 className="text-xl sm:text-2xl font-bold text-brand-navy mb-4 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl font-bold text-black mb-4 sm:mb-6">
                 Appointment Form
               </h2>
 
@@ -207,7 +194,7 @@ export default function BookAppointment() {
                     name="inquiryType"
                     value={formData.inquiryType}
                     onChange={handleChange}
-                    className="mt-1 w-full p-2 sm:p-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue text-sm"
+                    className="mt-1 w-full p-2 sm:p-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#4A78D3] text-sm"
                     required
                   >
                     <option value="">Select an inquiry type</option>
@@ -236,7 +223,7 @@ export default function BookAppointment() {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className={`w-full flex items-center justify-center bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:from-yellow-800 hover:via-yellow-700 hover:to-yellow-600 text-white px-6 py-2.5 sm:px-8 sm:py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  className={`w-full flex items-center justify-center bg-[#4A78D3] hover:bg-black text-white px-6 py-2.5 sm:px-8 sm:py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                   <PaperAirplaneIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                   {isSubmitting ? 'Submitting...' : 'Book Appointment'}
@@ -253,15 +240,9 @@ export default function BookAppointment() {
           <div className="flex flex-col sm:flex-row justify-between items-center">
             <p className="text-sm sm:text-base">© 2025 GreaterTechHub. All rights reserved.</p>
             <nav className="flex space-x-4 sm:space-x-6 mt-4 sm:mt-0">
-              <Link href="/privacy" className="text-sm sm:text-base hover:text-brand-gray">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="text-sm sm:text-base hover:text-brand-gray">
-                Terms of Service
-              </Link>
-              <Link href="/contact" className="text-sm sm:text-base hover:text-brand-gray">
-                Contact
-              </Link>
+              <Link href="/privacy" className="text-sm sm:text-base hover:text-[rgb(37,150,190)]">Privacy Policy</Link>
+              <Link href="/terms" className="text-sm sm:text-base hover:text-[rgb(37,150,190)]">Terms of Service</Link>
+              <Link href="/contact" className="text-sm sm:text-base hover:text-[rgb(37,150,190)]">Contact</Link>
             </nav>
           </div>
         </div>

@@ -45,8 +45,6 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
-  console.log('Contact page rendered');
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -54,7 +52,6 @@ export default function Contact() {
     try {
       const apiKey = process.env.NEXT_PUBLIC_WEB3FORMS_API_KEY;
       if (!apiKey) {
-        console.error('Web3Forms API key is missing');
         toast({
           title: 'Error',
           description: 'Configuration error. Please contact support.',
@@ -68,7 +65,7 @@ export default function Contact() {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
+          Accept: 'application/json',
         },
         body: JSON.stringify({
           access_key: apiKey,
@@ -79,7 +76,6 @@ export default function Contact() {
       const result = await response.json();
 
       if (result.success) {
-        console.log('Form submitted successfully:', formData);
         toast({
           title: 'Message Sent!',
           description: 'Thank you for contacting us. We\'ll get back to you within 1 min.',
@@ -95,7 +91,6 @@ export default function Contact() {
         throw new Error(result.message || 'Form submission failed');
       }
     } catch (error) {
-      console.error('Form submission error:', error);
       toast({
         title: 'Error',
         description: 'There was a problem sending your message. Please try again.',
@@ -117,25 +112,26 @@ export default function Contact() {
     <div className="pt-16 sm:pt-20 min-h-screen">
       <style jsx>{`
         select.text-sm option {
-          font-size: 0.875rem; /* Smaller font size for options (14px) */
-          padding: 0.5rem; /* Reduced padding for options */
+          font-size: 0.875rem;
+          padding: 0.5rem;
         }
         @media (max-width: 640px) {
           select.text-sm {
-            font-size: 0.75rem; /* Even smaller font for mobile */
-            padding: 0.5rem; /* Reduced padding for mobile */
+            font-size: 0.75rem;
+            padding: 0.5rem;
           }
           select.text-sm option {
-            font-size: 0.75rem; /* Match mobile font size */
+            font-size: 0.75rem;
           }
         }
       `}</style>
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="text-center mb-8 sm:mb-12">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-brand-navy mb-4 sm:mb-6">
-            Get In <span className="gradient-text">Touch</span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-4 sm:mb-6">
+            Get In <span className="text-[rgb(37,150,190)]">Touch</span>
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-brand-gray max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-black max-w-3xl mx-auto">
             Ready to transform your business? Let's discuss how our technology
             solutions can help you achieve your goals.
           </p>
@@ -145,14 +141,14 @@ export default function Contact() {
           <div>
             <Card className="shadow-lg border-0">
               <CardContent className="p-4 sm:p-6 md:p-8">
-                <h2 className="text-xl sm:text-2xl font-bold text-brand-navy mb-4 sm:mb-6">
-                  Send us a Message
+                <h2 className="text-xl sm:text-2xl font-bold text-black mb-4 sm:mb-6">
+                  Send us a <span className="text-[rgb(37,150,190)]">Message</span>
                 </h2>
 
                 <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="name">Full Name *</Label>
+                      <Label htmlFor="name" className="text-black">Full Name *</Label>
                       <Input
                         id="name"
                         name="name"
@@ -165,7 +161,7 @@ export default function Contact() {
                       />
                     </div>
                     <div>
-                      <Label htmlFor="email">Email Address *</Label>
+                      <Label htmlFor="email" className="text-black">Email Address *</Label>
                       <Input
                         id="email"
                         name="email"
@@ -180,7 +176,7 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <Label htmlFor="company">Company</Label>
+                    <Label htmlFor="company" className="text-black">Company</Label>
                     <Input
                       id="company"
                       name="company"
@@ -193,13 +189,13 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <Label htmlFor="service">Service Interested In</Label>
+                    <Label htmlFor="service" className="text-black">Service Interested In</Label>
                     <select
                       id="service"
                       name="service"
                       value={formData.service}
                       onChange={handleChange}
-                      className="mt-1 w-full p-2 sm:p-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-brand-blue text-sm"
+                      className="mt-1 w-full p-2 sm:p-2.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[rgb(37,150,190)] text-sm"
                     >
                       <option value="">Select a service</option>
                       <option value="website-development">Website Development</option>
@@ -222,7 +218,7 @@ export default function Contact() {
                   </div>
 
                   <div>
-                    <Label htmlFor="message">Message *</Label>
+                    <Label htmlFor="message" className="text-black">Message *</Label>
                     <Textarea
                       id="message"
                       name="message"
@@ -238,7 +234,7 @@ export default function Contact() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className={`w-full flex items-center justify-center bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:from-yellow-800 hover:via-yellow-700 hover:to-yellow-600 text-white px-6 py-2.5 sm:px-8 sm:py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    className={`w-full flex items-center justify-center bg-[#4A78D3] hover:bg-black text-white px-6 py-2.5 sm:px-8 sm:py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300 ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
                   >
                     <PaperAirplaneIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                     {isSubmitting ? 'Sending...' : 'Send Message'}
@@ -250,10 +246,10 @@ export default function Contact() {
 
           <div className="space-y-6 sm:space-y-8">
             <div>
-              <h2 className="text-xl sm:text-2xl font-bold text-brand-navy mb-4 sm:mb-6">
-                Contact Information
+              <h2 className="text-xl sm:text-2xl font-bold text-black mb-4 sm:mb-6">
+                Contact <span className="text-[rgb(37,150,190)]">Information</span>
               </h2>
-              <p className="text-sm sm:text-base text-brand-gray mb-6 sm:mb-8">
+              <p className="text-sm sm:text-base text-black mb-6 sm:mb-8">
                 Choose the most convenient way to reach us. We're here to help
                 you succeed with the right technology solutions.
               </p>
@@ -265,23 +261,23 @@ export default function Contact() {
                   <CardContent className="p-4 sm:p-6">
                     <div className="flex items-start space-x-3 sm:space-x-4">
                       <div className="flex-shrink-0">
-                        <div className="p-2 sm:p-3 bg-gradient-blue rounded-lg">
+                        <div className="p-2 sm:p-3 bg-[rgb(37,150,190)] rounded-lg">
                           {info.icon ? (
                             <info.icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                           ) : (
-                            <span>Icon Missing</span>
+                            <span>Icon</span>
                           )}
                         </div>
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-base sm:text-lg font-semibold text-brand-navy mb-1">
+                        <h3 className="text-base sm:text-lg font-semibold text-black mb-1">
                           {info.title}
                         </h3>
-                        <p className="text-brand-blue font-medium text-sm sm:text-base mb-2">
+                        <p className="text-[rgb(37,150,190)] font-medium text-sm sm:text-base mb-2">
                           {info.details}
                         </p>
                         {info.address && (
-                          <p className="text-brand-blue font-medium text-sm sm:text-base mb-2">
+                          <p className="text-[rgb(37,150,190)] font-medium text-sm sm:text-base mb-2">
                             {info.address}
                           </p>
                         )}
@@ -293,19 +289,15 @@ export default function Contact() {
                                 href={social.link}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-brand-blue hover:text-brand-navy"
+                                className="text-[rgb(37,150,190)] hover:text-black"
                                 title={social.platform}
                               >
-                                {social.icon ? (
-                                  <social.icon className="h-5 w-5 sm:h-6 sm:w-6" />
-                                ) : (
-                                  <span>{social.platform}</span>
-                                )}
+                                <social.icon className="h-5 w-5 sm:h-6 sm:w-6" />
                               </a>
                             ))}
                           </div>
                         )}
-                        <p className="text-brand-gray text-xs sm:text-sm mb-3">
+                        <p className="text-black text-xs sm:text-sm mb-3">
                           {info.description}
                         </p>
                       </div>
