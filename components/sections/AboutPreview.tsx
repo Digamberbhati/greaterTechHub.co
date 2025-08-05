@@ -3,11 +3,11 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
-import { 
-  CheckCircleIcon, 
-  TrophyIcon, 
-  UsersIcon, 
-  GlobeAltIcon 
+import {
+  CheckCircleIcon,
+  TrophyIcon,
+  UsersIcon,
+  GlobeAltIcon
 } from '@heroicons/react/24/outline';
 import { useEffect, useState } from 'react';
 
@@ -17,12 +17,12 @@ const useCountUp = (end: number, duration: number, isInView: boolean) => {
 
   useEffect(() => {
     if (!isInView) {
-      setCount(0); // Reset count when out of view
+      setCount(0);
       return;
     }
 
     let start = 0;
-    const increment = end / (duration * 60); // Assuming 60 FPS
+    const increment = end / (duration * 60);
     const step = () => {
       start += increment;
       if (start < end) {
@@ -70,11 +70,10 @@ export default function AboutPreview() {
     { value: null, label: 'Support', display: '24/7' },
   ];
 
-  // State to track if stats section is in view
   const [isStatsInView, setIsStatsInView] = useState(false);
 
   return (
-    <section className="py-16 bg-gradient-to-b from-white to-yellow-50/50">
+    <section className="py-16 bg-gradient-to-b from-white to-blue-50/30">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Content Section */}
@@ -82,16 +81,16 @@ export default function AboutPreview() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
-            viewport={{ once: true }} // Keep once: true for content section
+            viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 tracking-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-black mb-6 tracking-tight">
               Why Choose
-              <span className="bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#4A78D3] to-[rgb(37,150,190)] bg-clip-text text-transparent">
                 {' '}GreaterTechHub
               </span>
             </h2>
 
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed max-w-2xl">
+            <p className="text-lg text-gray-700 mb-8 leading-relaxed max-w-2xl">
               We're your technology partners, dedicated to transforming your digital vision into reality with innovative solutions and unmatched expertise.
             </p>
 
@@ -106,16 +105,16 @@ export default function AboutPreview() {
                   className="flex items-start space-x-4 group"
                 >
                   <motion.div
-                    className="flex-shrink-0 p-2 rounded-full bg-yellow-100 group-hover:bg-yellow-200 transition-colors"
+                    className="flex-shrink-0 p-2 rounded-full bg-blue-100 group-hover:bg-blue-200 transition-colors"
                     whileHover={{ scale: 1.1, rotate: 10 }}
                   >
-                    <highlight.icon className="h-6 w-6 text-yellow-700" />
+                    <highlight.icon className="h-6 w-6 text-[#4A78D3]" />
                   </motion.div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-1 group-hover:text-yellow-700 transition-colors">
+                    <h3 className="text-xl font-semibold text-black mb-1 group-hover:text-[rgb(37,150,190)] transition-colors">
                       {highlight.title}
                     </h3>
-                    <p className="text-gray-600">{highlight.description}</p>
+                    <p className="text-gray-700">{highlight.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -124,18 +123,18 @@ export default function AboutPreview() {
             <Button
               asChild
               size="lg"
-              className="bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:from-yellow-800 hover:via-yellow-700 hover:to-yellow-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-[#4A78D3] hover:bg-black text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <Link href="/about">Discover Our Story</Link>
             </Button>
           </motion.div>
 
-          {/* Stats Card with Neumorphism */}
+          {/* Stats Card */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            onViewportEnter={() => setIsStatsInView(true)} // Trigger when entering viewport
-            onViewportLeave={() => setIsStatsInView(false)} // Reset when leaving viewport
+            onViewportEnter={() => setIsStatsInView(true)}
+            onViewportLeave={() => setIsStatsInView(false)}
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="relative"
           >
@@ -149,7 +148,7 @@ export default function AboutPreview() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: index * 0.2, ease: 'easeOut' }}
                   >
-                    <div className="text-5xl font-extrabold text-yellow-700 mb-2">
+                    <div className="text-5xl font-extrabold text-[#4A78D3] mb-2">
                       {stat.value !== null ? (
                         <>
                           {useCountUp(stat.value, 2, isStatsInView)}+
@@ -158,28 +157,28 @@ export default function AboutPreview() {
                         stat.display
                       )}
                     </div>
-                    <div className="text-gray-600 font-medium">{stat.label}</div>
+                    <div className="text-gray-700 font-medium">{stat.label}</div>
                   </motion.div>
                 ))}
               </div>
 
               <motion.div
-                className="mt-8 p-6 bg-yellow-50/50 rounded-xl"
+                className="mt-8 p-6 bg-blue-50/50 rounded-xl"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4, ease: 'easeOut' }}
                 viewport={{ once: true }}
               >
-                <h4 className="font-semibold text-lg text-gray-900 mb-2">Our Mission</h4>
-                <p className="text-sm text-gray-600">
+                <h4 className="font-semibold text-lg text-black mb-2">Our Mission</h4>
+                <p className="text-sm text-gray-700">
                   To empower businesses with innovative technology solutions that drive growth, efficiency, and digital transformation.
                 </p>
               </motion.div>
             </div>
 
             {/* Background Decorations */}
-            <div className="absolute -top-6 -right-6 w-32 h-32 bg-yellow-400/20 rounded-full blur-2xl animate-pulse"></div>
-            <div className="absolute -bottom-6 -left-6 w-40 h-40 bg-yellow-300/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
+            <div className="absolute -top-6 -right-6 w-32 h-32 bg-blue-400/20 rounded-full blur-2xl animate-pulse"></div>
+            <div className="absolute -bottom-6 -left-6 w-40 h-40 bg-blue-300/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
           </motion.div>
         </div>
       </div>
