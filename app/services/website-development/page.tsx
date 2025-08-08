@@ -13,6 +13,7 @@ import {
   CodeBracketIcon,
   BugAntIcon,
 } from '@heroicons/react/24/outline';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: 'Website Development Services - GreaterTechHub | Modern Web Solutions',
@@ -38,6 +39,7 @@ interface DevelopmentStep {
 
 interface Technology {
   name: string;
+  logo: string; // Path to logo in public/assets/tech-logos/
 }
 
 const features: Feature[] = [
@@ -64,18 +66,18 @@ const features: Feature[] = [
 ];
 
 const technologies: Technology[] = [
-  { name: 'React' },
-  { name: 'Next.js' },
-  { name: 'Vue.js' },
-  { name: 'Angular' },
-  { name: 'TypeScript' },
-  { name: 'Node.js' },
-  { name: 'Python' },
-  { name: 'PHP' },
-  { name: 'WordPress' },
-  { name: 'Shopify' },
-  { name: 'Webflow' },
-  { name: 'Tailwind CSS' },
+  { name: 'React', logo: '/assets/tech-logos/react.svg' },
+  { name: 'Next.js', logo: '/assets/tech-logos/nextjs.svg' },
+  { name: 'Vue.js', logo: '/assets/tech-logos/vuejs.svg' },
+  { name: 'Angular', logo: '/assets/tech-logos/angular.svg' },
+  { name: 'TypeScript', logo: '/assets/tech-logos/typescript.svg' },
+  { name: 'Node.js', logo: '/assets/tech-logos/nodejs.svg' },
+  { name: 'Python', logo: '/assets/tech-logos/python.svg' },
+  { name: 'PHP', logo: '/assets/tech-logos/php.svg' },
+  { name: 'WordPress', logo: '/assets/tech-logos/wordpress.svg' },
+  { name: 'Shopify', logo: '/assets/tech-logos/shopify.svg' },
+  { name: 'Webflow', logo: '/assets/tech-logos/webflow.svg' },
+  { name: 'Tailwind CSS', logo: '/assets/tech-logos/tailwindcss.svg' },
 ];
 
 const websiteTypes: WebsiteType[] = [
@@ -143,7 +145,7 @@ export default function WebsiteDevelopment() {
         <div className="text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold text-black">
             Professional{' '}
-            <span style={{ color: 'rgb(37,150,190)' }}>
+            <span className="bg-gradient-to-r from-[#FFD700] via-[#8B4513] to-black bg-clip-text text-transparent">
               Website Development
             </span>
           </h1>
@@ -153,7 +155,7 @@ export default function WebsiteDevelopment() {
           <Button
             asChild
             size="lg"
-            className="bg-[rgb(37,150,190)] hover:bg-[rgb(25,100,130)] text-white px-8 py-4 text-lg font-semibold rounded-full transition-colors duration-300"
+            className="bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:opacity-90 text-white px-8 py-4 text-lg font-semibold rounded-full"
           >
             <Link href="/contact">Get Free Quote</Link>
           </Button>
@@ -162,17 +164,14 @@ export default function WebsiteDevelopment() {
         {/* Features */}
         <div className="mb-12">
           <h2 className="text-3xl font-bold text-black text-center mb-8">
-            Why Choose Our <span style={{ color: 'rgb(37,150,190)' }}>Website Development</span> Services
+            Why Choose Our Website Development Services
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
               <Card key={index} className="border-0 shadow-md bg-white">
                 <CardContent className="p-6 text-center">
-                  <div
-                    className="inline-flex p-3 mb-4 rounded-xl"
-                    style={{ backgroundColor: 'rgba(37,150,190,0.1)' }}
-                  >
-                    <feature.icon className="h-6 w-6" style={{ color: 'rgb(37,150,190)' }} />
+                  <div className="inline-flex p-3 mb-4 bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 rounded-xl">
+                    <feature.icon className="h-6 w-6 text-white" />
                   </div>
                   <h3 className="text-lg font-semibold text-black mb-2">
                     {feature.title}
@@ -194,6 +193,15 @@ export default function WebsiteDevelopment() {
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 justify-center">
             {technologies.map((tech, index) => (
               <div key={index} className="flex flex-col items-center">
+                <div className="p-3 bg-gray-100 rounded-xl mb-2">
+                  <Image
+                    src={tech.logo}
+                    alt={`${tech.name} logo`}
+                    width={32}
+                    height={32}
+                    className="object-contain"
+                  />
+                </div>
                 <span className="text-sm text-black font-medium">{tech.name}</span>
               </div>
             ))}
@@ -209,11 +217,8 @@ export default function WebsiteDevelopment() {
             {developmentSteps.map((step, index) => (
               <Card key={index} className="border-0 shadow-md bg-white">
                 <CardContent className="p-6 flex items-start space-x-4">
-                  <div
-                    className="p-3 rounded-xl"
-                    style={{ backgroundColor: 'rgba(37,150,190,0.1)' }}
-                  >
-                    <step.icon className="h-6 w-6" style={{ color: 'rgb(37,150,190)' }} />
+                  <div className="p-3 bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 rounded-xl">
+                    <step.icon className="h-6 w-6 text-white" />
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-black mb-2">
@@ -253,7 +258,7 @@ export default function WebsiteDevelopment() {
         {/* CTA Section */}
         <div className="text-center bg-gray-50 p-10 rounded-2xl">
           <h2 className="text-3xl font-bold text-black mb-4">
-            Ready to Build Your <span style={{ color: 'rgb(37,150,190)' }}>Dream Website?</span>
+            Ready to Build Your Dream Website?
           </h2>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
             Let’s discuss your project and create a website that represents your brand and drives growth.
@@ -262,14 +267,14 @@ export default function WebsiteDevelopment() {
             <Button
               asChild
               size="lg"
-              className="bg-[rgb(37,150,190)] hover:bg-[rgb(25,100,130)] text-white px-8 py-4 text-lg font-semibold rounded-full transition-colors duration-300"
+              className="bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:opacity-90 text-white px-8 py-4 text-lg font-semibold rounded-full"
             >
               <Link href="/contact">Start Your Project</Link>
             </Button>
             <Button
               asChild
               size="lg"
-              className="bg-[rgb(37,150,190)] hover:bg-[rgb(25,100,130)] text-white px-8 py-4 text-lg font-semibold rounded-full transition-colors duration-300"
+              className="bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:opacity-90 text-white px-8 py-4 text-lg font-semibold rounded-full"
             >
               <Link href="/services">View All Services</Link>
             </Button>

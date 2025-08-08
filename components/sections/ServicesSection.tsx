@@ -22,6 +22,7 @@ import {
   ArrowRightIcon,
 } from '@heroicons/react/24/outline';
 
+// The Service interface remains the same
 interface Service {
   title: string;
   description: string;
@@ -29,6 +30,7 @@ interface Service {
   href: string;
 }
 
+// The services array remains the same
 const services: Service[] = [
   {
     title: 'Website Development',
@@ -125,13 +127,21 @@ const services: Service[] = [
 export default function ServicesSection() {
   return (
     <section className="bg-slate-50 py-20 sm:py-24">
+      <style jsx>{`
+        .gold-gradient {
+          background: linear-gradient(90deg, #F59E0B, #D97706, #B45309);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          text-fill-color: transparent;
+        }
+      `}</style>
+      
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-base font-semibold leading-7" style={{ color: 'rgb(37,150,190)' }}>
-            Our Services
-          </h2>
+          <h2 className="text-base font-semibold leading-7 text-amber-700">Our Services</h2>
           <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            <span style={{ color: 'rgb(37,150,190)' }}>Innovative IT Solutions</span> to Empower Your Business
+            <span className="gold-gradient">Innovative IT Solutions</span> to Empower Your Business
           </p>
           <p className="mt-6 text-lg leading-8 text-gray-600">
             From strategy to execution, we deliver tailored technology services that drive results.
@@ -143,27 +153,14 @@ export default function ServicesSection() {
             <div key={service.title} className="h-full">
               <Card className="flex h-full flex-col rounded-2xl bg-white shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-slate-200/80">
                 <CardContent className="p-8 flex flex-col h-full">
-                  <div
-                    className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg"
-                    style={{ backgroundColor: 'rgba(37,150,190,0.1)' }}
-                  >
-                    <service.icon
-                      className="h-7 w-7"
-                      style={{ color: 'rgb(37,150,190)' }}
-                      aria-hidden="true"
-                    />
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-amber-100">
+                    <service.icon className="h-7 w-7 text-amber-700" aria-hidden="true" />
                   </div>
                   <h3 className="text-xl font-semibold text-slate-800">{service.title}</h3>
                   <p className="mt-3 text-base text-slate-600 flex-grow">{service.description}</p>
                   <Button
                     asChild
-                    className="mt-8 w-full group text-white py-3 rounded-full font-semibold shadow-lg transition-all duration-300 hover:shadow-xl"
-                    style={{
-                      backgroundColor: 'rgb(37,150,190)',
-                      transition: 'background-color 0.3s ease',
-                    }}
-                    onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgb(25,100,130)')}
-                    onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'rgb(37,150,190)')}
+                    className="mt-8 w-full group bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:from-yellow-800 hover:via-yellow-700 hover:to-yellow-600 text-white py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     <Link href={service.href}>
                       Learn More
@@ -179,13 +176,7 @@ export default function ServicesSection() {
         <div className="mt-16 text-center">
           <Button
             asChild
-            className="px-8 py-3 text-white rounded-full font-semibold shadow-lg transition-all duration-300 hover:shadow-xl"
-            style={{
-              backgroundColor: 'rgb(37,150,190)',
-              transition: 'background-color 0.3s ease',
-            }}
-            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = 'rgb(25,100,130)')}
-            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'rgb(37,150,190)')}
+            className="bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:from-yellow-800 hover:via-yellow-700 hover:to-yellow-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <Link href="/services">Explore All Our Services</Link>
           </Button>
