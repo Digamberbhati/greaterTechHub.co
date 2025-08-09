@@ -78,29 +78,29 @@ export default function ITInfrastructureNetworking() {
   console.log('IT Infrastructure & Networking page rendered');
 
   return (
-    <div className="pt-24 min-h-screen bg-gradient-elegant">
+    <div className="pt-24 min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-black-gold">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-gray-50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <Badge className="mb-6 bg-brand-gold/20 text-brand-gold border-brand-gold/30">
+            <Badge className="mb-6 bg-blue-900/20 text-blue-900 border-blue-900/30">
               Network Solutions
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold text-brand-white mb-6 text-shadow-gold">
-              IT Infrastructure & <span className="gradient-text">Networking</span>
+            <h1 className="text-4xl md:text-6xl font-bold text-blue-900 mb-6">
+              IT Infrastructure & <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Networking</span>
             </h1>
-            <p className="text-xl text-brand-cream max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
               Build a robust, secure, and scalable IT infrastructure that supports your business growth. 
               Expert network design, implementation, and management services.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-gradient-gold hover:opacity-90 text-brand-black font-semibold px-8">
+              <Button size="lg" className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 hover:opacity-90 text-white font-semibold px-8 py-4 text-lg rounded-full">
                 <Link href="/contact">Get Network Assessment</Link>
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black"
+                className="border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white"
               >
                 View Case Studies
               </Button>
@@ -110,13 +110,13 @@ export default function ITInfrastructureNetworking() {
       </section>
 
       {/* Benefits Section */}
-      <section className="section-padding bg-brand-white">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-black mb-6">
-              Network <span className="gradient-text">Performance</span> Metrics
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+              Network <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Performance</span> Metrics
             </h2>
-            <p className="text-lg text-brand-gray max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Measurable improvements in network performance and business operations
             </p>
           </div>
@@ -125,13 +125,13 @@ export default function ITInfrastructureNetworking() {
             {benefits.map((benefit, index) => (
               <div key={index} className="text-center">
                 <div className="text-6xl mb-4">{benefit.icon}</div>
-                <div className="text-4xl font-bold gradient-text mb-2">
+                <div className="text-4xl font-bold bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent mb-2">
                   {benefit.value}
                 </div>
-                <h3 className="text-xl font-semibold text-brand-black mb-2">
+                <h3 className="text-xl font-semibold text-blue-900 mb-2">
                   {benefit.title}
                 </h3>
-                <p className="text-brand-gray">
+                <p className="text-slate-600">
                   {benefit.desc}
                 </p>
               </div>
@@ -141,32 +141,32 @@ export default function ITInfrastructureNetworking() {
       </section>
 
       {/* Services Section */}
-      <section className="section-padding bg-brand-charcoal">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-white mb-6">
-              Complete <span className="gradient-text">Infrastructure Services</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+              Complete <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Infrastructure Services</span>
             </h2>
-            <p className="text-lg text-brand-cream max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               End-to-end IT infrastructure solutions for modern businesses
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="bg-brand-black/50 border-brand-gold/20 card-hover">
+              <Card key={index} className="bg-white border-blue-900/20 shadow-md">
                 <CardContent className="p-6">
                   <div className="flex items-start mb-4">
                     <div className="flex-shrink-0 mr-4">
-                      <div className="inline-flex p-3 rounded-xl bg-gradient-gold">
-                        <service.icon className="h-6 w-6 text-brand-black" />
+                      <div className="inline-flex p-3 rounded-xl bg-blue-500/30">
+                        <service.icon className={`h-6 w-6 ${index === 0 ? 'text-red-500' : index === 1 ? 'text-green-500' : index === 2 ? 'text-yellow-500' : index === 3 ? 'text-purple-500' : index === 4 ? 'text-pink-500' : 'text-blue-900'}`} />
                       </div>
                     </div>
                     <div className="flex-grow">
-                      <h3 className="text-xl font-semibold text-brand-white mb-2">
+                      <h3 className="text-xl font-semibold text-blue-900 mb-2">
                         {service.title}
                       </h3>
-                      <p className="text-brand-cream mb-4">
+                      <p className="text-slate-600 mb-4">
                         {service.description}
                       </p>
                     </div>
@@ -174,23 +174,23 @@ export default function ITInfrastructureNetworking() {
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <h4 className="text-brand-gold font-medium mb-2">Key Features:</h4>
+                      <h4 className="text-blue-900 font-medium mb-2">Key Features:</h4>
                       <ul className="space-y-1">
                         {service.features.map((feature, idx) => (
-                          <li key={idx} className="text-sm text-brand-cream flex items-center">
-                            <span className="w-2 h-2 bg-brand-gold rounded-full mr-2"></span>
+                          <li key={idx} className="text-sm text-slate-600 flex items-center">
+                            <span className="w-2 h-2 bg-blue-900 rounded-full mr-2"></span>
                             {feature}
                           </li>
                         ))}
                       </ul>
                     </div>
                     <div>
-                      <h4 className="text-brand-gold font-medium mb-2">Performance:</h4>
+                      <h4 className="text-blue-900 font-medium mb-2">Performance:</h4>
                       <div className="space-y-1">
                         {Object.entries(service.metrics).map(([key, value], idx) => (
                           <div key={idx} className="flex justify-between text-sm">
-                            <span className="text-brand-cream capitalize">{key}:</span>
-                            <span className="text-brand-gold font-medium">{value}</span>
+                            <span className="text-slate-600 capitalize">{key}:</span>
+                            <span className="text-blue-900 font-medium">{value}</span>
                           </div>
                         ))}
                       </div>
@@ -204,13 +204,13 @@ export default function ITInfrastructureNetworking() {
       </section>
 
       {/* Technologies Section */}
-      <section className="section-padding bg-brand-white">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-black mb-6">
-              <span className="gradient-text">Enterprise-Grade</span> Technologies
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+              <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Enterprise-Grade</span> Technologies
             </h2>
-            <p className="text-lg text-brand-gray max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Partnering with leading technology vendors for reliable solutions
             </p>
           </div>
@@ -220,7 +220,7 @@ export default function ITInfrastructureNetworking() {
               <Badge 
                 key={tech}
                 variant="outline" 
-                className="px-6 py-3 text-brand-brown border-brand-brown/30 hover:bg-gradient-brown hover:text-white transition-all cursor-pointer"
+                className="px-6 py-3 text-blue-900 border-blue-900/30 hover:bg-blue-900 hover:text-white transition-all cursor-pointer"
               >
                 {tech}
               </Badge>
@@ -230,45 +230,45 @@ export default function ITInfrastructureNetworking() {
       </section>
 
       {/* Case Study Section */}
-      <section className="section-padding bg-brand-charcoal">
-        <div className="mx-auto max-w-7xl container-padding">
-          <Card className="bg-gradient-brown-gold border-0 text-white">
+      <section className="py-12 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Card className="bg-white border-blue-900/20 shadow-md">
             <CardContent className="p-8 md:p-12">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <div>
-                  <Badge className="mb-4 bg-brand-white/20 text-white border-white/30">
+                  <Badge className="mb-4 bg-blue-900/20 text-blue-900 border-blue-900/30">
                     Success Story
                   </Badge>
-                  <h3 className="text-2xl md:text-3xl font-bold mb-4">
+                  <h3 className="text-2xl md:text-3xl font-bold text-blue-900 mb-4">
                     Manufacturing Company Network Upgrade
                   </h3>
-                  <p className="text-lg text-brand-cream mb-6">
+                  <p className="text-lg text-slate-600 mb-6">
                     Complete network infrastructure overhaul for a 500-employee manufacturing facility, 
                     resulting in 400% performance improvement and 99.9% uptime.
                   </p>
                   <Button 
                     variant="outline" 
-                    className="border-white text-black hover:bg-white hover:text-brand-black"
+                    className="border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white"
                   >
                     Read Full Case Study
                   </Button>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-brand-gold">400%</div>
-                    <div className="text-sm">Speed Increase</div>
+                    <div className="text-3xl font-bold bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">400%</div>
+                    <div className="text-sm text-slate-600">Speed Increase</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-brand-gold">99.9%</div>
-                    <div className="text-sm">Network Uptime</div>
+                    <div className="text-3xl font-bold bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">99.9%</div>
+                    <div className="text-sm text-slate-600">Network Uptime</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-brand-gold">50%</div>
-                    <div className="text-sm">Cost Reduction</div>
+                    <div className="text-3xl font-bold bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">50%</div>
+                    <div className="text-sm text-slate-600">Cost Reduction</div>
                   </div>
                   <div className="text-center">
-                    <div className="text-3xl font-bold text-brand-gold">30 Days</div>
-                    <div className="text-sm">Implementation</div>
+                    <div className="text-3xl font-bold bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">30 Days</div>
+                    <div className="text-sm text-slate-600">Implementation</div>
                   </div>
                 </div>
               </div>
@@ -278,13 +278,13 @@ export default function ITInfrastructureNetworking() {
       </section>
 
       {/* Support Section */}
-      <section className="section-padding bg-brand-white">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-black mb-6">
-              <span className="gradient-text">24/7</span> Network Support
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+              <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">24/7</span> Network Support
             </h2>
-            <p className="text-lg text-brand-gray max-w-2xl mx-auto mb-8">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-8">
               Comprehensive support services to keep your network running smoothly
             </p>
           </div>
@@ -300,8 +300,8 @@ export default function ITInfrastructureNetworking() {
             ].map((item, index) => (
               <div key={index} className="text-center">
                 <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-semibold text-brand-black mb-3">{item.title}</h3>
-                <p className="text-brand-gray">{item.desc}</p>
+                <h3 className="text-xl font-semibold text-blue-900 mb-3">{item.title}</h3>
+                <p className="text-slate-600">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -309,22 +309,22 @@ export default function ITInfrastructureNetworking() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-black-gold">
-        <div className="mx-auto max-w-4xl container-padding text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-white mb-6">
-            Ready to <span className="text-brand-gold">Upgrade Your Network?</span>
+      <section className="py-12 bg-gray-50">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+            Ready to <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Upgrade Your Network?</span>
           </h2>
-          <p className="text-xl text-brand-cream mb-8">
+          <p className="text-xl text-slate-600 mb-8">
             Let's design and build a network infrastructure that supports your business growth.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-gradient-gold hover:opacity-90 text-brand-black font-semibold px-8">
+            <Button size="lg" className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 hover:opacity-90 text-white font-semibold px-8 py-4 text-lg rounded-full">
               <Link href="/contact">Schedule Assessment</Link>
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black"
+              className="border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white"
             >
               <Link href="/services">View All Services</Link>
             </Button>

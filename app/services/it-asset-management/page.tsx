@@ -85,28 +85,28 @@ export default function ITAssetManagement() {
   console.log('IT Asset Management page rendered');
 
   return (
-    <div className="pt-24 min-h-screen bg-gradient-elegant">
+    <div className="pt-24 min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-black-gold">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-gray-50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <Badge className="mb-6 bg-brand-gold/20 text-brand-gold border-brand-gold/30">
+            <Badge className="mb-6 bg-blue-900/20 text-blue-900 border-blue-900/30">
               IT Asset Management
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold text-brand-white mb-6 text-shadow-gold">
-              IT Asset <span className="gradient-text">Management</span>
+            <h1 className="text-4xl md:text-6xl font-bold text-blue-900 mb-6">
+              IT Asset <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Management</span>
             </h1>
-            <p className="text-xl text-brand-cream max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
               Optimize your IT assets with our comprehensive management services, ensuring efficiency, security, and compliance across your organization.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-gradient-gold hover:opacity-90 text-brand-black font-semibold px-8">
+              <Button size="lg" className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 hover:opacity-90 text-white font-semibold px-8 py-4 text-lg rounded-full">
                 <Link href="/contact">Start Managing Assets</Link>
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black"
+                className="border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white"
               >
                 View Case Studies
               </Button>
@@ -116,13 +116,13 @@ export default function ITAssetManagement() {
       </section>
 
       {/* Why IT Asset Management Section */}
-      <section className="section-padding bg-brand-white">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-black mb-6">
-              Why Choose Our <span className="gradient-text">IT Asset Management?</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+              Why Choose Our <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">IT Asset Management?</span>
             </h2>
-            <p className="text-lg text-brand-gray max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Maximize efficiency and compliance with expert asset management
             </p>
           </div>
@@ -136,8 +136,8 @@ export default function ITAssetManagement() {
             ].map((item, index) => (
               <div key={index} className="text-center">
                 <div className="text-5xl mb-4">{item.icon}</div>
-                <h3 className="text-xl font-semibold text-brand-black mb-3">{item.title}</h3>
-                <p className="text-brand-gray">{item.desc}</p>
+                <h3 className="text-xl font-semibold text-blue-900 mb-3">{item.title}</h3>
+                <p className="text-slate-600">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -145,32 +145,32 @@ export default function ITAssetManagement() {
       </section>
 
       {/* Asset Management Services Section */}
-      <section className="section-padding bg-brand-charcoal">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-white mb-6">
-              IT Asset Management <span className="gradient-text">Services</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+              IT Asset Management <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Services</span>
             </h2>
-            <p className="text-lg text-brand-cream max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Comprehensive solutions to manage your IT assets effectively
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {assetManagementServices.map((service, index) => (
-              <Card key={index} className="bg-brand-black/50 border-brand-gold/20 card-hover">
+              <Card key={index} className="bg-white border-blue-900/20 shadow-md">
                 <CardContent className="p-6">
                   <div className="flex items-start mb-4">
                     <div className="flex-shrink-0 mr-4">
-                      <div className="inline-flex p-3 rounded-xl bg-gradient-gold">
-                        <service.icon className="h-6 w-6 text-brand-black" />
+                      <div className="inline-flex p-3 rounded-xl bg-blue-500/30">
+                        <service.icon className={`h-6 w-6 ${index === 0 ? 'text-red-500' : index === 1 ? 'text-green-500' : index === 2 ? 'text-yellow-500' : index === 3 ? 'text-purple-500' : index === 4 ? 'text-pink-500' : 'text-blue-900'}`} />
                       </div>
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-brand-white mb-2">
+                      <h3 className="text-xl font-semibold text-blue-900 mb-2">
                         {service.title}
                       </h3>
-                      <p className="text-brand-cream mb-4">
+                      <p className="text-slate-600 mb-4">
                         {service.description}
                       </p>
                     </div>
@@ -178,21 +178,21 @@ export default function ITAssetManagement() {
                   
                   <div className="space-y-4">
                     <div>
-                      <h4 className="text-brand-gold font-medium mb-2">Tools:</h4>
+                      <h4 className="text-blue-900 font-medium mb-2">Tools:</h4>
                       <div className="flex flex-wrap gap-2">
                         {service.tools.map((tool, idx) => (
-                          <Badge key={idx} variant="outline" className="text-xs text-brand-cream border-brand-gold/30">
+                          <Badge key={idx} variant="outline" className="text-xs text-blue-900 border-blue-900/30 hover:bg-blue-900 hover:text-white">
                             {tool}
                           </Badge>
                         ))}
                       </div>
                     </div>
                     <div>
-                      <h4 className="text-brand-gold font-medium mb-2">Key Features:</h4>
+                      <h4 className="text-blue-900 font-medium mb-2">Key Features:</h4>
                       <div className="grid grid-cols-2 gap-1">
                         {service.features.map((feature, idx) => (
-                          <div key={idx} className="text-sm text-brand-cream flex items-center">
-                            <span className="w-2 h-2 bg-brand-gold rounded-full mr-2"></span>
+                          <div key={idx} className="text-sm text-slate-600 flex items-center">
+                            <span className="w-2 h-2 bg-blue-900 rounded-full mr-2"></span>
                             {feature}
                           </div>
                         ))}
@@ -207,13 +207,13 @@ export default function ITAssetManagement() {
       </section>
 
       {/* Methodologies Section */}
-      <section className="section-padding bg-brand-white">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-black mb-6">
-              Our <span className="gradient-text">Asset Management</span> Approach
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+              Our <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Asset Management</span> Approach
             </h2>
-            <p className="text-lg text-brand-gray max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Proven methodologies for effective IT asset management
             </p>
           </div>
@@ -221,14 +221,14 @@ export default function ITAssetManagement() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {methodologies.map((method, index) => (
               <div key={index} className="flex items-start">
-                <div className="flex-shrink-0 w-12 h-12 bg-gradient-gold rounded-full flex items-center justify-center text-brand-black font-bold mr-4">
+                <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 rounded-full flex items-center justify-center text-white font-bold mr-4">
                   {index + 1}
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold text-brand-black mb-2">
+                  <h3 className="text-xl font-semibold text-blue-900 mb-2">
                     {method.name}
                   </h3>
-                  <p className="text-brand-gray">
+                  <p className="text-slate-600">
                     {method.desc}
                   </p>
                 </div>
@@ -239,13 +239,13 @@ export default function ITAssetManagement() {
       </section>
 
       {/* Tools Section */}
-      <section className="section-padding bg-brand-charcoal">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-white mb-6">
-              <span className="gradient-text">Tool</span> Stack
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+              <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Tool</span> Stack
             </h2>
-            <p className="text-lg text-brand-cream max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Industry-standard tools for efficient IT asset management
             </p>
           </div>
@@ -255,7 +255,7 @@ export default function ITAssetManagement() {
               <Badge 
                 key={tool}
                 variant="outline" 
-                className="px-4 py-2 text-brand-gold border-brand-gold/30 hover:bg-gradient-gold hover:text-brand-black transition-all cursor-pointer"
+                className="px-4 py-2 text-blue-900 border-blue-900/30 hover:bg-blue-900 hover:text-white transition-all cursor-pointer"
               >
                 {tool}
               </Badge>
@@ -265,13 +265,13 @@ export default function ITAssetManagement() {
       </section>
 
       {/* Industries Section */}
-      <section className="section-padding bg-brand-white">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-black mb-6">
-              <span className="gradient-text">Industries</span> We Serve
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+              <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Industries</span> We Serve
             </h2>
-            <p className="text-lg text-brand-gray max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Tailored IT asset management for diverse industries
             </p>
           </div>
@@ -281,7 +281,7 @@ export default function ITAssetManagement() {
               <Badge 
                 key={industry}
                 variant="outline" 
-                className="px-6 py-3 text-brand-brown border-brand-brown/30 hover:bg-gradient-brown hover:text-white transition-all cursor-pointer"
+                className="px-6 py-3 text-blue-900 border-blue-900/30 hover:bg-blue-900 hover:text-white transition-all cursor-pointer"
               >
                 {industry}
               </Badge>
@@ -291,13 +291,13 @@ export default function ITAssetManagement() {
       </section>
 
       {/* Process Section */}
-      <section className="section-padding bg-brand-charcoal">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-white mb-6">
-              Asset Management <span className="gradient-text">Process</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+              Asset Management <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Process</span>
             </h2>
-            <p className="text-lg text-brand-cream max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Structured approach for seamless IT asset management
             </p>
           </div>
@@ -312,11 +312,11 @@ export default function ITAssetManagement() {
               { step: '06', title: 'Reporting', desc: 'Generate insights and reports' }
             ].map((item, index) => (
               <div key={index} className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-gold flex items-center justify-center text-brand-black font-bold">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 flex items-center justify-center text-white font-bold">
                   {item.step}
                 </div>
-                <h3 className="text-lg font-semibold text-brand-white mb-2">{item.title}</h3>
-                <p className="text-brand-cream text-sm">{item.desc}</p>
+                <h3 className="text-lg font-semibold text-blue-900 mb-2">{item.title}</h3>
+                <p className="text-slate-600 text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -324,22 +324,22 @@ export default function ITAssetManagement() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-brown-gold">
-        <div className="mx-auto max-w-4xl container-padding text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-white mb-6">
-            Ready to Optimize Your <span className="text-brand-gold">IT Assets?</span>
+      <section className="py-12 bg-gray-50">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+            Ready to Optimize Your <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">IT Assets?</span>
           </h2>
-          <p className="text-xl text-brand-cream mb-8">
+          <p className="text-xl text-slate-600 mb-8">
             Let's streamline your IT asset management for efficiency and compliance.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-brand-white text-brand-black hover:bg-brand-cream font-semibold px-8">
+            <Button size="lg" className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 hover:opacity-90 text-white font-semibold px-8 py-4 text-lg rounded-full">
               <Link href="/contact">Start Managing Assets</Link>
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-brand-white text-brand-white hover:bg-brand-white hover:text-brand-black"
+              className="border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white"
             >
               <Link href="/services">Explore All Services</Link>
             </Button>

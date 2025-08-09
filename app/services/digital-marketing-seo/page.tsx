@@ -76,29 +76,29 @@ export default function DigitalMarketingSEO() {
   console.log('Digital Marketing & SEO page rendered');
 
   return (
-    <div className="pt-24 min-h-screen bg-gradient-elegant">
+    <div className="pt-24 min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-black-gold">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-gray-50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <Badge className="mb-6 bg-brand-gold/20 text-brand-gold border-brand-gold/30">
+            <Badge className="mb-6 bg-blue-900/20 text-blue-900 border-blue-900/30">
               Digital Growth
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold text-brand-white mb-6 text-shadow-gold">
-              Digital Marketing <span className="gradient-text">& SEO</span>
+            <h1 className="text-4xl md:text-6xl font-bold text-blue-900 mb-6">
+              Digital Marketing <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">& SEO</span>
             </h1>
-            <p className="text-xl text-brand-cream max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
               Amplify your online presence with data-driven digital marketing strategies. 
               We help businesses grow through targeted SEO, social media marketing, and conversion optimization.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-gradient-gold hover:opacity-90 text-brand-black font-semibold px-8">
+              <Button size="lg" className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 hover:opacity-90 text-white font-semibold px-8 py-4 text-lg rounded-full">
                 <Link href="/contact">Get Marketing Audit</Link>
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black"
+                className="border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white"
               >
                 View Case Studies
               </Button>
@@ -108,13 +108,13 @@ export default function DigitalMarketingSEO() {
       </section>
 
       {/* Results Section */}
-      <section className="section-padding bg-brand-white">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-black mb-6">
-              Proven <span className="gradient-text">Results</span> That Matter
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+              Proven <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Results</span> That Matter
             </h2>
-            <p className="text-lg text-brand-gray max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Our data-driven approach delivers measurable results for businesses of all sizes
             </p>
           </div>
@@ -122,10 +122,10 @@ export default function DigitalMarketingSEO() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {results.map((result, index) => (
               <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">
+                <div className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent mb-2">
                   {result.metric}
                 </div>
-                <div className="text-brand-gray font-medium">
+                <div className="text-slate-600 font-medium">
                   {result.label}
                 </div>
               </div>
@@ -135,36 +135,36 @@ export default function DigitalMarketingSEO() {
       </section>
 
       {/* Services Section */}
-      <section className="section-padding bg-brand-charcoal">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-white mb-6">
-              Comprehensive <span className="gradient-text">Marketing Services</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+              Comprehensive <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Marketing Services</span>
             </h2>
-            <p className="text-lg text-brand-cream max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Full-spectrum digital marketing solutions to grow your business online
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="bg-brand-black/50 border-brand-gold/20 card-hover h-full">
+              <Card key={index} className="bg-white border-blue-900/20 shadow-md h-full">
                 <CardContent className="p-6 h-full flex flex-col">
                   <div className="mb-4">
-                    <div className="inline-flex p-3 rounded-xl bg-gradient-gold">
-                      <service.icon className="h-6 w-6 text-brand-black" />
+                    <div className="inline-flex p-3 rounded-xl bg-blue-500/30">
+                      <service.icon className={`h-6 w-6 ${index === 0 ? 'text-red-500' : index === 1 ? 'text-green-500' : index === 2 ? 'text-yellow-500' : index === 3 ? 'text-purple-500' : index === 4 ? 'text-pink-500' : 'text-blue-900'}`} />
                     </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-brand-white mb-3">
+                  <h3 className="text-xl font-semibold text-blue-900 mb-3">
                     {service.title}
                   </h3>
-                  <p className="text-brand-cream mb-4 flex-grow">
+                  <p className="text-slate-600 mb-4 flex-grow">
                     {service.description}
                   </p>
-                  <div className="border-t border-brand-gold/20 pt-4">
+                  <div className="border-t border-blue-900/20 pt-4">
                     <div className="grid grid-cols-2 gap-2">
                       {service.features.map((feature, idx) => (
-                        <div key={idx} className="text-sm text-brand-gold">
+                        <div key={idx} className="text-sm text-blue-900">
                           • {feature}
                         </div>
                       ))}
@@ -178,13 +178,13 @@ export default function DigitalMarketingSEO() {
       </section>
 
       {/* Industries Section */}
-      <section className="section-padding bg-brand-white">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-black mb-6">
-              <span className="gradient-text">Industries</span> We Serve
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+              <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Industries</span> We Serve
             </h2>
-            <p className="text-lg text-brand-gray max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Tailored marketing strategies for diverse industry verticals
             </p>
           </div>
@@ -194,7 +194,7 @@ export default function DigitalMarketingSEO() {
               <Badge 
                 key={industry}
                 variant="outline" 
-                className="px-6 py-3 text-brand-brown border-brand-brown/30 hover:bg-gradient-brown hover:text-white transition-all cursor-pointer"
+                className="px-6 py-3 text-blue-900 border-blue-900/30 hover:bg-blue-900 hover:text-white transition-all cursor-pointer"
               >
                 {industry}
               </Badge>
@@ -204,13 +204,13 @@ export default function DigitalMarketingSEO() {
       </section>
 
       {/* Process Section */}
-      <section className="section-padding bg-brand-charcoal">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-white mb-6">
-              Our <span className="gradient-text">Marketing Methodology</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+              Our <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Marketing Methodology</span>
             </h2>
-            <p className="text-lg text-brand-cream max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               A systematic approach to digital marketing success
             </p>
           </div>
@@ -223,11 +223,11 @@ export default function DigitalMarketingSEO() {
               { step: '04', title: 'Scale', desc: 'Performance tracking and scaling' }
             ].map((item, index) => (
               <div key={index} className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-gold flex items-center justify-center text-brand-black font-bold text-lg">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 flex items-center justify-center text-white font-bold text-lg">
                   {item.step}
                 </div>
-                <h3 className="text-xl font-semibold text-brand-white mb-2">{item.title}</h3>
-                <p className="text-brand-cream text-sm">{item.desc}</p>
+                <h3 className="text-xl font-semibold text-blue-900 mb-2">{item.title}</h3>
+                <p className="text-slate-600 text-sm">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -235,22 +235,22 @@ export default function DigitalMarketingSEO() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-brown-gold">
-        <div className="mx-auto max-w-4xl container-padding text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-white mb-6">
-            Ready to <span className="text-brand-gold">Grow Your Business?</span>
+      <section className="py-12 bg-gray-50">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+            Ready to <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Grow Your Business?</span>
           </h2>
-          <p className="text-xl text-brand-cream mb-8">
+          <p className="text-xl text-slate-600 mb-8">
             Let's create a digital marketing strategy that drives real results for your business.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-brand-white text-brand-black hover:bg-brand-cream font-semibold px-8">
+            <Button size="lg" className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 hover:opacity-90 text-white font-semibold px-8 py-4 text-lg rounded-full">
               <Link href="/contact">Get Free Marketing Audit</Link>
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-brand-white text-brand-black hover:bg-brand-white hover:text-brand-black"
+              className="border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white"
             >
               <Link href="/services">Explore All Services</Link>
             </Button>
