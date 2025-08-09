@@ -31,7 +31,6 @@ const services = [
     description: 'Modern, responsive websites built with cutting-edge technologies for optimal performance and user experience.',
     icon: GlobeAltIcon,
     href: '/services/website-development',
-    color: 'gradient-gold',
     features: ['Responsive Design', 'SEO Optimized', 'Fast Loading', 'Modern UI/UX']
   },
   {
@@ -39,7 +38,6 @@ const services = [
     description: 'Native and cross-platform mobile applications for iOS and Android with seamless user experiences.',
     icon: DevicePhoneMobileIcon,
     href: '/services/mobile-app-development',
-    color: 'gradient-brown',
     features: ['Native iOS/Android', 'Cross-platform', 'App Store Optimization', 'Push Notifications']
   },
   {
@@ -47,7 +45,6 @@ const services = [
     description: 'Comprehensive digital marketing strategies to boost your online presence and drive conversions.',
     icon: MegaphoneIcon,
     href: '/services/digital-marketing-seo',
-    color: 'gradient-gold',
     features: ['SEO Strategy', 'Social Media Marketing', 'Content Marketing', 'PPC Campaigns']
   },
   {
@@ -55,7 +52,6 @@ const services = [
     description: 'Scalable cloud infrastructure and DevOps automation services for reliable, efficient operations.',
     icon: CloudIcon,
     href: '/services/devops-cloud-solutions',
-    color: 'gradient-brown',
     features: ['AWS/Azure/GCP', 'CI/CD Pipelines', 'Infrastructure as Code', 'Monitoring & Alerts']
   },
   {
@@ -63,7 +59,6 @@ const services = [
     description: 'Custom business management systems to streamline operations and improve productivity.',
     icon: CogIcon,
     href: '/services/crm-erp-systems',
-    color: 'gradient-gold',
     features: ['Custom CRM', 'ERP Solutions', 'Data Integration', 'Process Automation']
   },
   {
@@ -71,7 +66,6 @@ const services = [
     description: 'Robust network and infrastructure solutions for secure, reliable business operations.',
     icon: ServerIcon,
     href: '/services/it-infrastructure-networking',
-    color: 'gradient-brown',
     features: ['Network Design', 'Security Solutions', 'Server Management', '24/7 Monitoring']
   },
   {
@@ -79,7 +73,6 @@ const services = [
     description: 'Professional animation services for marketing, education, and entertainment content.',
     icon: FilmIcon,
     href: '/services/2d-3d-animation',
-    color: 'gradient-gold',
     features: ['2D Animation', '3D Modeling', 'Motion Graphics', 'Video Production']
   },
   {
@@ -87,7 +80,6 @@ const services = [
     description: 'Bespoke software development tailored to your unique business requirements and workflows.',
     icon: CommandLineIcon,
     href: '/services/custom-software-solutions',
-    color: 'gradient-brown',
     features: ['Web Applications', 'Enterprise Software', 'API Development', 'Database Design']
   },
   {
@@ -95,7 +87,6 @@ const services = [
     description: 'Comprehensive testing services to ensure software quality, performance, and reliability.',
     icon: BugAntIcon,
     href: '/services/qa-software-testing',
-    color: 'gradient-gold',
     features: ['Automated Testing', 'Performance Testing', 'Security Testing', 'User Acceptance Testing']
   },
   {
@@ -103,7 +94,6 @@ const services = [
     description: 'Complete brand identity, advertising campaigns, and market insights to elevate your brand.',
     icon: PaintBrushIcon,
     href: '/services/branding-advertising-market-research',
-    color: 'gradient-brown',
     features: ['Brand Identity Design', 'Advertising Campaigns', 'Market Analysis', 'Consumer Insights']
   },
   {
@@ -111,7 +101,6 @@ const services = [
     description: 'Strategic consulting to drive business growth, innovation, and competitive advantage.',
     icon: ChartBarIcon,
     href: '/services/business-strategy',
-    color: 'gradient-gold',
     features: ['Growth Planning', 'Market Expansion', 'Innovation Strategy', 'Competitive Analysis']
   },
   {
@@ -119,7 +108,6 @@ const services = [
     description: 'End-to-end recruitment solutions to acquire top tech talent for your organization.',
     icon: UserGroupIcon,
     href: '/services/recruitment-services',
-    color: 'gradient-brown',
     features: ['Talent Sourcing', 'Candidate Screening', 'Tech Recruitment', 'Onboarding Support']
   },
   {
@@ -127,7 +115,6 @@ const services = [
     description: 'Efficient outsourcing solutions for customer support, operations, and back-office tasks.',
     icon: BriefcaseIcon,
     href: '/services/bpo-services',
-    color: 'gradient-gold',
     features: ['Customer Support', 'Data Entry', 'Process Outsourcing', 'Call Center Services']
   },
   {
@@ -135,7 +122,6 @@ const services = [
     description: 'Scalable and robust system designs for efficient and future-proof solutions.',
     icon: CubeIcon,
     href: '/services/system-design-architecture',
-    color: 'gradient-brown',
     features: ['Microservices Architecture', 'System Scalability', 'Database Design', 'Cloud Integration']
   },
   {
@@ -143,7 +129,6 @@ const services = [
     description: 'Efficient tracking and management of IT assets to optimize resources and reduce costs.',
     icon: DocumentTextIcon,
     href: '/services/it-asset-management',
-    color: 'gradient-gold',
     features: ['Asset Tracking', 'Inventory Management', 'Cost Optimization', 'Compliance Audits']
   }
 ]
@@ -152,15 +137,15 @@ export default function Services() {
   console.log('Services page rendered');
 
   return (
-    <div className="pt-24 min-h-screen bg-gradient-elegant">
+    <div className="pt-24 min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-black-gold">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-gray-50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-brand-white mb-6 text-shadow-gold">
-              Our <span className="gradient-text">Technology Services</span>
+            <h1 className="text-4xl md:text-6xl font-bold text-blue-900 mb-6">
+              Our <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Technology Services</span>
             </h1>
-            <p className="text-xl text-brand-cream max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               Comprehensive IT solutions designed to accelerate your business growth 
               and digital transformation journey with cutting-edge technology.
             </p>
@@ -169,32 +154,50 @@ export default function Services() {
       </section>
 
       {/* Services Grid */}
-      <section className="section-padding bg-brand-white">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <Card key={service.title} className="card-hover h-full border-brand-gold/20 shadow-lg bg-brand-white hover:shadow-brand-gold/10">
+            {services.map((service, index) => (
+              <Card key={service.title} className="h-full border-blue-900/20 shadow-md hover:shadow-lg transition-shadow">
                 <CardContent className="p-6 h-full flex flex-col">
                   <div className="mb-4">
-                    <div className={`inline-flex p-3 rounded-xl bg-${service.color}`}>
-                      <service.icon className="h-6 w-6 text-brand-black" />
+                    <div className="inline-flex p-3 rounded-xl bg-blue-500/30">
+                      <service.icon
+                        className={`h-6 w-6 ${
+                          index === 0 ? 'text-red-500' :
+                          index === 1 ? 'text-green-500' :
+                          index === 2 ? 'text-yellow-500' :
+                          index === 3 ? 'text-purple-500' :
+                          index === 4 ? 'text-pink-500' :
+                          index === 5 ? 'text-blue-900' :
+                          index === 6 ? 'text-red-500' :
+                          index === 7 ? 'text-green-500' :
+                          index === 8 ? 'text-yellow-500' :
+                          index === 9 ? 'text-purple-500' :
+                          index === 10 ? 'text-pink-500' :
+                          index === 11 ? 'text-blue-900' :
+                          index === 12 ? 'text-red-500' :
+                          index === 13 ? 'text-green-500' :
+                          'text-yellow-500'
+                        }`}
+                      />
                     </div>
                   </div>
                   
-                  <h3 className="text-xl font-semibold text-brand-black mb-3">
+                  <h3 className="text-xl font-semibold text-blue-900 mb-3">
                     {service.title}
                   </h3>
                   
-                  <p className="text-brand-gray mb-4 flex-grow">
+                  <p className="text-slate-600 mb-4 flex-grow">
                     {service.description}
                   </p>
 
                   <div className="mb-6">
-                    <h4 className="font-medium text-brand-black mb-2">Key Features:</h4>
-                    <ul className="text-sm text-brand-gray space-y-1">
+                    <h4 className="font-medium text-blue-900 mb-2">Key Features:</h4>
+                    <ul className="text-sm text-slate-600 space-y-1">
                       {service.features.map((feature, index) => (
                         <li key={index} className="flex items-center">
-                          <span className="w-1.5 h-1.5 bg-brand-gold rounded-full mr-2"></span>
+                          <span className="w-1.5 h-1.5 bg-blue-900 rounded-full mr-2"></span>
                           {feature}
                         </li>
                       ))}
@@ -203,7 +206,7 @@ export default function Services() {
                   
                   <Button 
                     asChild 
-                    className="w-full bg-gradient-gold hover:opacity-90 text-brand-black font-semibold"
+                    className="w-full bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 hover:opacity-90 text-white font-semibold rounded-full"
                   >
                     <Link href={service.href}>
                       Learn More
@@ -217,19 +220,19 @@ export default function Services() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-brown-gold">
-        <div className="mx-auto max-w-4xl container-padding text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-white mb-6">
-            Need a <span className="text-brand-gold">Custom Solution?</span>
+      <section className="py-12 bg-gray-50">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+            Need a <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Custom Solution?</span>
           </h2>
-          <p className="text-xl text-brand-cream mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
             Every business is unique. Let's discuss how we can create a tailored 
             technology solution that perfectly fits your needs and drives growth.
           </p>
           <Button 
             asChild
             size="lg"
-            className="bg-brand-white text-brand-black hover:bg-brand-cream font-semibold px-8 py-4 text-lg"
+            className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 hover:opacity-90 text-white font-semibold px-8 py-4 rounded-full"
           >
             <Link href="/contact">Get Free Consultation</Link>
           </Button>

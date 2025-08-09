@@ -22,7 +22,6 @@ import {
   ArrowRightIcon,
 } from '@heroicons/react/24/outline';
 
-// The Service interface remains the same
 interface Service {
   title: string;
   description: string;
@@ -30,7 +29,6 @@ interface Service {
   href: string;
 }
 
-// The services array remains the same
 const services: Service[] = [
   {
     title: 'Website Development',
@@ -126,10 +124,10 @@ const services: Service[] = [
 
 export default function ServicesSection() {
   return (
-    <section className="bg-slate-50 py-20 sm:py-24">
+    <section className="bg-gray-50 py-20 sm:py-24">
       <style jsx>{`
-        .gold-gradient {
-          background: linear-gradient(90deg, #F59E0B, #D97706, #B45309);
+        .blue-gradient {
+          background: linear-gradient(90deg, #7C3AED, #4F46E5, #2563EB);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -139,28 +137,61 @@ export default function ServicesSection() {
       
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="text-base font-semibold leading-7 text-amber-700">Our Services</h2>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            <span className="gold-gradient">Innovative IT Solutions</span> to Empower Your Business
+          <h2 className="text-base font-semibold leading-7 text-blue-900">Our Services</h2>
+          <p className="mt-2 text-3xl font-bold tracking-tight text-blue-900 sm:text-4xl">
+            <span className="blue-gradient">Innovative IT Solutions</span> to Empower Your Business
           </p>
-          <p className="mt-6 text-lg leading-8 text-gray-600">
+          <p className="mt-6 text-lg leading-8 text-slate-600">
             From strategy to execution, we deliver tailored technology services that drive results.
           </p>
         </div>
 
         <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
+          {services.map((service, index) => (
             <div key={service.title} className="h-full">
-              <Card className="flex h-full flex-col rounded-2xl bg-white shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-slate-200/80">
+              <Card className="flex h-full flex-col rounded-2xl bg-white shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-blue-900/20">
                 <CardContent className="p-8 flex flex-col h-full">
-                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-amber-100">
-                    <service.icon className="h-7 w-7 text-amber-700" aria-hidden="true" />
+                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-500/30">
+                    <service.icon
+                      className={`h-7 w-7 ${
+                        index === 0
+                          ? 'text-red-500'
+                          : index === 1
+                          ? 'text-green-500'
+                          : index === 2
+                          ? 'text-yellow-500'
+                          : index === 3
+                          ? 'text-purple-500'
+                          : index === 4
+                          ? 'text-pink-500'
+                          : index === 5
+                          ? 'text-blue-900'
+                          : index === 6
+                          ? 'text-red-500'
+                          : index === 7
+                          ? 'text-green-500'
+                          : index === 8
+                          ? 'text-yellow-500'
+                          : index === 9
+                          ? 'text-purple-500'
+                          : index === 10
+                          ? 'text-pink-500'
+                          : index === 11
+                          ? 'text-blue-900'
+                          : index === 12
+                          ? 'text-red-500'
+                          : index === 13
+                          ? 'text-green-500'
+                          : 'text-yellow-500'
+                      }`}
+                      aria-hidden="true"
+                    />
                   </div>
-                  <h3 className="text-xl font-semibold text-slate-800">{service.title}</h3>
+                  <h3 className="text-xl font-semibold text-blue-900">{service.title}</h3>
                   <p className="mt-3 text-base text-slate-600 flex-grow">{service.description}</p>
                   <Button
                     asChild
-                    className="mt-8 w-full group bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:from-yellow-800 hover:via-yellow-700 hover:to-yellow-600 text-white py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                    className="mt-8 w-full group bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 hover:opacity-90 text-white py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                   >
                     <Link href={service.href}>
                       Learn More
@@ -176,7 +207,7 @@ export default function ServicesSection() {
         <div className="mt-16 text-center">
           <Button
             asChild
-            className="bg-gradient-to-r from-yellow-700 via-yellow-600 to-yellow-500 hover:from-yellow-800 hover:via-yellow-700 hover:to-yellow-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 hover:opacity-90 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
           >
             <Link href="/services">Explore All Our Services</Link>
           </Button>
