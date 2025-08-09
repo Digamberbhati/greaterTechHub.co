@@ -83,29 +83,29 @@ export default function MobileAppDevelopment() {
   console.log('Mobile App Development page rendered');
 
   return (
-    <div className="pt-24 min-h-screen bg-gradient-elegant">
+    <div className="pt-24 min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-black-gold">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-gray-50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <Badge className="mb-6 bg-brand-gold/20 text-brand-gold border-brand-gold/30">
+            <Badge className="mb-6 bg-blue-900/20 text-blue-900 border-blue-900/30">
               Mobile Solutions
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold text-brand-white mb-6 text-shadow-gold">
-              Mobile App <span className="gradient-text">Development</span>
+            <h1 className="text-4xl md:text-6xl font-bold text-blue-900 mb-6">
+              Mobile App <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Development</span>
             </h1>
-            <p className="text-xl text-brand-cream max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
               Transform your ideas into powerful mobile applications with our expert development team. 
               We create native and cross-platform apps that deliver exceptional user experiences and drive business growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-gradient-gold hover:opacity-90 text-brand-black font-semibold px-8">
+              <Button size="lg" className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 hover:opacity-90 text-white font-semibold px-8 py-4 text-lg rounded-full">
                 <Link href="/contact">Start Your Project</Link>
               </Button>
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-brand-black"
+                className="border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white"
               >
                 View Portfolio
               </Button>
@@ -115,13 +115,13 @@ export default function MobileAppDevelopment() {
       </section>
 
       {/* Technologies Section */}
-      <section className="section-padding bg-brand-white">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-black mb-6">
-              <span className="gradient-text">Technologies</span> We Master
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+              <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Technologies</span> We Master
             </h2>
-            <p className="text-lg text-brand-gray max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Leveraging cutting-edge technologies to build robust, scalable mobile applications
             </p>
           </div>
@@ -131,7 +131,7 @@ export default function MobileAppDevelopment() {
               <Badge 
                 key={tech} 
                 variant="outline" 
-                className="px-4 py-2 text-brown border-brand-brown/30 hover:bg-gradient-brown text-black transition-all"
+                className="px-4 py-2 text-blue-900 border-blue-900/30 hover:bg-blue-900 hover:text-white transition-all"
               >
                 {tech}
               </Badge>
@@ -141,30 +141,30 @@ export default function MobileAppDevelopment() {
       </section>
 
       {/* Features Section */}
-      <section className="section-padding bg-brand-charcoal">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-white mb-6">
-              Why Choose Our <span className="gradient-text">Mobile Solutions</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+              Why Choose Our <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Mobile Solutions</span>
             </h2>
-            <p className="text-lg text-brand-cream max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               Comprehensive mobile app development services that ensure your success
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
-              <Card key={index} className="bg-brand-black/50 border-brand-gold/20 card-hover">
+              <Card key={index} className="bg-white border-blue-900/20 shadow-md">
                 <CardContent className="p-6">
                   <div className="mb-4">
-                    <div className="inline-flex p-3 rounded-xl bg-gradient-gold">
-                      <feature.icon className="h-6 w-6 text-brand-black" />
+                    <div className="inline-flex p-3 rounded-xl bg-blue-500/30">
+                      <feature.icon className={`h-6 w-6 ${index === 0 ? 'text-red-500' : index === 1 ? 'text-green-500' : index === 2 ? 'text-yellow-500' : index === 3 ? 'text-purple-500' : index === 4 ? 'text-pink-500' : index === 5 ? 'text-blue-900' : index === 6 ? 'text-red-500' : index === 7 ? 'text-green-500' : 'text-yellow-500'}`} />
                     </div>
                   </div>
-                  <h3 className="text-xl font-semibold text-brand-white mb-3">
+                  <h3 className="text-xl font-semibold text-blue-900 mb-3">
                     {feature.title}
                   </h3>
-                  <p className="text-brand-cream">
+                  <p className="text-slate-600">
                     {feature.description}
                   </p>
                 </CardContent>
@@ -175,13 +175,13 @@ export default function MobileAppDevelopment() {
       </section>
 
       {/* Delivery Process */}
-      <section className="section-padding bg-brand-white">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-12 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-black mb-6">
-              Our <span className="gradient-text">Development Process</span>
+            <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+              Our <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Development Process</span>
             </h2>
-            <p className="text-lg text-brand-gray max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               A proven methodology that ensures quality delivery and client satisfaction
             </p>
           </div>
@@ -191,15 +191,15 @@ export default function MobileAppDevelopment() {
               <div key={index} className="relative">
                 <div className="flex items-start">
                   <div className="flex-shrink-0">
-                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-gold text-brand-black font-bold text-lg">
+                    <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 text-white font-bold text-lg">
                       {process.step}
                     </div>
                   </div>
                   <div className="ml-4">
-                    <h3 className="text-xl font-semibold text-brand-black mb-2">
+                    <h3 className="text-xl font-semibold text-blue-900 mb-2">
                       {process.title}
                     </h3>
-                    <p className="text-brand-gray">
+                    <p className="text-slate-600">
                       {process.description}
                     </p>
                   </div>
@@ -211,22 +211,22 @@ export default function MobileAppDevelopment() {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-brown-gold">
-        <div className="mx-auto max-w-4xl container-padding text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-white mb-6">
-            Ready to Build Your <span className="text-brand-gold">Mobile App?</span>
+      <section className="py-12 bg-gray-50">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-6">
+            Ready to Build Your <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Mobile App?</span>
           </h2>
-          <p className="text-xl text-brand-cream mb-8">
+          <p className="text-xl text-slate-600 mb-8">
             Let's discuss your mobile app idea and create a solution that exceeds your expectations.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-brand-white text-brand-black hover:bg-brand-cream font-semibold px-8">
+            <Button size="lg" className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 hover:opacity-90 text-white font-semibold px-8 py-4 text-lg rounded-full">
               <Link href="/contact">Get Free Consultation</Link>
             </Button>
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-brand-white text-brand-black hover:bg-brand-white hover:text-brand-black"
+              className="border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white"
             >
               <Link href="/services">View All Services</Link>
             </Button>
