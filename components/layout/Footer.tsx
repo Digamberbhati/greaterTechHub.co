@@ -6,13 +6,14 @@ import {
 } from '@heroicons/react/24/outline';
 import { 
   FaWhatsapp, 
-  FaFacebook, 
+  FaFacebookF, 
   FaInstagram, 
-  FaTwitter, 
-  FaLinkedin, 
+  FaLinkedinIn, 
   FaYoutube 
 } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
 
+// --- Data for Links ---
 const footerSections = [
   {
     title: 'Company',
@@ -28,52 +29,61 @@ const footerSections = [
     links: [
       { name: 'Privacy Policy', href: '/privacy-policy' },
       { name: 'Terms & Conditions', href: '/terms-conditions' },
-      // { name: 'Support', href: '/support' },
       { name: 'Partnership', href: '/partnership' },
       { name: 'Refer and Earn', href: '/refer-and-earn' },
     ],
   },
 ];
 
+const socialLinks = [
+    { name: 'WhatsApp', href: 'https://wa.me/919588160069', icon: FaWhatsapp },
+    { name: 'Facebook', href: 'https://facebook.com/greatertechhub', icon: FaFacebookF },
+    { name: 'Instagram', href: 'https://instagram.com/greatertechhub', icon: FaInstagram },
+    { name: 'X', href: 'https://x.com/greatertechhub', icon: FaXTwitter },
+    { name: 'LinkedIn', href: 'https://linkedin.com/company/greatertechhub', icon: FaLinkedinIn },
+    { name: 'YouTube', href: 'https://youtube.com/@greatertechhub', icon: FaYoutube },
+];
+
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white">
+    // Changed bg-slate-900 to bg-slate-800 to make it less dark
+    <footer className="bg-slate-800">
+      {/* --- Main Footer Content --- */}
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <div className="flex items-center space-x-3 mb-6">
-              <span className="text-2xl font-bold tracking-tight text-white">
-                Contact
-              </span>
-            </div>
-            <p className="text-gray-300 text-sm leading-relaxed mb-8 max-w-md">
+            <h3 className="text-2xl font-bold tracking-tight text-white mb-6">
+              Contact
+            </h3>
+            <p className="text-slate-300 text-sm leading-relaxed mb-8 max-w-md">
               GreaterTechHub (Worldwide with Top-Notch IT Services & BPO Services)
             </p>
 
             {/* Contact Info */}
             <div className="space-y-4">
               <div className="flex items-center space-x-3">
-                <EnvelopeIcon className="h-5 w-5 text-brand-blue flex-shrink-0" />
+                <EnvelopeIcon className="h-5 w-5 text-sky-500 flex-shrink-0" />
                 <a 
                   href="mailto:info@greatertechhub.com" 
-                  className="text-gray-300 hover:text-white hover:underline transition-all duration-300 text-sm"
+                  className="text-slate-300 hover:text-sky-400 transition-colors duration-300 text-sm"
                 >
                   info@greatertechhub.com
                 </a>
               </div>
               <div className="flex items-center space-x-3">
-                <PhoneIcon className="h-5 w-5 text-brand-blue flex-shrink-0" />
+                <PhoneIcon className="h-5 w-5 text-sky-500 flex-shrink-0" />
                 <a 
                   href="tel:+919588160069" 
-                  className="text-gray-300 hover:text-white hover:underline transition-all duration-300 text-sm"
+                  className="text-slate-300 hover:text-sky-400 transition-colors duration-300 text-sm"
                 >
                   +91 9588160069
                 </a>
               </div>
               <div className="flex items-start space-x-3">
-                <MapPinIcon className="h-5 w-5 text-brand-blue flex-shrink-0 mt-1" />
-                <div className="text-gray-300 text-sm leading-relaxed">
+                <MapPinIcon className="h-5 w-5 text-sky-500 flex-shrink-0 mt-1" />
+                <div className="text-slate-300 text-sm leading-relaxed">
                   <p>
                     3rd Floor, Krishna Palace, Ajronda Rd, Krishna Nagar, Chowk, Sector 20B, Faridabad, Haryana 121001
                   </p>
@@ -96,7 +106,7 @@ export default function Footer() {
                   <li key={link.name}>
                     <Link
                       href={link.href}
-                      className="text-gray-300 hover:text-white hover:underline transition-all duration-300 text-sm"
+                      className="text-slate-300 hover:text-sky-400 transition-colors duration-300 text-sm"
                     >
                       {link.name}
                     </Link>
@@ -106,71 +116,31 @@ export default function Footer() {
             </div>
           ))}
         </div>
+      </div>
 
-        {/* Bottom Border */}
-        <div className="border-t border-gray-700 mt-12 pt-8">
-          <div className="flex flex-col items-center md:flex-row md:justify-between gap-4">
-            <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} GreaterTechHub. All rights reserved.
-            </p>
-            <div className="flex space-x-4">
-              {/* Social Media Icons */}
-              <a 
-                href="https://wa.me/+919588160069" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white hover:scale-125 transition-all duration-300"
-                aria-label="WhatsApp"
-              >
-                <FaWhatsapp className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://facebook.com/greatertechhub" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white hover:scale-125 transition-all duration-300"
-                aria-label="Facebook"
-              >
-                <FaFacebook className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://instagram.com/@greatertechsolutions" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white hover:scale-125 transition-all duration-300"
-                aria-label="Instagram"
-              >
-                <FaInstagram className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://x.com/greatertechhub" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white hover:scale-125 transition-all duration-300"
-                aria-label="X"
-              >
-                <FaTwitter className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://linkedin.com/company/greatertechhub" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white hover:scale-125 transition-all duration-300"
-                aria-label="LinkedIn"
-              >
-                <FaLinkedin className="h-5 w-5" />
-              </a>
-              <a 
-                href="https://youtube.com/@greatertechhub" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white hover:scale-125 transition-all duration-300"
-                aria-label="YouTube"
-              >
-                <FaYoutube className="h-5 w-5" />
-              </a>
+      {/* --- Bottom Bar with sky-500 Background Color --- */}
+      <div className="bg-sky-500">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5">
+            <div className="flex flex-col items-center md:flex-row md:justify-between gap-4">
+                <p className="text-white text-sm">
+                  © {new Date().getFullYear()} GreaterTechHub. All rights reserved.
+                </p>
+                
+                <div className="flex space-x-4">
+                  {socialLinks.map((social) => (
+                     <a 
+                      key={social.name}
+                      href={social.href} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-white hover:text-slate-200 transform hover:scale-110 transition-all duration-300"
+                      aria-label={social.name}
+                    >
+                      <social.icon className="h-5 w-5" />
+                    </a>
+                  ))}
+                </div>
             </div>
-          </div>
         </div>
       </div>
     </footer>
