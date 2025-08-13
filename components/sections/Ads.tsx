@@ -6,54 +6,62 @@ import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
-// Offer data with multiple images
-const weeklyOffer = {
-  title: '30% Off This Week',
-  description: 'Unlock premium features with GreaterTechHub! Get 30% off any annual plan and elevate your experience. Limited time offer!',
-  images: [
-    {
-      url: 'https://images.unsplash.com/photo-1661956600684-97d3a4320e45?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      alt: 'Technology offer 1',
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1516321310762-479437144403?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      alt: 'Technology offer 2',
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1593642634367-d91a5d8e3527?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      alt: 'Technology offer 3',
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      alt: 'Technology offer 4',
-    },
-  ],
-  ctaText: 'Claim Offer Now',
-  ctaLink: '/offers/annual',
-  points: [
-    'Access to exclusive premium content',
-    'Priority customer support',
-    'Ad-free experience',
-    'Unlimited downloads and resources',
-  ],
-};
+// MODIFIED: Data structure to handle multiple offers
+const serviceOffers = [
+  {
+    serviceName: 'Website Development',
+    title: '30% Off on Web Development',
+    description: 'Get a stunning, high-performance website tailored for your business. Our experts build responsive, SEO-friendly sites that drive results.',
+    image: '/ads/web.png',
+    ctaLink: '/services/website-development',
+    points: [
+      'Modern & Responsive Design',
+      'SEO-Optimized from the start',
+      'Fast loading speeds for better UX',
+      'Custom features to fit your needs',
+    ],
+  },
+  {
+    serviceName: 'AI Agents & Chatbots',
+    title: '15% Off on AI Solutions',
+    description: 'Automate workflows and enhance customer support with our custom AI agents and chatbots. Provide 24/7 service and boost efficiency.',
+    image: '/ads/ai.png',
+    ctaLink: '/services/ai-solutions',
+    points: [
+      '24/7 Automated Customer Support',
+      'Streamline internal processes',
+      'Data-driven insights and analytics',
+      'Seamless integration with your systems',
+    ],
+  },
+  {
+    serviceName: 'Digital Marketing',
+    title: '30% Off on Digital Marketing',
+    description: 'Boost your online presence and reach more customers. Our expert digital marketing strategies will help you dominate search rankings.',
+    image: '/ads/digital.png',
+    ctaLink: '/services/digital-marketing',
+    points: [
+      'Higher rankings on Google (SEO)',
+      'Increased organic website traffic',
+      'Effective social media campaigns',
+      'Comprehensive performance reports',
+    ],
+  },
+];
 
 export default function WeeklyOffer() {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  // MODIFIED: State now tracks the current offer index
+  const [currentOfferIndex, setCurrentOfferIndex] = useState(0);
   const [isAutoRotating, setIsAutoRotating] = useState(true);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Function to start or restart auto-rotation
   const startAutoRotation = () => {
     if (intervalRef.current) clearInterval(intervalRef.current);
     intervalRef.current = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => 
-        (prevIndex + 1) % weeklyOffer.images.length
-      );
-    }, 5000); // Change every 5 seconds
+      setCurrentOfferIndex((prevIndex) => (prevIndex + 1) % serviceOffers.length);
+    }, 5000);
   };
 
-  // Start auto-rotation on mount
   useEffect(() => {
     if (isAutoRotating) {
       startAutoRotation();
@@ -63,58 +71,50 @@ export default function WeeklyOffer() {
     };
   }, [isAutoRotating]);
 
-  // Handle manual image navigation
   const handlePrevious = () => {
-    setIsAutoRotating(false); // Pause auto-rotation
-    setCurrentImageIndex((prevIndex) => 
-      prevIndex === 0 ? weeklyOffer.images.length - 1 : prevIndex - 1
+    setIsAutoRotating(false);
+    setCurrentOfferIndex((prevIndex) =>
+      prevIndex === 0 ? serviceOffers.length - 1 : prevIndex - 1
     );
-    // Resume auto-rotation after 10 seconds
-    setTimeout(() => {
-      setIsAutoRotating(true);
-    }, 10000);
+    setTimeout(() => setIsAutoRotating(true), 10000);
   };
 
   const handleNext = () => {
-    setIsAutoRotating(false); // Pause auto-rotation
-    setCurrentImageIndex((prevIndex) => 
-      (prevIndex + 1) % weeklyOffer.images.length
-    );
-    // Resume auto-rotation after 10 seconds
-    setTimeout(() => {
-      setIsAutoRotating(true);
-    }, 10000);
+    setIsAutoRotating(false);
+    setCurrentOfferIndex((prevIndex) => (prevIndex + 1) % serviceOffers.length);
+    setTimeout(() => setIsAutoRotating(true), 10000);
   };
+
+  // MODIFIED: Get the current offer based on the index
+  const currentOffer = serviceOffers[currentOfferIndex];
 
   return (
     <section className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Weekly Offer Section */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-extrabold text-blue-900 tracking-tight">
-            This Week’s Exclusive Offer
+          {/* MODIFIED: More general heading */}
+          <h2 className="text-4xl font-extrabold text-[#4A78D3] tracking-tight">
+            This Week’s Exclusive Offers
           </h2>
           <p className="mt-4 text-lg text-slate-600">
-            Don’t miss out! Grab this limited-time deal before it’s gone.
+            Don’t miss out! Grab these limited-time deals before they’re gone.
           </p>
         </div>
 
-        {/* Offer Card */}
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row items-center">
-          {/* Left: Text Content */}
-          <div className="md:w-1/2 p-8 lg:p-12">
-            <h3 className="text-3xl font-bold text-blue-900 mb-4">
-              {weeklyOffer.title}
+          {/* Left: Text Content (Now dynamic) */}
+          <div className="md:w-1/2 p-8 lg:p-12 order-2 md:order-1">
+            <h3 className="text-3xl font-bold text-[#4A78D3] mb-4">
+              {currentOffer.title}
             </h3>
             <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-              {weeklyOffer.description}
+              {currentOffer.description}
             </p>
-            {/* Four Points */}
             <ul className="mb-6 space-y-3">
-              {weeklyOffer.points.map((point, index) => (
+              {currentOffer.points.map((point, index) => (
                 <li key={index} className="flex items-start">
                   <svg
-                    className="w-6 h-6 text-blue-900 mr-2 flex-shrink-0"
+                    className="w-6 h-6 text-[#4A78D3] mr-2 flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -134,23 +134,22 @@ export default function WeeklyOffer() {
             <Button
               asChild
               size="lg"
-              className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 hover:opacity-90 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-gradient-to-r from-[#4A78D3] to-[rgb(37,150,190)] hover:opacity-90 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              <Link href={weeklyOffer.ctaLink}>{weeklyOffer.ctaText}</Link>
+              <Link href={currentOffer.ctaLink}>Claim Offer</Link>
             </Button>
           </div>
 
-          {/* Right: Image */}
-          <div className="md:w-1/2 relative">
-            {weeklyOffer.images.map((image, index) => (
+          {/* Right: Image Container (Now dynamic) */}
+          <div className="md:w-1/2 w-full relative aspect-[3/2] order-1 md:order-2">
+            {serviceOffers.map((offer, index) => (
               <Image
-                key={index}
-                src={image.url}
-                alt={image.alt}
-                width={600}
-                height={400}
-                className={`w-full h-64 md:h-96 object-cover transition-opacity duration-500 ${
-                  index === currentImageIndex ? 'opacity-100' : 'opacity-0 absolute'
+                key={offer.serviceName}
+                src={offer.image}
+                alt={offer.title}
+                fill
+                className={`object-cover transition-opacity duration-700 ease-in-out ${
+                  index === currentOfferIndex ? 'opacity-100' : 'opacity-0'
                 }`}
               />
             ))}
@@ -159,32 +158,30 @@ export default function WeeklyOffer() {
 
         {/* Navigation Buttons */}
         <div className="mt-6 flex justify-center space-x-4">
-          <div className="relative group">
+           <div className="relative group">
             <Button
               variant="outline"
               size="sm"
-              className="border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white"
+              className="border-[#4A78D3] text-[#4A78D3] hover:bg-[#4A78D3] hover:text-white"
               onClick={handlePrevious}
             >
               <ChevronLeftIcon className="w-5 h-5" />
             </Button>
-            <span className="absolute -top-10 left-1/2 transform -translate-x-1/2 hidden group-hover:block bg-white text-blue-900 text-sm px-3 py-1 rounded-md border border-blue-900/20 shadow-md transition-opacity duration-200">
-              Offer Previous
-              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-blue-900/20"></span>
+             <span className="absolute -top-10 left-1/2 transform -translate-x-1/2 hidden group-hover:block bg-white text-[#4A78D3] text-sm px-3 py-1 rounded-md border border-gray-200 shadow-md">
+              Previous
             </span>
           </div>
           <div className="relative group">
             <Button
               variant="outline"
               size="sm"
-              className="border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white"
+              className="border-[#4A78D3] text-[#4A78D3] hover:bg-[#4A78D3] hover:text-white"
               onClick={handleNext}
             >
               <ChevronRightIcon className="w-5 h-5" />
             </Button>
-            <span className="absolute -top-10 left-1/2 transform -translate-x-1/2 hidden group-hover:block bg-white text-blue-900 text-sm px-3 py-1 rounded-md border border-blue-900/20 shadow-md transition-opacity duration-200">
-              Offer Next
-              <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-0 h-0 border-l-8 border-r-8 border-t-8 border-l-transparent border-r-transparent border-t-blue-900/20"></span>
+             <span className="absolute -top-10 left-1/2 transform -translate-x-1/2 hidden group-hover:block bg-white text-[#4A78D3] text-sm px-3 py-1 rounded-md border border-gray-200 shadow-md">
+              Next
             </span>
           </div>
         </div>

@@ -1,4 +1,4 @@
-'use client';
+
 
 import Link from 'next/link';
 import { NewspaperIcon, XMarkIcon } from '@heroicons/react/24/outline';
@@ -159,15 +159,17 @@ const blogPosts = [
   },
 ];
 
+
 export default function BlogClient() {
   return (
     <div className="pt-24 min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="section-padding bg-blue-900">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-16 sm:py-20 md:py-24 bg-white">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-blue-900 mb-6">
-              <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Tech Insights</span> from GreaterTechHub
+            {/* MODIFIED */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6">
+              <span className="bg-gradient-to-r from-[#4A78D3] to-[rgb(37,150,190)] bg-clip-text text-transparent">Tech Insights from GreaterTechHub</span>
             </h1>
             <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               Stay ahead with GreaterTechHub’s expert insights on website development, mobile apps, digital marketing, and cutting-edge IT solutions.
@@ -177,37 +179,40 @@ export default function BlogClient() {
       </section>
 
       {/* Blog Posts Section */}
-      <section className="section-padding bg-gray-50">
-        <div className="mx-auto max-w-7xl container-padding">
+      <section className="py-16 sm:py-20 bg-gray-50">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-blue-900">
-              Explore Our <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Blog</span>
+            {/* MODIFIED */}
+            <h2 className="text-3xl sm:text-4xl font-extrabold">
+              <span className="bg-gradient-to-r from-[#4A78D3] to-[rgb(37,150,190)] bg-clip-text text-transparent">Explore Our Blog</span>
             </h2>
             <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto mt-4 leading-relaxed">
               Discover expert articles on technology trends, IT solutions, and industry insights to empower your business with GreaterTechHub.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post) => (
               <div
                 key={post.id}
-                className="group relative h-full bg-white border border-blue-900/20 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
+                className="group relative h-full flex flex-col bg-white border border-gray-200 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden"
               >
                 <div className="relative">
                   <img
                     src={post.image}
                     alt={post.title}
-                    className="w-full h-64 object-cover rounded-t-2xl transition-transform duration-300 group-hover:scale-105"
+                    className="w-full h-56 object-cover rounded-t-2xl transition-transform duration-300 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 </div>
-                <div className="p-6 flex flex-col">
+                <div className="p-6 flex flex-col flex-grow">
                   <div className="flex items-center mb-3">
-                    <NewspaperIcon className="h-5 w-5 text-blue-600 mr-2" />
+                    {/* MODIFIED */}
+                    <NewspaperIcon className="h-5 w-5 text-[#4A78D3] mr-2" />
                     <span className="text-sm text-slate-600 font-medium">{post.date}</span>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-bold bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent mb-3 line-clamp-2">
+                  {/* MODIFIED */}
+                  <h3 className="text-xl font-bold bg-gradient-to-r from-[#4A78D3] to-[rgb(37,150,190)] bg-clip-text text-transparent mb-3 line-clamp-2">
                     {post.title}
                   </h3>
                   <p className="text-slate-600 mb-4 flex-grow text-base leading-relaxed line-clamp-3">
@@ -215,10 +220,12 @@ export default function BlogClient() {
                   </p>
                   <div className="mb-4">
                     <span className="text-sm text-slate-600 font-medium">Keywords: </span>
-                    <span className="text-sm text-blue-600">{post.keywords.join(', ')}</span>
+                    {/* MODIFIED */}
+                    <span className="text-sm text-[#4A78D3]">{post.keywords.join(', ')}</span>
                   </div>
+                  {/* MODIFIED */}
                   <button
-                    className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 hover:opacity-90 text-white font-bold text-lg px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 mt-auto read-more-btn min-h-[60px] z-30 !block !visible w-full"
+                    className="bg-gradient-to-r from-[#4A78D3] to-[rgb(37,150,190)] hover:opacity-90 text-white font-bold text-base px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 mt-auto read-more-btn w-full"
                     data-post-id={post.id}
                   >
                     Read More
@@ -231,11 +238,12 @@ export default function BlogClient() {
       </section>
 
       {/* Modal for Full Blog Content */}
-      <div id="blog-modal" className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4 sm:p-6 hidden animate-fade-in">
-        <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative shadow-lg">
+      <div id="blog-modal" className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4 hidden animate-fade-in">
+        <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative shadow-2xl">
           <button
             id="close-modal"
-            className="absolute top-4 right-4 text-blue-900 hover:text-blue-600"
+            // MODIFIED
+            className="absolute top-4 right-4 text-[#4A78D3] hover:text-[rgb(37,150,190)] transition-colors"
             aria-label="Close modal"
           >
             <XMarkIcon className="h-8 w-8" />
@@ -246,20 +254,24 @@ export default function BlogClient() {
             alt=""
             className="w-full h-64 sm:h-80 object-cover rounded-xl mb-6"
           />
-          <h2 id="modal-title" className="text-2xl sm:text-3xl font-bold text-blue-900 mb-4"></h2>
+          {/* MODIFIED */}
+          <h2 id="modal-title" className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-[#4A78D3] to-[rgb(37,150,190)] bg-clip-text text-transparent mb-4"></h2>
           <div className="flex items-center mb-4">
-            <NewspaperIcon className="h-5 w-5 text-blue-600 mr-2" />
+            {/* MODIFIED */}
+            <NewspaperIcon className="h-5 w-5 text-[#4A78D3] mr-2" />
             <span id="modal-date" className="text-sm text-slate-600 font-medium"></span>
           </div>
-          <div id="modal-content" className="prose text-slate-600 mb-6 text-base leading-relaxed"></div>
+          <div id="modal-content" className="prose max-w-none text-slate-700 mb-6 text-base leading-relaxed"></div>
           <div className="mb-6">
             <span className="text-sm text-slate-600 font-medium">Keywords: </span>
-            <span id="modal-keywords" className="text-sm text-blue-600"></span>
+            {/* MODIFIED */}
+            <span id="modal-keywords" className="text-sm text-[#4A78D3]"></span>
           </div>
           <div className="flex justify-center gap-4">
+            {/* MODIFIED */}
             <button
               id="close-modal-btn"
-              className="bg-transparent border-2 border-blue-900 text-blue-900 hover:bg-blue-900 hover:text-white font-bold px-8 py-3 rounded-lg transition-all duration-300 w-full sm:w-auto"
+              className="bg-transparent border-2 border-[#4A78D3] text-[#4A78D3] hover:bg-[#4A78D3] hover:text-white font-bold px-8 py-3 rounded-lg transition-all duration-300 w-full sm:w-auto"
             >
               Close
             </button>
@@ -268,101 +280,56 @@ export default function BlogClient() {
       </div>
 
       {/* CTA Section */}
-      <section className="section-padding bg-blue-900">
-        <div className="mx-auto max-w-4xl container-padding text-center">
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-blue-900 mb-6">
-            Ready to <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Collaborate?</span>
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
+          {/* MODIFIED */}
+          <h2 className="text-3xl sm:text-4xl font-extrabold mb-6">
+            <span className="bg-gradient-to-r from-[#4A78D3] to-[rgb(37,150,190)] bg-clip-text text-transparent">Ready to Collaborate?</span>
           </h2>
           <p className="text-lg sm:text-xl text-slate-600 mb-8 max-w-2xl mx-auto leading-relaxed">
             Explore our services to bring innovative IT solutions to life and start your project with GreaterTechHub.
           </p>
           <div className="flex justify-center gap-4">
-            <button
-              className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 hover:opacity-90 text-white font-bold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto"
-            >
-              <Link href="/services">Explore Our Services</Link>
-            </button>
+            {/* MODIFIED */}
+            <Link href="/services" className="bg-gradient-to-r from-[#4A78D3] to-[rgb(37,150,190)] hover:opacity-90 text-white font-bold px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 w-full sm:w-auto">
+              Explore Our Services
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Client-side script for modal interactivity (unchanged) */}
-      <script
+       <script
         dangerouslySetInnerHTML={{
           __html: `
-            console.log('Script loaded at ${new Date().toISOString()}');
             const blogPosts = ${JSON.stringify(blogPosts)};
-            console.log('Blog posts loaded:', blogPosts.length, 'posts');
             const buttons = document.querySelectorAll('.read-more-btn');
-            console.log('Read more buttons found:', buttons.length);
-            if (buttons.length === 0) {
-              console.error('ERROR: No read-more-btn buttons found. Inspect the DOM for <button class="read-more-btn"> in each card. Check for CSS overrides (e.g., display: none) in globals.css or other stylesheets.');
-            } else {
-              buttons.forEach((button, index) => {
-                console.log('Button', index + 1, 'ID:', button.getAttribute('data-post-id'));
-                button.addEventListener('click', () => {
-                  console.log('Read more button clicked, post ID:', button.getAttribute('data-post-id'));
-                  const postId = button.getAttribute('data-post-id');
-                  const post = blogPosts.find(p => p.id == postId);
-                  if (post) {
-                    console.log('Post found:', post.title);
-                    const modalImage = document.getElementById('modal-image');
-                    const modalTitle = document.getElementById('modal-title');
-                    const modalDate = document.getElementById('modal-date');
-                    const modalContent = document.getElementById('modal-content');
-                    const modalKeywords = document.getElementById('modal-keywords');
-                    const modal = document.getElementById('blog-modal');
-                    if (modalImage && modalTitle && modalDate && modalContent && modalKeywords && modal) {
-                      modalImage.src = post.image || '/images/placeholder.jpg';
-                      modalImage.alt = post.title;
-                      modalTitle.textContent = post.title;
-                      modalDate.textContent = post.date;
-                      modalContent.innerHTML = post.content;
-                      modalKeywords.textContent = post.keywords.join(', ');
-                      modal.classList.remove('hidden');
-                      modal.classList.add('flex');
-                      console.log('Modal displayed for post:', post.title);
-                    } else {
-                      console.error('ERROR: One or more modal elements not found', {
-                        modalImage: !!modalImage,
-                        modalTitle: !!modalTitle,
-                        modalDate: !!modalDate,
-                        modalContent: !!modalContent,
-                        modalKeywords: !!modalKeywords,
-                        modal: !!modal
-                      });
-                    }
-                  } else {
-                    console.error('ERROR: Post not found for ID:', postId);
-                  }
-                });
+            buttons.forEach(button => {
+              button.addEventListener('click', () => {
+                const postId = button.getAttribute('data-post-id');
+                const post = blogPosts.find(p => p.id == postId);
+                if (post) {
+                  const modal = document.getElementById('blog-modal');
+                  document.getElementById('modal-image').src = post.image || '/images/placeholder.jpg';
+                  document.getElementById('modal-image').alt = post.title;
+                  document.getElementById('modal-title').textContent = post.title;
+                  document.getElementById('modal-date').textContent = post.date;
+                  document.getElementById('modal-content').innerHTML = post.content;
+                  document.getElementById('modal-keywords').textContent = post.keywords.join(', ');
+                  modal.classList.remove('hidden');
+                }
               });
-            }
+            });
             const closeModal = () => {
-              console.log('Close modal triggered');
               const modal = document.getElementById('blog-modal');
-              if (modal) {
-                modal.classList.add('hidden');
-                modal.classList.remove('flex');
-              } else {
-                console.error('ERROR: Modal element not found');
-              }
+              if (modal) modal.classList.add('hidden');
             };
-            const closeButton = document.getElementById('close-modal');
-            const closeButtonBtn = document.getElementById('close-modal-btn');
-            if (closeButton) {
-              closeButton.addEventListener('click', closeModal);
-            } else {
-              console.error('ERROR: Close button not found');
-            }
-            if (closeButtonBtn) {
-              closeButtonBtn.addEventListener('click', closeModal);
-            } else {
-              console.error('ERROR: Close button (btn) not found');
-            }
+            document.getElementById('close-modal').addEventListener('click', closeModal);
+            document.getElementById('close-modal-btn').addEventListener('click', closeModal);
           `,
         }}
       />
+
 
       {/* Structured Data for SEO (unchanged) */}
       <script

@@ -1,83 +1,32 @@
-'use client';
-
+import type { Metadata } from 'next';
 import AboutPreview from '@/components/sections/AboutPreview';
-import { useState } from 'react';
-import { ChevronDown, ChevronUp } from 'lucide-react';
+import FaqSection from '@/components/sections/FaqSection';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 
-export default function AboutClient() {
-  console.log('About page rendered');
+export const metadata: Metadata = {
+  title: 'About | GreaterTechHub',
+  description: 'Learn more about GreaterTechHub, a leading IT company delivering innovative technology solutions.',
+  alternates: {
+    canonical: 'https://greatertechhub.com/about',
+  },
+  openGraph: {
+    title: 'About | GreaterTechHub',
+    description: 'Learn more about GreaterTechHub, a leading IT company delivering innovative technology solutions.',
+    images: ['/Blacklogo.png'],
+  },
+};
 
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
-
-  const faqs = [
-    {
-      question: 'What is GreaterTechHub’s primary focus?',
-      answer:
-        'GreaterTechHub specializes in delivering AI-powered IT solutions to transform businesses, focusing on scalability, innovation, and modern technology stacks to drive growth.',
-    },
-    {
-      question: 'When was GreaterTechHub founded?',
-      answer:
-        'We were founded in 2023 with a vision to bridge business challenges with cutting-edge digital solutions, and we’ve since grown into a global leader in AI innovation.',
-    },
-    {
-      question: 'What types of industries do you serve?',
-      answer:
-        'We serve a wide range of industries, including finance, healthcare, e-commerce, logistics, and more, providing tailored AI and tech solutions to meet unique needs.',
-    },
-    {
-      question: 'How does GreaterTechHub ensure project quality?',
-      answer:
-        'Our team follows rigorous quality assurance processes, leveraging advanced AI tools and industry best practices to ensure 100% project delivery satisfaction.',
-    },
-    {
-      question: 'What makes your AI solutions unique?',
-      answer:
-        'Our AI solutions are customized, scalable, and built with modern tech stacks, ensuring they are future-ready and aligned with your business goals.',
-    },
-    {
-      question: 'Do you offer support after project completion?',
-      answer:
-        'Yes, we provide 24/7 global support to ensure your solutions run smoothly and evolve with your business needs.',
-    },
-    {
-      question: 'How do you handle data security?',
-      answer:
-        'We prioritize enterprise-grade security, implementing robust encryption, compliance with global standards, and regular audits to protect your data.',
-    },
-    {
-      question: 'Can you work with startups and small businesses?',
-      answer:
-        'Absolutely! We tailor our solutions to fit businesses of all sizes, from startups to enterprises, ensuring cost-effective and impactful results.',
-    },
-    {
-      question: 'What is the typical timeline for a project?',
-      answer:
-        'Project timelines vary based on complexity, but we work closely with clients to set clear milestones and deliver efficiently, often within 3-6 months for standard projects.',
-    },
-    {
-      question: 'How can I get started with GreaterTechHub?',
-      answer:
-        'Simply contact us through our website or book an appointment to discuss your needs. We’ll create a customized plan to drive your business forward.',
-    },
-  ];
-
-  const toggleFaq = (index: number) => {
-    setOpenFaq(openFaq === index ? null : index);
-  };
-
+export default function About() {
   return (
     <div className="bg-white min-h-screen font-sans text-black">
       {/* Hero Section */}
       <section className="relative bg-gray-50 pt-32 pb-20">
         <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight text-blue-900">
-              About{' '}
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600">
-                GreaterTechHub
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#4A78D3] to-[rgb(37,150,190)]">
+                About GreaterTechHub
               </span>
             </h1>
             <p className="text-lg sm:text-xl max-w-2xl mx-auto text-slate-600">
@@ -95,8 +44,7 @@ export default function AboutClient() {
             <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-blue-900">Who We Are</h2>
             <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
               GreaterTechHub is an innovative startup driven by a passion for transforming businesses
-              through{' '}
-              <span className="font-semibold text-blue-900">AI-driven solutions</span> and
+              through <span className="font-semibold text-blue-900">AI-driven solutions</span> and
               modern technology. Founded with a mission to bridge the gap between business challenges
               and digital innovation, our team of expert developers, AI specialists, and strategists
               delivers cutting-edge solutions that empower our clients to thrive in a competitive
@@ -162,38 +110,7 @@ export default function AboutClient() {
       <AboutPreview />
 
       {/* FAQ Section */}
-      <section className="py-16 sm:py-20 bg-white">
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl sm:text-4xl font-bold text-center mb-12 text-blue-900">
-            Frequently Asked Questions
-          </h2>
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 p-6 cursor-pointer border border-blue-900/20"
-                onClick={() => toggleFaq(index)}
-              >
-                <div className="flex justify-between items-center">
-                  <h3 className="text-lg sm:text-xl font-semibold text-blue-900">{faq.question}</h3>
-                  <span>
-                    {openFaq === index ? (
-                      <ChevronUp className="w-6 h-6 text-blue-900" />
-                    ) : (
-                      <ChevronDown className="w-6 h-6 text-blue-900" />
-                    )}
-                  </span>
-                </div>
-                {openFaq === index && (
-                  <div className="mt-4 text-base text-slate-600 leading-relaxed animate-in fade-in duration-300">
-                    {faq.answer}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FaqSection />
 
       {/* Call to Action */}
       <section className="py-16 sm:py-20 bg-gray-50">

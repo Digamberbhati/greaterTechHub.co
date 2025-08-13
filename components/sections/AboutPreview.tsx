@@ -11,33 +11,47 @@ import {
 } from '@heroicons/react/24/outline';
 import { useEffect, useState } from 'react';
 
-// Custom hook for counting animation
-const useCountUp = (end: number, duration: number, isInView: boolean) => {
-  const [count, setCount] = useState(0);
+// Custom hook for counting animation (MODIFIED)
+const useCountUp = (end: number, startValue: number, duration: number, isInView: boolean) => {
+  const [count, setCount] = useState(startValue); // Start count from startValue
 
   useEffect(() => {
+    // If the component is not in view, reset the count to its starting value
     if (!isInView) {
-      setCount(0);
+      setCount(startValue);
       return;
     }
 
-    let start = 0;
-    const increment = end / (duration * 60);
+    let current = startValue;
+    const range = end - startValue;
+
+    // Prevent animation if the start is already at or beyond the end
+    if (range <= 0) {
+        setCount(end);
+        return;
+    }
+
+    const increment = range / (duration * 60); // Calculate increment over the new range
+
     const step = () => {
-      start += increment;
-      if (start < end) {
-        setCount(Math.floor(start));
+      current += increment;
+      if (current < end) {
+        setCount(Math.floor(current));
         requestAnimationFrame(step);
       } else {
         setCount(end);
       }
     };
+
+    // Start the animation with a small delay
     const timer = setTimeout(() => requestAnimationFrame(step), 100);
+
     return () => clearTimeout(timer);
-  }, [end, duration, isInView]);
+  }, [end, startValue, duration, isInView]); // Added startValue to dependency array
 
   return count;
 };
+
 
 const highlights = [
   {
@@ -63,10 +77,11 @@ const highlights = [
 ];
 
 export default function AboutPreview() {
+  // MODIFIED: Added a 'startValue' to each stat object
   const stats = [
-    { value: 5000, label: 'Projects' },
-    { value: 350, label: 'Clients' },
-    { value: 5, label: 'Years' },
+    { value: 5000, label: 'Projects', startValue: 1000 },
+    { value: 350, label: 'Clients', startValue: 100 },
+    { value: 5, label: 'Years', startValue: 0 },
     { value: null, label: 'Support', display: '24/7' },
   ];
 
@@ -84,11 +99,11 @@ export default function AboutPreview() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-black mb-6 tracking-tight">
-              Why Choose
-              <span className="bg-gradient-to-r from-[#4A78D3] to-[rgb(37,150,190)] bg-clip-text text-transparent">
-                {' '}GreaterTechHub
-              </span>
-            </h2>
+  {/* The entire phrase is now wrapped in the span for a unified gradient */}
+  <span className="bg-gradient-to-r from-[#4A78D3] to-[rgb(37,150,190)] bg-clip-text text-transparent">
+    Why Choose GreaterTechHub
+  </span>
+</h2>
 
             <p className="text-lg text-gray-700 mb-8 leading-relaxed max-w-2xl">
               We're your technology partners, dedicated to transforming your digital vision into reality with innovative solutions and unmatched expertise.
@@ -151,7 +166,8 @@ export default function AboutPreview() {
                     <div className="text-5xl font-extrabold text-[#4A78D3] mb-2">
                       {stat.value !== null ? (
                         <>
-                          {useCountUp(stat.value, 2, isStatsInView)}+
+                          {/* MODIFIED: Pass the startValue to the hook */}
+                          {useCountUp(stat.value, stat.startValue ?? 0, 2, isStatsInView)}+
                         </>
                       ) : (
                         stat.display

@@ -125,10 +125,10 @@ const services = [
     features: ['Microservices Architecture', 'System Scalability', 'Database Design', 'Cloud Integration']
   },
   {
-    title: 'IT Asset Management',
+    title: 'Ai Agents & chatBot',
     description: 'Efficient tracking and management of IT assets to optimize resources and reduce costs.',
     icon: DocumentTextIcon,
-    href: '/services/it-asset-management',
+    href: '/services/chatbot-aiagents',
     features: ['Asset Tracking', 'Inventory Management', 'Cost Optimization', 'Compliance Audits']
   }
 ]
@@ -142,9 +142,11 @@ export default function Services() {
       <section className="py-12 bg-gray-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-blue-900 mb-6">
-              Our <span className="bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent">Technology Services</span>
-            </h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+  <span className="bg-gradient-to-r from-[#4A78D3] to-[rgb(37,150,190)] bg-clip-text text-transparent">
+    Our Technology Services
+  </span>
+</h1>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               Comprehensive IT solutions designed to accelerate your business growth 
               and digital transformation journey with cutting-edge technology.
