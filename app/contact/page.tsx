@@ -8,7 +8,20 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import { EnvelopeIcon, PhoneIcon, PaperAirplaneIcon } from '@heroicons/react/24/outline';
-import { FaLinkedin, FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaWhatsapp } from 'react-icons/fa';
+import { FaLinkedin, FaFacebook, FaInstagram, FaYoutube, FaWhatsapp } from 'react-icons/fa';
+
+// Custom X Logo SVG Component
+const XLogo = () => (
+  <svg
+    className="h-5 w-5 sm:h-6 sm:w-6"
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    {/* Simplified X logo path - replace with official X logo SVG path if available */}
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+);
 
 const contactInfo = [
   {
@@ -20,7 +33,7 @@ const contactInfo = [
       { platform: 'LinkedIn', link: 'https://linkedin.com/company/greatertechhub', icon: FaLinkedin },
       { platform: 'Facebook', link: 'https://www.facebook.com/profile.php?id=61557357627522', icon: FaFacebook },
       { platform: 'Instagram', link: 'https://instagram.com/greatertechhub', icon: FaInstagram },
-      { platform: 'X', link: 'https://x.com/greatertechhub', icon: FaTwitter },
+      { platform: 'X', link: 'https://x.com/greatertechhub', icon: XLogo }, // Replaced FaTwitter with XLogo
       { platform: 'YouTube', link: 'https://youtube.com/@greatertechhub', icon: FaYoutube },
       { platform: 'WhatsApp', link: 'https://wa.me/9588160069', icon: FaWhatsapp },
     ],
