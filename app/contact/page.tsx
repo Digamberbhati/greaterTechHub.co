@@ -18,7 +18,7 @@ const contactInfo = [
     description: 'Send us an email and we\'ll respond within 1 Min',
     socialMedia: [
       { platform: 'LinkedIn', link: 'https://linkedin.com/company/greatertechhub', icon: FaLinkedin },
-      { platform: 'Facebook', link: 'https://facebook.com/greatertechhub', icon: FaFacebook },
+      { platform: 'Facebook', link: 'https://www.facebook.com/profile.php?id=61557357627522', icon: FaFacebook },
       { platform: 'Instagram', link: 'https://instagram.com/greatertechhub', icon: FaInstagram },
       { platform: 'X', link: 'https://x.com/greatertechhub', icon: FaTwitter },
       { platform: 'YouTube', link: 'https://youtube.com/@greatertechhub', icon: FaYoutube },
@@ -212,7 +212,7 @@ export default function Contact() {
                       <option value="recruitment-services">Recruitment Services</option>
                       <option value="bpo-services">BPO Services</option>
                       <option value="system-design-architecture">System Design & Architecture</option>
-                      <option value="it-asset-management">IT Asset Management</option>
+                      <option value="it-asset-management">chatbot&aiAgents</option>
                       <option value="other">Other</option>
                     </select>
                   </div>

@@ -31,7 +31,7 @@ const navigation = [
 // Social media data
 const socialMedia = [
   { name: 'Instagram', href: 'https://instagram.com/greatertechhub', icon: FaInstagram },
-  { name: 'Facebook', href: 'https://facebook.com/greatertechhub', icon: FaFacebookF },
+  { name: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61557357627522', icon: FaFacebookF },
   { name: 'YouTube', href: 'https://youtube.com/@greatertechhub', icon: FaYoutube },
   { name: 'X', href: 'https://x.com/greatertechhub', icon: FaXTwitter },
   { name: 'LinkedIn', href: 'https://linkedin.com/company/greatertechhub', icon: FaLinkedinIn },

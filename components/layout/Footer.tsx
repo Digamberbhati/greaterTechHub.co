@@ -37,7 +37,7 @@ const footerSections = [
 
 const socialLinks = [
     { name: 'WhatsApp', href: 'https://wa.me/919588160069', icon: FaWhatsapp },
-    { name: 'Facebook', href: 'https://facebook.com/greatertechhub', icon: FaFacebookF },
+    { name: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61557357627522', icon: FaFacebookF },
     { name: 'Instagram', href: 'https://instagram.com/greatertechhub', icon: FaInstagram },
     { name: 'X', href: 'https://x.com/greatertechhub', icon: FaXTwitter },
     { name: 'LinkedIn', href: 'https://linkedin.com/company/greatertechhub', icon: FaLinkedinIn },

@@ -8,19 +8,11 @@ import {
   DevicePhoneMobileIcon,
   MegaphoneIcon,
   CloudIcon,
-  CogIcon,
-  ServerIcon,
-  FilmIcon,
   PaintBrushIcon,
-  BugAntIcon,
-  CommandLineIcon,
-  ChartBarIcon,
-  UserGroupIcon,
-  BriefcaseIcon,
-  CubeIcon,
   DocumentTextIcon,
   ArrowRightIcon,
 } from '@heroicons/react/24/outline';
+import { motion } from 'framer-motion';
 
 interface Service {
   title: string;
@@ -43,10 +35,22 @@ const services: Service[] = [
     href: '/services/mobile-app-development',
   },
   {
+    title: 'Branding & Advertising',
+    description: 'Complete brand identity, advertising campaigns, and market insights.',
+    icon: PaintBrushIcon,
+    href: '/services/branding-advertising-market-research',
+  },
+  {
     title: 'Digital Marketing & SEO',
     description: 'Strategies to boost your online presence and search rankings.',
     icon: MegaphoneIcon,
     href: '/services/digital-marketing-seo',
+  },
+  {
+    title: 'Chatbot & AI Agents',
+    description: 'Intelligent chatbots and AI agents for enhanced customer interaction.',
+    icon: DocumentTextIcon,
+    href: '/services/chatbot-aiagents',
   },
   {
     title: 'DevOps & Cloud Solutions',
@@ -54,77 +58,11 @@ const services: Service[] = [
     icon: CloudIcon,
     href: '/services/devops-cloud-solutions',
   },
-  {
-    title: 'CRM & ERP Systems',
-    description: 'Custom systems to streamline business operations.',
-    icon: CogIcon,
-    href: '/services/crm-erp-systems',
-  },
-  {
-    title: 'IT Infrastructure',
-    description: 'Robust network and infrastructure solutions.',
-    icon: ServerIcon,
-    href: '/services/it-infrastructure-networking',
-  },
-  {
-    title: '2D/3D Animation',
-    description: 'Creative animations for marketing and entertainment.',
-    icon: FilmIcon,
-    href: '/services/2d-3d-animation',
-  },
-  {
-    title: 'Branding & Advertising',
-    description: 'Complete brand identity, advertising campaigns, and market insights.',
-    icon: PaintBrushIcon,
-    href: '/services/branding-advertising-market-research',
-  },
-  {
-    title: 'QA & Software Testing',
-    description: 'Comprehensive quality assurance and testing services.',
-    icon: BugAntIcon,
-    href: '/services/qa-software-testing',
-  },
-  {
-    title: 'Custom Software',
-    description: 'Tailored software for unique business needs.',
-    icon: CommandLineIcon,
-    href: '/services/custom-software-solutions',
-  },
-  {
-    title: 'Business Strategy',
-    description: 'Strategic consulting for business growth and innovation.',
-    icon: ChartBarIcon,
-    href: '/services/business-strategy',
-  },
-  {
-    title: 'Recruitment Services',
-    description: 'End-to-end recruitment for top tech talent acquisition.',
-    icon: UserGroupIcon,
-    href: '/services/recruitment-services',
-  },
-  {
-    title: 'BPO Services',
-    description: 'Efficient outsourcing solutions for customer support and operations.',
-    icon: BriefcaseIcon,
-    href: '/services/bpo-services',
-  },
-  {
-    title: 'System Design & Architecture',
-    description: 'Scalable system designs for robust and efficient solutions.',
-    icon: CubeIcon,
-    href: '/services/system-design-architecture',
-  },
-  {
-    title: 'IT Asset Management',
-    description: 'Efficient tracking and management of IT assets for optimization.',
-    icon: DocumentTextIcon,
-    href: '/services/it-asset-management',
-  },
 ];
 
 export default function ServicesSection() {
   return (
-    <section className="bg-gray-50 py-20 sm:py-24">
+    <section className="bg-gradient-to-b from-gray-50 to-white py-20 sm:py-24">
       <style jsx>{`
         .blue-gradient {
           background: linear-gradient(90deg, #7C3AED, #4F46E5, #2563EB);
@@ -133,85 +71,98 @@ export default function ServicesSection() {
           background-clip: text;
           text-fill-color: transparent;
         }
+        .card-3d {
+          perspective: 1000px;
+        }
+        .card-3d:hover .card-inner {
+          transform: rotateY(10deg) rotateX(10deg) scale(1.05);
+        }
+        .card-inner {
+          transition: transform 0.4s ease;
+        }
+        .icon-3d {
+          filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+        }
       `}</style>
-      
+
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
           <h2 className="text-base font-semibold leading-7 text-blue-900">Our Services</h2>
-          <p className="mt-2 text-3xl font-bold tracking-tight text-blue-900 sm:text-4xl">
+          <p className="mt-2 text-4xl font-bold tracking-tight text-blue-900 sm:text-5xl">
             <span className="blue-gradient">Innovative IT Solutions</span> to Empower Your Business
           </p>
-          <p className="mt-6 text-lg leading-8 text-slate-600">
-            From strategy to execution, we deliver tailored technology services that drive results.
+          <p className="mt-6 text-lg leading-8 text-slate-600 max-w-2xl mx-auto">
+            Discover our core services designed to drive your business forward with cutting-edge technology and creative solutions.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
-            <div key={service.title} className="h-full">
-              <Card className="flex h-full flex-col rounded-2xl bg-white shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-blue-900/20">
-                <CardContent className="p-8 flex flex-col h-full">
-                  <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-500/30">
+            <motion.div
+              key={service.title}
+              className="h-full card-3d"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <Card className="flex h-full flex-col rounded-2xl bg-white shadow-lg transition-all duration-300 hover:shadow-2xl border border-blue-900/10 overflow-hidden">
+                <CardContent className="p-8 flex flex-col h-full card-inner">
+                  <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500/20 to-blue-900/20 icon-3d mx-auto">
                     <service.icon
-                      className={`h-7 w-7 ${
+                      className={`h-8 w-8 ${
                         index === 0
-                          ? 'text-red-500'
+                          ? 'text-blue-600'
                           : index === 1
-                          ? 'text-green-500'
+                          ? 'text-green-600'
                           : index === 2
-                          ? 'text-yellow-500'
+                          ? 'text-purple-600'
                           : index === 3
-                          ? 'text-purple-500'
+                          ? 'text-yellow-600'
                           : index === 4
-                          ? 'text-pink-500'
-                          : index === 5
-                          ? 'text-blue-900'
-                          : index === 6
-                          ? 'text-red-500'
-                          : index === 7
-                          ? 'text-green-500'
-                          : index === 8
-                          ? 'text-yellow-500'
-                          : index === 9
-                          ? 'text-purple-500'
-                          : index === 10
-                          ? 'text-pink-500'
-                          : index === 11
-                          ? 'text-blue-900'
-                          : index === 12
-                          ? 'text-red-500'
-                          : index === 13
-                          ? 'text-green-500'
-                          : 'text-yellow-500'
+                          ? 'text-pink-600'
+                          : 'text-blue-900'
                       }`}
                       aria-hidden="true"
                     />
                   </div>
-                  <h3 className="text-xl font-semibold text-blue-900">{service.title}</h3>
-                  <p className="mt-3 text-base text-slate-600 flex-grow">{service.description}</p>
+                  <h3 className="text-xl font-semibold text-blue-900 text-center">{service.title}</h3>
+                  <p className="mt-3 text-base text-slate-600 text-center flex-grow">{service.description}</p>
                   <Button
                     asChild
-                    className="mt-8 w-full group bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 hover:opacity-90 text-white py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                    className="mt-6 w-full group bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 hover:from-blue-800 hover:via-blue-700 hover:to-blue-600 text-white py-3 rounded-full font-semibold shadow-md hover:shadow-lg transition-all duration-300"
                   >
                     <Link href={service.href}>
                       Learn More
-                      <ArrowRightIcon className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      <ArrowRightIcon className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-2" />
                     </Link>
                   </Button>
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        <div className="mt-16 text-center">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-16 text-center"
+        >
           <Button
             asChild
-            className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 hover:opacity-90 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            className="bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 hover:from-blue-800 hover:via-blue-700 hover:to-blue-600 text-white px-10 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
           >
-            <Link href="/services">Explore All Our Services</Link>
+            <Link href="/services">
+              Explore All Our Services
+              <ArrowRightIcon className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
           </Button>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
