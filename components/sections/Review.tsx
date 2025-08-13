@@ -62,7 +62,7 @@ const clientReviews: ClientReview[] = [
 const clientLogos = [
   { url: '/clients/bhati-organisation.png', alt: 'Bhati Organisation' },
   { url: '/clients/krishi.png', alt: 'Certificate' },
-  { url: '/clients/allaboutfoodist.png', alt: 'All About Foodist' },
+  { url: '/clients/allaboutFoodist.png', alt: 'All About Foodist' },
   { url: '/clients/sfci.png', alt: 'SFCI' },
   { url: '/clients/glamvibe.png', alt: 'Glamvibe' },
   { url: '/clients/goprimelink.png', alt: 'Goprimelink' },
