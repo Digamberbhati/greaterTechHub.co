@@ -61,9 +61,9 @@ export default function About() {
             <div className="p-6 sm:p-8 rounded-2xl bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
               <h3 className="text-2xl sm:text-3xl font-bold mb-4 text-blue-900">Our Story</h3>
               <p className="text-base text-slate-600 leading-relaxed">
-                Launched in 2023, GreaterTechHub started as a small team with big dreams. Today, we’re
+                Launched in 2020, GreaterTechHub started as a small team with big dreams. Today, we’re
                 a global leader in AI innovation, having delivered over{' '}
-                <span className="font-semibold text-blue-900">700 impactful projects</span> using
+                <span className="font-semibold text-blue-900">600 impactful projects</span> using
                 advanced AI and modern tech stacks, transforming businesses worldwide.
               </p>
             </div>
@@ -88,7 +88,7 @@ export default function About() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             <div className="p-6 bg-white rounded-2xl shadow-md hover:shadow-lg transition-shadow duration-300 text-center border-t-4 border-blue-900">
-              <div className="text-4xl sm:text-5xl font-extrabold text-blue-900 mb-4">700+</div>
+              <div className="text-4xl sm:text-5xl font-extrabold text-blue-900 mb-4">600+</div>
               <h3 className="text-lg sm:text-xl font-semibold mb-2 text-blue-900">Projects Delivered</h3>
               <p className="text-base text-slate-600">Innovative solutions for global industries.</p>
             </div>
