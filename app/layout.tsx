@@ -1,23 +1,23 @@
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
-import { Toaster } from '@/components/ui/toaster';
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import Script from "next/script";
+import "./globals.css";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import { Toaster } from "@/components/ui/toaster";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://greatertechhub.com'),
+  metadataBase: new URL("https://greatertechhub.com"),
   title: {
-    template: '%s | GreaterTechHub',
-    default: 'GreaterTechHub - Top IT Services & Technology Solutions',
+    template: "%s | GreaterTechHub",
+    default: "GreaterTechHub - Top IT Services & Technology Solutions",
   },
   description:
-    'Leading IT company providing web development, assumirapps, digital marketing, cloud solutions, and comprehensive technology services worldwide.',
+    "Leading IT company providing web development, apps, digital marketing, cloud solutions, and technology services worldwide.",
   keywords: [
-    // Website Development
-    'web development services',
+     'web development services',
     'custom website development',
     'website design and development',
     'responsive web design',
@@ -39,16 +39,6 @@ export const metadata: Metadata = {
     'android app development',
     'iOS app development',
     'cross-platform app development',
-    'mobile app development in Delhi',
-    'mobile app development company in Abu Dhabi',
-    'mobile app development in Paris',
-    'mobile app development in Toronto',
-    'mobile app development in Brisbane',
-    'mobile app development in Russia',
-    'custom mobile app development in Hyderabad',
-    'android app development in Qatar',
-    'iOS app development in Melbourne',
-    'cross-platform app development in St. Petersburg',
 
     // Digital Marketing & SEO
     'digital marketing services',
@@ -56,16 +46,6 @@ export const metadata: Metadata = {
     'local SEO services',
     'PPC advertising',
     'social media marketing',
-    'SEO services in Bangalore',
-    'digital marketing agency in Pune',
-    'SEO agency in Riyadh',
-    'digital marketing services in Berlin',
-    'PPC advertising in Chicago',
-    'social media marketing in Perth',
-    'local SEO services in Moscow',
-    'best SEO agency in Mumbai',
-    'digital marketing for startups in Dubai',
-    'PPC campaign management in London',
 
     // AI Agents & ChatBot
     'AI scorerbot development',
@@ -73,16 +53,6 @@ export const metadata: Metadata = {
     'AI agents for business',
     'chatbot development services',
     'generative AI solutions',
-    'AI chatbot development in Kolkata',
-    'AI solutions in Dubai',
-    'AI chatbot solutions in Madrid',
-    'AI agents for businesses in Los Angeles',
-    'chatbot development in Sydney',
-    'generative AI solutions in Moscow',
-    'custom AI chatbot development in Chennai',
-    'AI-powered chatbots in Abu Dhabi',
-    'AI solutions for e-commerce in Amsterdam',
-    'business chatbot development in New York',
 
     // DevOps & Cloud Solutions
     'DevOps consulting services',
@@ -90,33 +60,12 @@ export const metadata: Metadata = {
     'AWS cloud services',
     'Azure cloud solutions',
     'cloud migration services',
-    'DevOps consulting in Gujarat',
-    'cloud solutions in Hyderabad',
-    'AWS cloud services in Qatar',
-    'cloud computing solutions in Amsterdam',
-    'cloud migration services in Toronto',
-    'DevOps solutions in Melbourne',
-    'cloud computing in Novosibirsk',
-    'best DevOps consulting in Bangalore',
-    'Azure cloud solutions in Dubai',
-    'cloud migration for enterprises in London',
 
     // CRM & ERP Systems
     'CRM software development',
     'custom ERP solutions',
     'Salesforce consulting',
     'Odoo ERP development',
-    'CRM integration services',
-    'CRM software development in Chennai',
-    'ERP solutions in Oman',
-    'Salesforce consulting in Germany',
-    'custom ERP development in New York',
-    'CRM integration in Sydney',
-    'Odoo ERP development in Moscow',
-    'CRM software for startups in Mumbai',
-    'ERP solutions for businesses in Riyadh',
-    'Salesforce consulting in San Francisco',
-    'custom CRM development in Brisbane',
 
     // IT Infrastructure & Networking
     'IT infrastructure services',
@@ -124,16 +73,6 @@ export const metadata: Metadata = {
     'IT managed services',
     'cloud infrastructure management',
     'cybersecurity consulting',
-    'IT infrastructure services in Ahmedabad',
-    'network security in Doha',
-    'IT managed services in Spain',
-    'cloud infrastructure in Chicago',
-    'cybersecurity consulting in Perth',
-    'IT infrastructure in Moscow',
-    'IT infrastructure solutions in Delhi',
-    'network security services in Dubai',
-    'IT managed services in London',
-    'cybersecurity solutions in Toronto',
 
     // 2D/3D Animation
     '2D animation services',
@@ -141,16 +80,6 @@ export const metadata: Metadata = {
     'motion graphics design',
     'animation for advertising',
     '3D modeling services',
-    '2D animation services in Pune',
-    '3D animation studio in Muscat',
-    'motion graphics design in France',
-    'animation for advertising in Los Angeles',
-    '3D modeling services in Sydney',
-    '2D animation in Novosibirsk',
-    '3D animation services in Bangalore',
-    'motion graphics for ads in Dubai',
-    'animation studio in Berlin',
-    '3D modeling for businesses in Melbourne',
 
     // Custom Software Solutions
     'custom software development',
@@ -158,16 +87,6 @@ export const metadata: Metadata = {
     'SaaS development services',
     'software consulting',
     'bespoke software development',
-    'custom software development in Mumbai',
-    'enterprise software in Bahrain',
-    'SaaS development in Italy',
-    'software consulting in San Francisco',
-    'bespoke software in Brisbane',
-    'custom software solutions in Russia',
-    'custom software for startups in Hyderabad',
-    'enterprise software development in Dubai',
-    'SaaS solutions in London',
-    'bespoke software development in Chicago',
 
     // QA & Software Testing
     'software testing services',
@@ -175,16 +94,6 @@ export const metadata: Metadata = {
     'mobile app testing',
     'performance testing services',
     'quality assurance consulting',
-    'software testing in Chennai',
-    'QA automation in Kuwait',
-    'mobile app testing in Netherlands',
-    'performance testing in New York',
-    'QA consulting in Perth',
-    'software testing services in Moscow',
-    'QA automation testing in Bangalore',
-    'mobile app testing in Riyadh',
-    'performance testing services in Paris',
-    'quality assurance in Sydney',
 
     // Branding, Advertising & Market Research
     'branding services',
@@ -192,16 +101,6 @@ export const metadata: Metadata = {
     'market research services',
     'brand identity design',
     'PPC campaign management',
-    'branding services in Kolkata',
-    'digital advertising in Saudi Arabia',
-    'market research in France',
-    'brand identity design in Chicago',
-    'PPC campaign management in Melbourne',
-    'branding services in Novosibirsk',
-    'digital advertising agency in Mumbai',
-    'market research services in Dubai',
-    'brand identity in Berlin',
-    'PPC advertising in Toronto',
 
     // Business Strategy
     'business strategy consulting',
@@ -209,16 +108,6 @@ export const metadata: Metadata = {
     'go-to-market strategy',
     'business process automation',
     'strategic IT consulting',
-    'business strategy consulting in Delhi',
-    'digital transformation in Oman',
-    'go-to-market strategy in Spain',
-    'business process automation in Los Angeles',
-    'strategic IT consulting in Sydney',
-    'business strategy in Moscow',
-    'digital transformation services in Bangalore',
-    'go-to-market strategy in Dubai',
-    'business automation in London',
-    'strategic consulting in New York',
 
     // Recruitment Services
     'IT recruitment services',
@@ -226,16 +115,6 @@ export const metadata: Metadata = {
     'offshore recruitment solutions',
     'IT staffing agency',
     'recruitment process outsourcing',
-    'IT recruitment in Hyderabad',
-    'tech talent acquisition in Qatar',
-    'offshore recruitment in Germany',
-    'IT staffing in San Francisco',
-    'recruitment outsourcing in Brisbane',
-    'IT recruitment services in Russia',
-    'tech hiring in Mumbai',
-    'offshore recruitment in Dubai',
-    'IT staffing agency in Paris',
-    'recruitment services in Melbourne',
 
     // BPO Services
     'business process outsourcing',
@@ -243,16 +122,6 @@ export const metadata: Metadata = {
     'customer support outsourcing',
     'back-office BPO services',
     'offshore BPO solutions',
-    'BPO services in Chennai',
-    'customer support outsourcing in Bahrain',
-    'back-office BPO in Italy',
-    'offshore BPO in Chicago',
-    'BPO for startups in Perth',
-    'BPO services in Moscow',
-    'customer support BPO in Bangalore',
-    'offshore BPO solutions in Dubai',
-    'back-office outsourcing in London',
-    'BPO services in Toronto',
 
     // System Design & Architecture
     'system architecture design',
@@ -260,43 +129,32 @@ export const metadata: Metadata = {
     'microservices architecture',
     'cloud architecture solutions',
     'enterprise system design',
-    'system architecture in Ahmedabad',
-    'IT system integration in Muscat',
-    'microservices architecture in Netherlands',
-    'cloud architecture in New York',
-    'enterprise system design in Sydney',
-    'system architecture in Russia',
-    'IT system integration in Mumbai',
-    'cloud architecture solutions in Dubai',
-    'microservices design in Berlin',
-    'enterprise system solutions in Melbourne',
   ],
-  authors: [{ name: 'GreaterTechHub' }],
-  alternates: {
-    canonical: 'https://greatertechhub.com',
-  },
+  authors: [{ name: "GreaterTechHub" }],
+  alternates: { canonical: "https://greatertechhub.com" },
   openGraph: {
-    title: 'GreaterTechHub - Top IT Services & Technology Solutions',
+    title: "GreaterTechHub - Top IT Services & Technology Solutions",
     description:
-      'Transform your business with our cutting-edge technology solutions. From web development to cloud infrastructure, we deliver innovation that drives growth.',
-    url: 'https://greatertechhub.com',
-    siteName: 'GreaterTechHub',
+      "Transform your business with cutting-edge technology solutions from GreaterTechHub.",
+    url: "https://greatertechhub.com",
+    siteName: "GreaterTechHub",
     images: [
       {
-        url: '/blacklogo.png',
+        url: "/blacklogo.png",
         width: 1200,
         height: 630,
-        alt: 'GreaterTechHub - IT Services & Technology Solutions',
+        alt: "GreaterTechHub - IT Services & Technology Solutions",
       },
     ],
-    locale: 'en_US',
-    type: 'website',
+    locale: "en_US",
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'GreaterTechHub - Top IT Services & Technology Solutions',
-    description: 'Transform your business with our cutting-edge technology solutions.',
-    images: ['/og-image.jpg'],
+    card: "summary_large_image",
+    title: "GreaterTechHub - Top IT Services & Technology Solutions",
+    description:
+      "Transform your business with our cutting-edge technology solutions.",
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -304,28 +162,73 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   icons: {
-    icon: '/favicon.ico', // Use a dedicated favicon file
-    shortcut: '/favicon.ico',
-    apple: '/apple-touch-icon.png', // Use a dedicated Apple touch icon
-    other: [
-      {
-        rel: 'icon',
-        url: '/blacklogo.png', // Fallback for other cases
-      },
-    ],
+    icon: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`scroll-smooth ${inter.className}`}>
+      <head>
+        {/* --- SEO Essentials --- */}
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://greatertechhub.com" />
+        <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+
+        {/* --- Google Tag Manager (HEAD) --- */}
+        <Script id="gtm-head" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-WJR9C26Z');
+          `}
+        </Script>
+      </head>
+
       <body className="antialiased">
+        {/* --- Google Tag Manager (BODY) --- */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-WJR9C26Z"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          ></iframe>
+        </noscript>
+
+        {/* --- Google Analytics --- */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-DTG1BKB7TD"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-DTG1BKB7TD');
+          `}
+        </Script>
+
+        {/* --- Cloudflare Web Analytics --- */}
+        <Script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "898db2d1806842948f8a96b2866d90f8"}'
+          strategy="afterInteractive"
+        />
+
+        {/* --- Layout --- */}
         <Header />
         <main>{children}</main>
         <Footer />
